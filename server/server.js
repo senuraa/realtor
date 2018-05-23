@@ -1,17 +1,27 @@
 var express = require('express');
+require('dotenv').config();
 var app = express();
 var mongoose = require('mongoose');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var expressSession = require('express-session');
+var mongoStore = require('connect-mongo')({ session: expressSession });
+require('./model/auth_model.js')
+require('./model/user_model.js');
+
 var cors = require('cors');
+
 
 var options = {
     user : process.env.MONGO_USER,
     pass : process.env.MONGO_PASS
 }
+var server = require('http').Server(app);
 
-mongoose.connect(process.env.MONGO_URL,options);
+//mongoose.connect(process.env.MONGO_URL,options);
+mongoose.connect('mongodb://localhost:27017/realtor')
+var db = mongoose.connection;
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ 'extended': 'true' }));
@@ -25,4 +35,39 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+app.use(
+    expressSession(
+        {
+            'secret': 'SUPERSECRET',
+            resave: true,
+            saveUninitialized: true
+        }
+    )
+);
+db.once('open', function (err) {
+    if (err) {
+        console.log("Error Opening the DB Connection: ", err);
+        return;
+    }
+    app.use(expressSession({
+        secret: 'SUPERSECRET',
+        cookie: { maxAge: 60 * 60 * 1000 },
+        store: new mongoStore({
+            db: mongoose.connection.db,
+            collection: 'sessions'
+        }),
+        resave: true,
+        saveUninitialized: true
+    }));
+    var port = '1500' || 5151;
+    server.listen(port);
+    console.log("Magic happening on port " + port);
+});
+
+var router = express.Router();
+var auth = require('./controllers/auth');
+router.route('/auth/register').post(auth.requestPhoneVerification);
+router.route('/auth/verify').post(auth.verifyPhoneToken);
+
+app.use('/api',router);
 
