@@ -1,0 +1,28 @@
+page-login {
+    color:#fff;
+    background: url(../../assets/imgs/loginbg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    #nUser {
+        width: 100%;
+        text-align: center;
+    }
+    #forgotDetails {
+        width: 325px;
+        margin: 0 auto;
+        a {
+            color: #000;
+            font-weight: bold;
+            margin-left: 10px;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+    ion-content{
+        background-color: transparent;
+    }
+}
