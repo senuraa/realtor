@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
-import { LoginServiceProvider } from '../../providers/login-service/login-service'
+import { LoginServiceProvider } from '../../providers/login-service/login-service';
+import { TabsPage } from '../tabs/tabs'
 
 /**
  * Generated class for the LoginPage page.
@@ -16,20 +17,21 @@ import { LoginServiceProvider } from '../../providers/login-service/login-servic
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  user ={
+  user = {
     phone_number: '',
     password: ''
   }
   constructor(public navCtrl: NavController, public navParams: NavParams, public loginService: LoginServiceProvider) {
   }
   login() {
-    this.loginService.userLogin(this.user).then((response)=>{
+    this.loginService.userLogin(this.user).then((response) => {
       console.log('success')
+      this.navCtrl.push(TabsPage, this.user);
     },
-    (err)=>{
-      console.log(err)
-    }
-  )
+      (err) => {
+        console.log(err)
+      }
+    )
   }
   openSignup() {
     this.navCtrl.push(SignupPage);

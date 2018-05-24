@@ -15,10 +15,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPageModule } from '../pages/login/login.module';
 
 import { SignupPage } from '../pages/signup/signup';
+import { MyProfilePage } from '../pages/my-profile/my-profile';
+import { FavoritesPage } from '../pages/favorites/favorites';
+import { SearchPage } from '../pages/search/search';
+
 import { LoginServiceProvider } from '../providers/login-service/login-service';
 import { SignupServiceProvider } from '../providers/signup-service/signup-service';
 
-import{ VerifyPage} from '../pages/verify/verify';
+import { VerifyPage } from '../pages/verify/verify';
 
 import { HttpModule } from '@angular/http';
 
@@ -32,7 +36,10 @@ import { HttpModule } from '@angular/http';
     TabsPage,
     LoginPage,
     SignupPage,
-    VerifyPage
+    VerifyPage,
+    MyProfilePage,
+    FavoritesPage,
+    SearchPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +55,10 @@ import { HttpModule } from '@angular/http';
     TabsPage,
     LoginPage,
     SignupPage,
-    VerifyPage
+    VerifyPage,
+    MyProfilePage,
+    FavoritesPage,
+    SearchPage
   ],
   providers: [
     StatusBar,
