@@ -1,14 +1,14 @@
 webpackJsonp([3],{
 
-/***/ 100:
+/***/ 101:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignupPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_signup_service_signup_service__ = __webpack_require__(156);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__verify_verify__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_signup_service_signup_service__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__verify_verify__ = __webpack_require__(103);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,11 +38,20 @@ var SignupPage = /** @class */ (function () {
             last_name: '',
             phone_number: '',
             country_code: '94',
-            token: ''
+            token: '',
+            password: ''
         };
+        // this.form = fb.group({
+        //   'first_name':['', Validators.required],
+        //   'last_name':['', Validators.required],
+        //   'phone_number':['', Validators.required],
+        //   'password': ['', Validators.required],
+        //   // 'password_conf': ['', Validators.required]
+        // }, {validator: SignupPage.passwordsMatch});
     }
     SignupPage.prototype.signup = function () {
         var _this = this;
+        //this.navCtrl.push(VerifyPage,this.user);
         this.signupService.userSignup(this.user).then(function (response) {
             console.log('success');
             _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__verify_verify__["a" /* VerifyPage */], _this.user);
@@ -56,7 +65,7 @@ var SignupPage = /** @class */ (function () {
     };
     SignupPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-signup',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/signup/signup.html"*/'<!--\n  Generated template for the SignupPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>signup</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-item>\n    <ion-label floating>First Name</ion-label>\n    <ion-input type="text" [(ngModel)]="user.first_name"></ion-input>\n  </ion-item>\n  <ion-item>\n      <ion-label floating>Last Name</ion-label>\n      <ion-input type="text" [(ngModel)]="user.last_name"></ion-input>\n    </ion-item>\n  <ion-item>\n    <ion-label floating>Mobile Number</ion-label>\n    <ion-input type="tel" [(ngModel)]="user.phone_number"></ion-input>\n  </ion-item>\n  <div padding>\n    <button ion-button color="primary" block (click)="signup()">Sign up</button>\n  </div>\n</ion-content>'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/signup/signup.html"*/,
+            selector: 'page-signup',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/signup/signup.html"*/'<!--\n  Generated template for the SignupPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>signup</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  \n    <ion-item>\n      <ion-label floating>First Name</ion-label>\n      <ion-input type="text" [(ngModel)]="user.first_name"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label floating>Last Name</ion-label>\n      <ion-input type="text" [(ngModel)]="user.last_name"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label floating>Mobile Number</ion-label>\n      <ion-input type="tel" [(ngModel)]="user.phone_number"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label floating>Password</ion-label>\n      <ion-input type="password" [(ngModel)]="user.password"></ion-input>\n    </ion-item>\n    <div padding>\n      <button ion-button color="primary" block (click)="signup()">Sign up</button>\n    </div>\n  \n</ion-content>'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/signup/signup.html"*/,
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_signup_service_signup_service__["a" /* SignupServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_signup_service_signup_service__["a" /* SignupServiceProvider */]) === "function" && _c || Object])
     ], SignupPage);
@@ -68,14 +77,15 @@ var SignupPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 101:
+/***/ 102:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup_signup__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup_signup__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_login_service_login_service__ = __webpack_require__(278);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -85,6 +95,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -95,10 +106,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var LoginPage = /** @class */ (function () {
-    function LoginPage(navCtrl, navParams) {
+    function LoginPage(navCtrl, navParams, loginService) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.loginService = loginService;
+        this.user = {
+            phone_number: '',
+            password: ''
+        };
     }
+    LoginPage.prototype.login = function () {
+        this.loginService.userLogin(this.user).then(function (response) {
+            console.log('success');
+        }, function (err) {
+            console.log(err);
+        });
+    };
     LoginPage.prototype.openSignup = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__signup_signup__["a" /* SignupPage */]);
     };
@@ -107,25 +130,27 @@ var LoginPage = /** @class */ (function () {
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/login/login.html"*/'<!--\n  Generated template for the LoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <!-- <ion-navbar>\n    <ion-title>Sign in</ion-title>\n  </ion-navbar> -->\n\n</ion-header>\n<ion-content padding>\n  <ion-item>\n    <ion-label floating>Username</ion-label>\n    <ion-input type="text"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Password</ion-label>\n    <ion-input type="password"></ion-input>\n  </ion-item>\n  <div padding>\n      <button ion-button color="primary" block>Sign In</button>\n    </div>\n  \n    <div padding id="nUser">\n      <span>New user?</span>\n    </div>\n    <div padding>\n        <button ion-button color="light" block (click)="openSignup()">Sign Up</button>\n    </div>\n\n    <div padding id=\'forgotDetails\'>\n      <span>Forgot your login details?</span><a href="#">Get help signing in</a>\n    </div>      \n</ion-content>'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/login/login.html"*/,
+            selector: 'page-login',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/login/login.html"*/'<!--\n  Generated template for the LoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <!-- <ion-navbar>\n    <ion-title>Sign in</ion-title>\n  </ion-navbar> -->\n\n</ion-header>\n<ion-content padding>\n  <ion-item>\n    <ion-label floating>Phone number</ion-label>\n    <ion-input type="number" [(ngModel)]="user.phone_number"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Password</ion-label>\n    <ion-input type="password" [(ngModel)]="user.password"></ion-input>\n  </ion-item>\n  <div padding>\n      <button ion-button color="primary" block (click)="login()">Sign In</button>\n    </div>\n  \n    <div padding id="nUser">\n      <span>New user?</span>\n    </div>\n    <div padding>\n        <button ion-button color="light" block (click)="openSignup()">Sign Up</button>\n    </div>\n\n    <div padding id=\'forgotDetails\'>\n      <span>Forgot your login details?</span><a href="#">Get help signing in</a>\n    </div>      \n</ion-content>'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/login/login.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_login_service_login_service__["a" /* LoginServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_login_service_login_service__["a" /* LoginServiceProvider */]) === "function" && _c || Object])
     ], LoginPage);
     return LoginPage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=login.js.map
 
 /***/ }),
 
-/***/ 102:
+/***/ 103:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VerifyPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_signup_service_signup_service__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_signup_service_signup_service__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tabs_tabs__ = __webpack_require__(277);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -135,6 +160,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -154,13 +180,16 @@ var VerifyPage = /** @class */ (function () {
             last_name: this.navParams.get('last_name'),
             phone_number: this.navParams.get('phone_number'),
             country_code: '94',
-            token: ''
+            token: '',
+            password: this.navParams.get('password')
         };
     }
     VerifyPage.prototype.verify = function () {
+        var _this = this;
+        //this.navCtrl.push(TabsPage,this.user)
         this.signupService.userVerify(this.user).then(function (response) {
             console.log('success');
-            console.log(response);
+            _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__tabs_tabs__["a" /* TabsPage */], _this.user);
         }, function (err) {
             console.log(err);
         });
@@ -182,7 +211,7 @@ var VerifyPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 114:
+/***/ 115:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -195,11 +224,11 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 114;
+webpackEmptyAsyncContext.id = 115;
 
 /***/ }),
 
-/***/ 155:
+/***/ 156:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -227,80 +256,8 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 155;
+webpackAsyncContext.id = 156;
 module.exports = webpackAsyncContext;
-
-/***/ }),
-
-/***/ 156:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignupServiceProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-//import { HttpClient, HttpClientJsonpModule } from '@angular/common/http';
-
-
-
-/*
-  Generated class for the SignupServiceProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
-var API_URL = 'http://localhost:1500/api/';
-var SignupServiceProvider = /** @class */ (function () {
-    function SignupServiceProvider(http) {
-        this.http = http;
-        this.data = null;
-    }
-    SignupServiceProvider.prototype.userSignup = function (userData) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.http.post(API_URL + 'auth/register', userData)
-                .map(function (res) { return res.json(); })
-                .subscribe(function (data) {
-                _this.data = data;
-                resolve(_this.data);
-            }, function (err) {
-                reject(err);
-            });
-        });
-    };
-    SignupServiceProvider.prototype.userVerify = function (userData) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.http.post(API_URL + 'auth/verify', userData)
-                .map(function (res) { return res.json(); })
-                .subscribe(function (data) {
-                _this.data = data;
-                resolve(_this.data);
-            }, function (err) {
-                reject(err);
-            });
-        });
-    };
-    SignupServiceProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
-    ], SignupServiceProvider);
-    return SignupServiceProvider;
-    var _a;
-}());
-
-//# sourceMappingURL=signup-service.js.map
 
 /***/ }),
 
@@ -436,13 +393,13 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_contact_contact__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(204);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_tabs_tabs__ = __webpack_require__(277);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_login_login__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_login_login__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_status_bar__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_splash_screen__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_signup_signup__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_signup_signup__ = __webpack_require__(101);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_login_service_login_service__ = __webpack_require__(278);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_signup_service_signup_service__ = __webpack_require__(156);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_verify_verify__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_signup_service_signup_service__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_verify_verify__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__angular_http__ = __webpack_require__(157);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -528,7 +485,7 @@ var AppModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_login_login__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_login_login__ = __webpack_require__(102);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -610,8 +567,8 @@ var TabsPage = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginServiceProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(279);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(157);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(158);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -632,11 +589,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
+var API_URL = 'http://localhost:1500/api/';
 var LoginServiceProvider = /** @class */ (function () {
     function LoginServiceProvider(http) {
         this.http = http;
         this.user = null;
     }
+    LoginServiceProvider.prototype.userLogin = function (userData) {
+        var _this = this;
+        return new Promise((function (resolve, reject) {
+            _this.http.post(API_URL + 'auth/login', userData)
+                .map(function (res) { return res.json(); })
+                .subscribe(function (data) {
+                _this.user = data;
+                resolve(_this.user);
+            }, function (err) {
+                reject(err);
+            });
+        }));
+    };
     LoginServiceProvider.prototype.loggedinUser = function (userData) {
         this.user = userData;
     };
@@ -647,13 +618,85 @@ var LoginServiceProvider = /** @class */ (function () {
         });
     };
     LoginServiceProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
     ], LoginServiceProvider);
     return LoginServiceProvider;
+    var _a;
 }());
 
 //# sourceMappingURL=login-service.js.map
+
+/***/ }),
+
+/***/ 78:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignupServiceProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+//import { HttpClient, HttpClientJsonpModule } from '@angular/common/http';
+
+
+
+/*
+  Generated class for the SignupServiceProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
+var API_URL = 'http://localhost:1500/api/';
+var SignupServiceProvider = /** @class */ (function () {
+    function SignupServiceProvider(http) {
+        this.http = http;
+        this.data = null;
+    }
+    SignupServiceProvider.prototype.userSignup = function (userData) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.http.post(API_URL + 'auth/register', userData)
+                .map(function (res) { return res.json(); })
+                .subscribe(function (data) {
+                _this.data = data;
+                resolve(_this.data);
+            }, function (err) {
+                reject(err);
+            });
+        });
+    };
+    SignupServiceProvider.prototype.userVerify = function (userData) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.http.post(API_URL + 'auth/verify', userData)
+                .map(function (res) { return res.json(); })
+                .subscribe(function (data) {
+                _this.data = data;
+                resolve(_this.data);
+            }, function (err) {
+                reject(err);
+            });
+        });
+    };
+    SignupServiceProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
+    ], SignupServiceProvider);
+    return SignupServiceProvider;
+}());
+
+//# sourceMappingURL=signup-service.js.map
 
 /***/ })
 

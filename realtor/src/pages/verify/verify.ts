@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SignupServiceProvider } from '../../providers/signup-service/signup-service';
-
+import {TabsPage} from '../tabs/tabs';
 /**
  * Generated class for the VerifyPage page.
  *
@@ -22,12 +22,14 @@ export class VerifyPage {
     last_name: this.navParams.get('last_name'),
     phone_number: this.navParams.get('phone_number'),
     country_code: '94',
-    token:''
+    token:'',
+    password:this.navParams.get('password')
   }
 verify(){
+  //this.navCtrl.push(TabsPage,this.user)
   this.signupService.userVerify(this.user).then((response)=>{
     console.log('success')
-    console.log(response);
+    this.navCtrl.push(TabsPage,this.user)
   },(err)=>{
     console.log(err);
   })

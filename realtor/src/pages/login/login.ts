@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
+import { LoginServiceProvider } from '../../providers/login-service/login-service'
 
 /**
  * Generated class for the LoginPage page.
@@ -15,10 +16,22 @@ import { SignupPage } from '../signup/signup';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  user ={
+    phone_number: '',
+    password: ''
   }
-  openSignup(){
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loginService: LoginServiceProvider) {
+  }
+  login() {
+    this.loginService.userLogin(this.user).then((response)=>{
+      console.log('success')
+    },
+    (err)=>{
+      console.log(err)
+    }
+  )
+  }
+  openSignup() {
     this.navCtrl.push(SignupPage);
   }
   ionViewDidLoad() {
