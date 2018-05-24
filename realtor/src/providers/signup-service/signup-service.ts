@@ -13,6 +13,7 @@ const API_URL = 'http://localhost:1500/api/'
 @Injectable()
 export class SignupServiceProvider {
   data: any;
+  
   constructor(public http: Http) {
     this.data = null;
   }

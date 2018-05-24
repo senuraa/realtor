@@ -27,7 +27,7 @@ export class SignupPage {
   signup() {
     this.signupService.userSignup(this.user).then((response) => {
       console.log('success');
-      this.navCtrl.push(VerifyPage);
+      this.navCtrl.push(VerifyPage,this.user);
       //console.log(response);
     }, (err) => {
       console.log('err')

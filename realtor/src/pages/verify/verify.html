@@ -18,4 +18,7 @@
     <ion-label floating>Verification code</ion-label>
     <ion-input type="number" [(ngModel)]="user.token"></ion-input>
   </ion-item>
+  <div padding>
+    <button ion-button color="primary" block (click)="verify()">Sign up</button>
+  </div>
 </ion-content>
