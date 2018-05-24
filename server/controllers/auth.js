@@ -50,8 +50,8 @@ exports.verifyPhoneToken = function (req, res) {
     var country_code = req.body.country_code;
     var phone_number = req.body.phone_number;
     var token = req.body.token;
-    var firstname = req.body.firstname;
-    var lastname = req.body.lastname;
+    var firstname = req.body.first_name;
+    var lastname = req.body.last_name;
 
     if (phone_number && country_code && token) {
         phoneReg.verifyPhoneToken(phone_number, country_code, token, function (err, response) {
