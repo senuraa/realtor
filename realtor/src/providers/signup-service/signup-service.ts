@@ -31,5 +31,19 @@ export class SignupServiceProvider {
 
     });
   }
+  userVerify(userData) {
+    return new Promise((resolve, reject) => {
+      this.http.post(API_URL + 'auth/verify', userData)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        },
+          err => {
+            reject(err);
+          }
+        )
+    })
+  }
 
 }

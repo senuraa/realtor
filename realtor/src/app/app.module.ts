@@ -18,6 +18,8 @@ import { SignupPage } from '../pages/signup/signup';
 import { LoginServiceProvider } from '../providers/login-service/login-service';
 import { SignupServiceProvider } from '../providers/signup-service/signup-service';
 
+import{ VerifyPage} from '../pages/verify/verify';
+
 import { HttpModule } from '@angular/http';
 
 
@@ -29,7 +31,8 @@ import { HttpModule } from '@angular/http';
     HomePage,
     TabsPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    VerifyPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { HttpModule } from '@angular/http';
     HomePage,
     TabsPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    VerifyPage
   ],
   providers: [
     StatusBar,
