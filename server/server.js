@@ -15,13 +15,13 @@ var cors = require('cors');
 console.log(process.env.MONGO_USER)
 
 var options = {
-    user : 'admin',
-    pass : 'admin'
+    user : process.env.MONGO_USER,
+    pass : process.env.MONGO_PASS
 }
 var server = require('http').Server(app);
 
 //mongoose.connect(process.env.MONGO_URL,options);
-mongoose.connect('mongodb://54.169.167.51:27017/realtor',options)
+mongoose.connect(process.env.MONGO_URL)
 var db = mongoose.connection;
 
 app.use(morgan('dev'));
