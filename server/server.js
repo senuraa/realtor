@@ -69,6 +69,6 @@ var router = express.Router();
 var auth = require('./controllers/auth');
 router.route('/auth/register').post(auth.requestPhoneVerification);
 router.route('/auth/verify').post(auth.verifyPhoneToken);
-
+router.route('/auth/login').post(auth.login);
 app.use('/api',router);
 

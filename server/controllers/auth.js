@@ -36,7 +36,7 @@ exports.requestPhoneVerification = function (req, res) {
         });
     } else {
         console.log('Failed in Register Phone API Call', req.body);
-        res.status(500).json({message: "Fields are missing"});
+        res.status(500).json({ message: "Fields are missing" });
     }
 
 };
@@ -52,6 +52,7 @@ exports.verifyPhoneToken = function (req, res) {
     var token = req.body.token;
     var firstname = req.body.first_name;
     var lastname = req.body.last_name;
+    var password = req.body.password;
 
     if (phone_number && country_code && token) {
         phoneReg.verifyPhoneToken(phone_number, country_code, token, function (err, response) {
@@ -62,39 +63,40 @@ exports.verifyPhoneToken = function (req, res) {
                 console.log('Confirm phone success confirming code: ', response);
                 if (response.success) {
 
-                        User.findOne({ phone_number: phone_number }).exec(function (err, user) {
-                            if (err) {
-                                console.log('find existing user error', err);
-                                res.status(500).json(err);
-                                return;
-                            }
-                            if (user) {
-                                User.findOneAndUpdate({ phone_number: phone_number }, { $set: { country_code: country_code, firstname: firstname, lastname: lastname } },{new: true}, function(err, doc){
-                                    if (err) {
-                                        console.log('Error Updating User', err);
-                                        res.status(500).json(err);
-                                    } else {
-                                        res.status(200).json(doc);
-                                    }
-                                });
-                            } else {
-                                user = new User({ phone_number: phone_number });
-                                user.set('country_code', country_code);
-                                user.set('firstname', firstname);
-                                user.set('lastname', lastname);
-                                user.save(function (err, doc) {
-                                    if (err) {
-                                        console.log('Error Creating User', err);
-                                        res.status(500).json(err);
-                                    } else {
-                                        res.status(200).json(doc);
-                                    }
-                                });
-                            }
-                        });
-                        
-                        req.session.ph_verified = true;
-                }else{
+                    User.findOne({ phone_number: phone_number }).exec(function (err, user) {
+                        if (err) {
+                            console.log('find existing user error', err);
+                            res.status(500).json(err);
+                            return;
+                        }
+                        if (user) {
+                            User.findOneAndUpdate({ phone_number: phone_number }, { $set: { country_code: country_code, firstname: firstname, lastname: lastname, password: hashPW(password) } }, { new: true }, function (err, doc) {
+                                if (err) {
+                                    console.log('Error Updating User', err);
+                                    res.status(500).json(err);
+                                } else {
+                                    res.status(200).json(doc);
+                                }
+                            });
+                        } else {
+                            user = new User({ phone_number: phone_number });
+                            user.set('country_code', country_code);
+                            user.set('firstname', firstname);
+                            user.set('lastname', lastname);
+                            user.set('password', hashPW(password));
+                            user.save(function (err, doc) {
+                                if (err) {
+                                    console.log('Error Creating User', err);
+                                    res.status(500).json(err);
+                                } else {
+                                    res.status(200).json(doc);
+                                }
+                            });
+                        }
+                    });
+
+                    req.session.ph_verified = true;
+                } else {
                     res.status(200).json(response);
                 }
             }
@@ -102,6 +104,36 @@ exports.verifyPhoneToken = function (req, res) {
         });
     } else {
         console.log('Failed in Confirm Phone request body: ', req.body);
-        res.status(500).json({message: "Missing fields"});
+        res.status(500).json({ message: "Missing fields" });
     }
 };
+
+exports.login = function (req, res) {
+    var country_code = req.body.country_code;
+    var phone_number = req.body.phone_number;
+    var password = req.body.password;
+
+    User.findOne({phone_number:phone_number}).exec(function(err,user){
+        if (!user) {
+            err = 'Username Not Found';
+        } else if (('password' in req.body) && (user.password !==
+            hashPW(req.body.password.toString()))) {
+            err = 'Wrong Password';
+        } else {
+            createSession(req, res, user);
+        }
+
+        if (err) {
+            res.status(500).json(err);
+        }
+    })
+};
+function createSession(req, res, user) {
+    req.session.regenerate(function () {
+        req.session.loggedIn = true;
+        // req.session.user = user.id;
+        req.session.username = user.phone_number;
+        req.session.msg = 'Authenticated as: ' + user.phone_number;
+        res.status(200).json({message:"login success"});
+    });
+}
