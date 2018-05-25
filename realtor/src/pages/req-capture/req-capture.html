@@ -15,31 +15,54 @@
 
 <ion-content padding>
 
-  
+
   <ion-list>
     <ion-list-header>
       Request Details
     </ion-list-header>
     <ion-item>
-        <ion-label stacked>Location</ion-label>
-        <ion-input type="text" [(ngModel)]="request.location"></ion-input>
-      </ion-item>
+      <ion-label stacked>Location</ion-label>
+      <ion-input type="text" [(ngModel)]="request.location"></ion-input>
+    </ion-item>
     <ion-item>
-        <ion-label stacked>Rooms</ion-label>
-        <ion-badge item-end color="danger">{{request.noOfRooms}}</ion-badge>
-      <ion-range min="1" max="10" step="1" snaps="true" [(ngModel)]="request.noOfRooms" color="danger">
+      <ion-label stacked>Rooms</ion-label>
+      <ion-badge item-end color="danger">{{request.noOfRooms}}</ion-badge>
+      <ion-range min="1" max="9" step="1" snaps="true" [(ngModel)]="request.noOfRooms" color="danger">
         <ion-icon range-left small color="danger" name="remove-circle"></ion-icon>
         <ion-icon range-right color="danger" name="add-circle"></ion-icon>
       </ion-range>
     </ion-item>
     <ion-item>
-        <ion-label stacked>Price range</ion-label>
-        <ion-badge item-start color="danger">{{request.priceRange.lower}}</ion-badge>
-        <ion-badge item-end color="secondary">{{request.priceRange.upper}}</ion-badge>
-        <ion-range dualKnobs="true" pin="true" [(ngModel)]="request.priceRange" color="dark" min="100" max="1000" step="10">
-          <ion-icon range-left small name="usd"></ion-icon>
-          <ion-icon range-right name="usd" color="secondary"></ion-icon>
+      <ion-label stacked>Price range</ion-label>
+      <!-- <ion-badge item-start color="danger">{{request.priceRange.lower}}</ion-badge>
+        <ion-badge item-end color="secondary">{{request.priceRange.upper}}</ion-badge> -->
+      <ion-range dualKnobs="true" pin="true" [(ngModel)]="request.priceRange" color="dark" min="100" max="1000" step="10">
+        <ion-icon range-left small name="logo-usd">{{request.priceRange.lower}}</ion-icon>
+        <ion-icon range-right name="logo-usd" color="secondary">{{request.priceRange.upper}}</ion-icon>
+      </ion-range>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Category</ion-label>
+      <ion-select [(ngModel)]="request.category" interface="popover">
+        <ion-option value="commercial">Commercial</ion-option>
+        <ion-option value="land">Land</ion-option>
+        <ion-option value="apartment">Apartment</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked>Area (sqft)</ion-label>
+        <!-- <ion-badge item-start color="danger">{{request.priceRange.lower}}</ion-badge>
+          <ion-badge item-end color="secondary">{{request.priceRange.upper}}</ion-badge> -->
+        <ion-range dualKnobs="true" pin="true" [(ngModel)]="request.areaRange" color="dark" min="100" max="1000" step="10">
+          <!-- <ion-icon range-left small name="logo-usd">{{request.priceRange.lower}}</ion-icon>
+          <ion-icon range-right name="logo-usd" color="secondary">{{request.priceRange.upper}}</ion-icon> -->
         </ion-range>
       </ion-item>
+      <ion-item>
+          <ion-label stacked>Show posts from last 7 days</ion-label>
+          <ion-toggle [(ngModel)]="request.showLastSeven"></ion-toggle>
+        </ion-item>
+      
   </ion-list>
 </ion-content>

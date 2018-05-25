@@ -22,7 +22,11 @@ export class ReqCapturePage {
       upper:'900'
     },
     category:'',
-    areaRange:''
+    areaRange:{
+      lower:'500',
+      upper:'900'
+    },
+    showLastSeven:''
 
   }
   constructor(public navCtrl: NavController, public navParams: NavParams) {
