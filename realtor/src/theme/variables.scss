@@ -39,7 +39,8 @@ $colors: (
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
-  transparent: transparent
+  transparent: transparent,
+  red:#d9352f
 );
 
 
@@ -88,3 +89,6 @@ $colors: (
 @import "roboto";
 @import "noto-sans";
 @import "../assets/fonts/muli";
+
+//$font-family-base:'Muli', sans-serif;
+ $toolbar-ios-title-text-align	: left;

@@ -1,6 +1,5 @@
 page-login {
-    color:#fff;
-    // background: url(../../assets/imgs/loginbg3.jpg) no-repeat center center fixed;
+    color: #fff; // background: url(../../assets/imgs/loginbg3.jpg) no-repeat center center fixed;
     // -webkit-background-size: cover;
     // -moz-background-size: cover;
     // -o-background-size: cover;
@@ -10,8 +9,9 @@ page-login {
         text-align: center;
     }
     #forgotDetails {
-        width: 325px;
+        width: 100%;
         margin: 0 auto;
+        text-align: center;
         a {
             color: #000;
             font-weight: bold;
@@ -22,9 +22,7 @@ page-login {
             text-decoration: underline;
         }
     }
-    
-    ion-content{
+    ion-content {
         //background-color: #083358 !important;
-        
     }
 }

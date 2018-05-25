@@ -19,6 +19,8 @@ import { MyProfilePage } from '../pages/my-profile/my-profile';
 import { FavoritesPage } from '../pages/favorites/favorites';
 import { SearchPage } from '../pages/search/search';
 
+import { ReqCapturePage } from '../pages/req-capture/req-capture';
+
 import { LoginServiceProvider } from '../providers/login-service/login-service';
 import { SignupServiceProvider } from '../providers/signup-service/signup-service';
 
@@ -39,7 +41,8 @@ import { HttpModule } from '@angular/http';
     VerifyPage,
     MyProfilePage,
     FavoritesPage,
-    SearchPage
+    SearchPage,
+    ReqCapturePage
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,8 @@ import { HttpModule } from '@angular/http';
     VerifyPage,
     MyProfilePage,
     FavoritesPage,
-    SearchPage
+    SearchPage,
+    ReqCapturePage
   ],
   providers: [
     StatusBar,
