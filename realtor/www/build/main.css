@@ -3815,6 +3815,27 @@ ion-icon::before {
   src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../assets/fonts/noto-sans-bold.woff") format("woff"), url("../assets/fonts/noto-sans-bold.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Muli Regular"), local("Muli-Regular"), url("../assets/fonts/Muli_400_normal.woff") format("woff"), url("../assets/fonts/Muli_400_normal.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 700;
+  src: local("Muli Bold"), local("Muli-Bold"), url("../assets/fonts/Muli_700_normal.woff") format("woff"), url("../assets/fonts/Muli_700_normal.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 800;
+  src: local("Muli extra-bold"), local("Muli-extra-bold"), url("../assets/fonts/Muli_800_normal.woff") format("woff"), url("../assets/fonts/Muli_800_normal.ttf") format("truetype");
+}
+
 ion-action-sheet {
   left: 0;
   top: 0;
@@ -27970,6 +27991,56 @@ ion-navbar.toolbar {
   padding-bottom: calc(env(safe-area-inset-bottom) + 4px);
   min-height: calc(46px + constant(safe-area-inset-bottom));
   min-height: calc(46px + env(safe-area-inset-bottom));
+}
+
+page-home {
+  font-family: 'Muli', sans-serif !important;
+}
+
+page-home #top-banner {
+  background: url(../../assets/imgs/imgentry.jpg) no-repeat center center;
+  color: #fff;
+  text-align: center;
+  height: 40%;
+}
+
+page-home #top-banner h1 {
+  font-weight: 700 !important;
+  letter-spacing: 4px;
+}
+
+page-home #top-banner .banner-content {
+  padding-top: 20%;
+  position: relative;
+}
+
+page-home #top-banner .banner-content .tag-line {
+  margin-top: 50px;
+  display: block;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  width: 100%;
+}
+
+page-home #top-banner .banner-content #start-button {
+  width: 180px;
+  padding: 10px;
+  margin: 0 auto;
+  background-color: #fff;
+  color: #000;
+  margin-top: 50px;
+  margin-top: 50px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 16px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+page-home ion-content .scroll-content {
+  padding: 0 !important;
 }
 
 page-login {
