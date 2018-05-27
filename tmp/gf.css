@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'Muli';
+    font-style: normal;
+    font-weight: 200;
+    src: url(Muli_200_normal.eot); /* {{embedded-opentype-gf-url}} */
+    src: local('☺'),
+        url(Muli_200_normal.eot?#iefix) format('embedded-opentype'), /* {{embedded-opentype-gf-url}} */
+        url(Muli_200_normal.woff) format('woff'), /* http://fonts.gstatic.com/s/muli/v11/7Au_p_0qiz-adf3nOCX2yQ.woff */
+        url(Muli_200_normal.ttf) format('truetype'), /* http://fonts.gstatic.com/s/muli/v11/7Au_p_0qiz-adf3nOCX2ym4PMFk.ttf */
+        url(Muli_200_normal.svg#Muli_200_normal) format('svg'); /* {{svg-gf-url}} */
+}
+@font-face {
+    font-family: 'Muli';
+    font-style: normal;
+    font-weight: 300;
+    src: url(Muli_300_normal.eot); /* {{embedded-opentype-gf-url}} */
+    src: local('☺'),
+        url(Muli_300_normal.eot?#iefix) format('embedded-opentype'), /* {{embedded-opentype-gf-url}} */
+        url(Muli_300_normal.woff) format('woff'), /* http://fonts.gstatic.com/s/muli/v11/7Au_p_0qiz-adZnkOCX2yQ.woff */
+        url(Muli_300_normal.ttf) format('truetype'), /* http://fonts.gstatic.com/s/muli/v11/7Au_p_0qiz-adZnkOCX2ym4PMFk.ttf */
+        url(Muli_300_normal.svg#Muli_300_normal) format('svg'); /* {{svg-gf-url}} */
+}
+@font-face {
+    font-family: 'Muli';
+    font-style: normal;
+    font-weight: 400;
+    src: url(Muli_400_normal.eot); /* {{embedded-opentype-gf-url}} */
+    src: local('☺'),
+        url(Muli_400_normal.eot?#iefix) format('embedded-opentype'), /* {{embedded-opentype-gf-url}} */
+        url(Muli_400_normal.woff) format('woff'), /* {{woff-gf-url}} */
+        url(Muli_400_normal.ttf) format('truetype'), /* {{truetype-gf-url}} */
+        url(Muli_400_normal.svg#Muli_400_normal) format('svg'); /* http://fonts.gstatic.com/l/font?kit=7Auwp_0qiz-afTLGKg&skey=2b55aa3f2f059b75&v=v11#Muli */
+}

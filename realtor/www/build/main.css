@@ -3818,6 +3818,20 @@ ion-icon::before {
 @font-face {
   font-family: 'Muli';
   font-style: normal;
+  font-weight: 200;
+  src: local("Muli Regular"), local("Muli-Regular"), url("../assets/fonts/Muli_200_normal.woff") format("woff"), url("../assets/fonts/Muli_200_normal.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 300;
+  src: local("Muli Regular"), local("Muli-Regular"), url("../assets/fonts/Muli_300_normal.woff") format("woff"), url("../assets/fonts/Muli_300_normal.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
   font-weight: 400;
   src: local("Muli Regular"), local("Muli-Regular"), url("../assets/fonts/Muli_400_normal.woff") format("woff"), url("../assets/fonts/Muli_400_normal.ttf") format("truetype");
 }
@@ -30605,12 +30619,32 @@ page-home ion-content .scroll-content {
 }
 
 page-login {
-  color: #fff;
+  background: url(../../assets/imgs/imglogin5.jpg) no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Muli',sans-serif;
 }
 
 page-login #nUser {
   width: 100%;
   text-align: center;
+}
+
+page-login .content-wrapper {
+  height: 460px;
+  margin-top: -230px;
+  position: absolute;
+  top: 50%;
+}
+
+page-login .logo {
+  width: 100%;
+  margin: 0 auto;
+  font-size: 41px;
+  color: #fff;
+  font-weight: 200;
+  text-align: center;
+  letter-spacing: 6px;
+  text-transform: uppercase;
 }
 
 page-login #forgotDetails {
@@ -30620,12 +30654,26 @@ page-login #forgotDetails {
 }
 
 page-login #forgotDetails a {
-  color: #000;
-  font-weight: bold;
+  color: #fff;
+  font-weight: 800;
   margin-left: 10px;
   text-decoration: none;
 }
 
 page-login #forgotDetails a:hover {
   text-decoration: underline;
+}
+
+page-login ion-content {
+  background-color: rgba(255, 255, 255, 0) !important;
+  color: #fff !important;
+  position: realtive;
+}
+
+page-login ion-content ion-item {
+  background-color: rgba(255, 255, 255, 0) !important;
+}
+
+page-login ion-content ion-input, page-login ion-content ion-label {
+  color: #fff;
 }
