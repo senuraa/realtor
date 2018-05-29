@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {SearchResultsPage} from '../search-results/search-results';
 
 /**
  * Generated class for the ReqCapturePage page.
@@ -31,7 +32,9 @@ export class ReqCapturePage {
   }
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
+  gotoSearchResults(){
+    this.navCtrl.push(SearchResultsPage,this.request);
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ReqCapturePage');
   }

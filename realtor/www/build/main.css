@@ -22978,7 +22978,7 @@ ion-navbar.toolbar {
 }
 
 .toolbar-title-ios {
-  text-align: left;
+  text-align: center;
   font-size: 1.7rem;
   font-weight: 600;
   color: #000;
@@ -30676,4 +30676,8 @@ page-login ion-content ion-item {
 
 page-login ion-content ion-input, page-login ion-content ion-label {
   color: #fff;
+}
+
+page-req-capture .button--wrapper {
+  text-align: center;
 }

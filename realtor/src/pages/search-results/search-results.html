@@ -1,0 +1,97 @@
+<!--
+  Generated template for the SearchResultsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Search Results</ion-title>
+  </ion-navbar>
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="stepType">
+      <ion-segment-button value="Requirement">
+        Requirement
+      </ion-segment-button>
+      <ion-segment-button [disabled]="true" value="Lists">
+        Lists
+      </ion-segment-button>
+      <ion-segment-button value="Appointment">
+        Appointment
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="outer-content">
+  <div [ngSwitch]="stepType">
+    <ion-list *ngSwitchCase="'Requirement'">
+      <button ion-item>
+          <ion-label>
+              Type
+            </ion-label>
+            <ion-note item-end>
+              All
+            </ion-note>
+      </button>
+      <button ion-item>
+          <ion-label>
+          Minimum Area
+        </ion-label>
+        <ion-note item-end>
+          300 sqft
+        </ion-note>
+      </button>
+      <button ion-item>
+        <ion-label>
+          Maximum Area
+        </ion-label>
+        <ion-note item-end>
+          500 sqft
+        </ion-note>
+      </button>
+      <button ion-item>
+        <ion-label>
+          Minimum Bed Rooms
+        </ion-label>
+        <ion-note item-end>
+          5
+        </ion-note>
+      </button>
+      <button ion-item>
+        <ion-label>
+          Maximum Bed Rooms
+        </ion-label>
+        <ion-note item-end>
+          10
+        </ion-note>
+      </button>
+      <button ion-item>
+        <ion-label>
+          Minimum Price
+        </ion-label>
+        <ion-note item-end>
+          16000000
+        </ion-note>
+      </button>
+      <button ion-item>
+        <ion-label>
+          Maximum Price
+        </ion-label>
+        <ion-note item-end>
+          16000000
+        </ion-note>
+      </button>
+      <button ion-item>
+        <ion-label>
+          Category
+        </ion-label>
+        <ion-note item-end>
+          Commercial
+        </ion-note>
+      </button>
+    </ion-list>
+  </div>
+</ion-content>
