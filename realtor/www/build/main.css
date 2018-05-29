@@ -30685,3 +30685,7 @@ page-req-capture .button--wrapper {
 page-search-results .button--wrapper {
   text-align: center;
 }
+
+page-search-results .appListButtonWrap button {
+  display: block !important;
+}

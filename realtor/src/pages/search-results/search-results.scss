@@ -2,5 +2,9 @@ page-search-results {
     .button--wrapper{
         text-align:center;
     }
-    
+    .appListButtonWrap{
+        button{
+            display: block !important;
+        }
+    }
 }

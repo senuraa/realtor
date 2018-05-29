@@ -21,7 +21,7 @@ import { SearchPage } from '../pages/search/search';
 
 import { ReqCapturePage } from '../pages/req-capture/req-capture';
 
-import {SearchResultsPage} from '../pages/search-results/search-results';
+import {SearchResultsPage} from '../pages/search-results/search-results'; 
 
 import { LoginServiceProvider } from '../providers/login-service/login-service';
 import { SignupServiceProvider } from '../providers/signup-service/signup-service';

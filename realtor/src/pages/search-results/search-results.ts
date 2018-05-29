@@ -23,7 +23,12 @@ export class SearchResultsPage {
   }
   confirmReq(){
     this.listDisable=false;
+    
     this.stepType = "Lists";
+  }
+  addAppointment(){
+    this.appointmentDisable=false;
+    this.stepType = "Appointment";
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchResultsPage');
