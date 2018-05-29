@@ -14,10 +14,10 @@
       <ion-segment-button value="Requirement">
         Requirement
       </ion-segment-button>
-      <ion-segment-button [disabled]="true" value="Lists">
+      <ion-segment-button [disabled]="listDisable" value="Lists">
         Lists
       </ion-segment-button>
-      <ion-segment-button value="Appointment">
+      <ion-segment-button [disabled]="appointmentDisable" value="Appointment">
         Appointment
       </ion-segment-button>
     </ion-segment>
@@ -25,19 +25,19 @@
 </ion-header>
 
 
-<ion-content class="outer-content">
+<ion-content class="outer-content cards-bg">
   <div [ngSwitch]="stepType">
     <ion-list *ngSwitchCase="'Requirement'">
       <button ion-item>
-          <ion-label>
-              Type
-            </ion-label>
-            <ion-note item-end>
-              All
-            </ion-note>
+        <ion-label>
+          Type
+        </ion-label>
+        <ion-note item-end>
+          All
+        </ion-note>
       </button>
       <button ion-item>
-          <ion-label>
+        <ion-label>
           Minimum Area
         </ion-label>
         <ion-note item-end>
@@ -92,6 +92,134 @@
           Commercial
         </ion-note>
       </button>
+      <div class="button--wrapper">
+        <button ion-button color="primary" (click)="confirmReq()">Continue</button>
+      </div>
+    </ion-list>
+    <ion-list *ngSwitchCase="'Lists'">
+      <ion-card>
+        <img src="../../assets/imgs/house1.jpg">
+          <ion-card-header text-center>
+              
+              <ion-title>House for sale in Attidiya</ion-title>
+              <ion-note>1 day ago</ion-note>
+          </ion-card-header>
+          
+            <ion-item-group>
+                <ion-item>
+                    Price
+                    <div item-end>LKR 10,000,000</div>
+                  </ion-item>
+              <ion-item>
+                Beds
+                <div item-end>1</div>
+              </ion-item>
+              <ion-item>
+                Baths
+                <div item-end>
+                  3
+                </div>
+              </ion-item>
+              <ion-item>
+                House size
+                <div item-end>
+                  2,400 sqft
+                </div>
+              </ion-item>
+              <ion-item>
+                Land Size
+                <div item-end>
+                  18 perches
+                </div>
+              </ion-item>
+            </ion-item-group>
+            
+
+
+        <ion-row>
+            <ion-col text-center>
+              <button ion-button clear icon-only text-center>
+                <ion-icon name="call"></ion-icon>
+                <!-- <div>12 Likes</div> -->
+              </button>
+            </ion-col>
+            <ion-col text-center>
+              <button ion-button clear icon-only text-center>
+                <ion-icon name="mail"></ion-icon>
+                <!-- <div>4 Comments</div> -->
+              </button>
+            </ion-col>
+            <ion-col text-center>
+                <button ion-button clear icon-only text-center>
+                  <ion-icon name="calendar"></ion-icon>
+                  <!-- <div>4 Comments</div> -->
+                </button>
+              </ion-col>
+          </ion-row>
+
+      </ion-card>
+      <ion-card>
+          <img src="../../assets/imgs/house2.jpg">
+            <ion-card-header text-center>
+              <ion-title>House for sale in Maharagama</ion-title>
+              <ion-note>2 days ago</ion-note>
+            </ion-card-header>
+            <ion-list>
+              <ion-item-group>
+                  <ion-item>
+                      Price
+                      <div item-end>LKR 20,000,000</div>
+                    </ion-item>
+                <ion-item>
+                  Beds
+                  <div item-end>3</div>
+                </ion-item>
+                <ion-item>
+                  Baths
+                  <div item-end>
+                    4
+                  </div>
+                </ion-item>
+                <ion-item>
+                  House size
+                  <div item-end>
+                    3,400 sqft
+                  </div>
+                </ion-item>
+                <ion-item>
+                  Land Size
+                  <div item-end>
+                    21 perches
+                  </div>
+                </ion-item>
+              </ion-item-group>
+              
+  
+            </ion-list>
+  
+          <ion-row>
+              <ion-col text-center>
+                <button ion-button clear icon-only text-center>
+                  <ion-icon name="call"></ion-icon>
+                  <!-- <div>12 Likes</div> -->
+                </button>
+              </ion-col>
+              <ion-col text-center>
+                <button ion-button clear icon-only text-center>
+                  <ion-icon name="mail"></ion-icon>
+                  <!-- <div>4 Comments</div> -->
+                </button>
+              </ion-col>
+              <ion-col text-center>
+                  <button ion-button clear icon-only text-center>
+                    <ion-icon name="calendar"></ion-icon>
+                    <!-- <div>4 Comments</div> -->
+                  </button>
+                </ion-col>
+            </ion-row>
+  
+        </ion-card>
     </ion-list>
   </div>
+
 </ion-content>

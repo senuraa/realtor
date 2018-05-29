@@ -30681,3 +30681,7 @@ page-login ion-content ion-input, page-login ion-content ion-label {
 page-req-capture .button--wrapper {
   text-align: center;
 }
+
+page-search-results .button--wrapper {
+  text-align: center;
+}

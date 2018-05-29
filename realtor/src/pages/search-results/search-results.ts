@@ -16,10 +16,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SearchResultsPage {
   stepType: string = "Requirement";
+  listDisable: boolean = true;
+  appointmentDisable: boolean = true;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
   }
-
+  confirmReq(){
+    this.listDisable=false;
+    this.stepType = "Lists";
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchResultsPage');
   }
