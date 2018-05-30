@@ -12,7 +12,7 @@ import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { LoginPageModule } from '../pages/login/login.module';
+
 
 import { SignupPage } from '../pages/signup/signup';
 import { MyProfilePage } from '../pages/my-profile/my-profile';

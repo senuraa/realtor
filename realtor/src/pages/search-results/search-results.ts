@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {NgSwitch,NgSwitchCase} from '@angular/common';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
