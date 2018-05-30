@@ -17,7 +17,7 @@ import {SearchResultsPage} from '../search-results/search-results';
 export class ReqCapturePage {
   request = {
     location : '',
-    noOfRooms: '',
+    noOfRooms: 1,
     priceRange:{
       lower:'500',
       upper:'900'
@@ -27,7 +27,7 @@ export class ReqCapturePage {
       lower:'500',
       upper:'900'
     },
-    showLastSeven:''
+    showLastSeven:false
 
   }
   constructor(public navCtrl: NavController, public navParams: NavParams) {

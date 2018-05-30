@@ -1,13 +1,13 @@
 
 var mongoose = require('mongoose'),
-Schema = mongoose.Schema;
+    Schema = mongoose.Schema;
 
 var AuthSchema = new Schema({
-username: {type: String, required: true, unique: true},
-email: {type: String, required: true},
+    username: { type: String, required: true, unique: true },
+    email: { type: String, required: true },
 
-authyId: String,
-hashed_password: String
+    authyId: String,
+    hashed_password: String
 });
 
 mongoose.model('Auth', AuthSchema);

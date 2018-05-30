@@ -20,6 +20,15 @@ export class SearchResultsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
   }
+  req:any ={
+    type : this.navParams.get('category'),
+    location : this.navParams.get('location'),
+    minArea : this.navParams.get('areaRange').lower,
+    maxArea : this.navParams.get('areaRange').upper,
+    noOfRooms:this.navParams.get('noOfRooms'),
+    minPrice:this.navParams.get('priceRange').lower,
+    maxPrice:this.navParams.get('priceRange').upper
+  }
   confirmReq(){
     this.listDisable=false;
     

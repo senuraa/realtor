@@ -28,12 +28,20 @@
 <ion-content class="outer-content cards-bg">
   <div [ngSwitch]="stepType">
     <ion-list *ngSwitchCase="'Requirement'">
+        <button ion-item>
+            <ion-label>
+              Location
+            </ion-label>
+            <ion-note item-end>
+              {{req.location}}
+            </ion-note>
+          </button>
       <button ion-item>
         <ion-label>
           Type
         </ion-label>
         <ion-note item-end>
-          All
+          {{req.type}}
         </ion-note>
       </button>
       <button ion-item>
@@ -41,7 +49,7 @@
           Minimum Area
         </ion-label>
         <ion-note item-end>
-          300 sqft
+          {{req.minArea}}
         </ion-note>
       </button>
       <button ion-item>
@@ -49,23 +57,15 @@
           Maximum Area
         </ion-label>
         <ion-note item-end>
-          500 sqft
+          {{req.maxArea}}
         </ion-note>
       </button>
       <button ion-item>
         <ion-label>
-          Minimum Bed Rooms
+          Number of Bed Rooms
         </ion-label>
         <ion-note item-end>
-          5
-        </ion-note>
-      </button>
-      <button ion-item>
-        <ion-label>
-          Maximum Bed Rooms
-        </ion-label>
-        <ion-note item-end>
-          10
+          {{req.noOfRooms}}
         </ion-note>
       </button>
       <button ion-item>
@@ -73,7 +73,7 @@
           Minimum Price
         </ion-label>
         <ion-note item-end>
-          16000000
+          {{req.minPrice}}
         </ion-note>
       </button>
       <button ion-item>
@@ -81,7 +81,7 @@
           Maximum Price
         </ion-label>
         <ion-note item-end>
-          16000000
+          {{req.maxPrice}}
         </ion-note>
       </button>
       <button ion-item>
@@ -89,7 +89,7 @@
           Category
         </ion-label>
         <ion-note item-end>
-          Commercial
+            {{req.type}}
         </ion-note>
       </button>
       <div class="button--wrapper">
