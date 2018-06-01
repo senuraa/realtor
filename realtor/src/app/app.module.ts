@@ -21,15 +21,15 @@ import { SearchPage } from '../pages/search/search';
 
 import { ReqCapturePage } from '../pages/req-capture/req-capture';
 
-import {SearchResultsPage} from '../pages/search-results/search-results'; 
+import { SearchResultsPage } from '../pages/search-results/search-results';
 
 import { LoginServiceProvider } from '../providers/login-service/login-service';
 import { SignupServiceProvider } from '../providers/signup-service/signup-service';
-
+import { RetrieveAdsProvider } from '../providers/retrieve-ads/retrieve-ads';
 import { VerifyPage } from '../pages/verify/verify';
 
 import { HttpModule } from '@angular/http';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,8 @@ import { HttpModule } from '@angular/http';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -73,7 +74,8 @@ import { HttpModule } from '@angular/http';
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     LoginServiceProvider,
-    SignupServiceProvider
+    SignupServiceProvider,
+    RetrieveAdsProvider
   ]
 })
 export class AppModule { }

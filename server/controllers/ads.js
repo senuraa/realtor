@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var ads = mongoose.model('advertisements');
+var qs = require('qs');
 /**
  * Retrieve ads according to requirement
  *
@@ -7,11 +8,17 @@ var ads = mongoose.model('advertisements');
  * @param res
  */
 exports.retrieveAds= function(req,res){
+    console.log(req.body);
     var location = req.body.location;
-    var rooms = req.body.rooms;
-    var priceRange = req.body.priceRange;
-    var category = req.body.category;
-    var areaRange = req.body.areaRange;
+    var rooms = req.body.noOfRooms;
+    //var priceRange = req.body.priceRange;
+    var category = req.body.type;
+    //var areaRange = req.body.areaRange;
+    var minArea = req.body.minArea;
+    var maxArea = req.body.maxArea;
+    var minPrice = req.body.minPrice;
+    var maxPrice = req.body.maxPrice;
+
     var onlyLastSevenDays = req.body.showLastSeven;
     ads.find({category:category,location:location}).exec(function(err,docs){
         if(err){
