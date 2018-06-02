@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {SearchResultsPage} from '../search-results/search-results';
+import {CONFIG} from '../../providers/app-config/app-config';
+
 
 /**
  * Generated class for the ReqCapturePage page.
@@ -15,6 +17,8 @@ import {SearchResultsPage} from '../search-results/search-results';
   templateUrl: 'req-capture.html',
 })
 export class ReqCapturePage {
+  showList:boolean = false;
+  cities: Array<string>
   request = {
     location : '',
     noOfRooms: 1,
@@ -31,11 +35,38 @@ export class ReqCapturePage {
 
   }
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.setCities();
   }
   gotoSearchResults(){
     this.navCtrl.push(SearchResultsPage,this.request);
   }
+  setCities(){
+    this.cities = CONFIG.cities;
+    //console.log(this.cities[1]);
+  }
+  filterItems(ev: any) {
+    this.setCities();
+    let val = ev.target.value;
+
+    if (val && val.trim() !== '') {
+      this.cities = this.cities.filter(function(item) {
+        return item.toLowerCase().includes(val.toLowerCase());
+      });
+      this.showList = true;
+    }
+    else{
+      this.showList = false;
+    }
+  }
+  hideList(city){
+    this.showList = false;
+    this.request.location = city;
+  }
+  // ngOnInit(){
+  //   this.setCities()
+  // }
   ionViewDidLoad() {
+    this.setCities();
     console.log('ionViewDidLoad ReqCapturePage');
   }
 

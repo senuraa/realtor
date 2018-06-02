@@ -21,8 +21,17 @@
       Request Details
     </ion-list-header>
     <ion-item>
-      <ion-label stacked>Location</ion-label>
-      <ion-input type="text" [(ngModel)]="request.location"></ion-input>
+      <!-- <ion-label stacked>Location</ion-label> -->
+      <!-- <ion-input type="text" [(ngModel)]="request.location"></ion-input> -->
+      <ion-searchbar (ionInput)="filterItems($event)" [(ngModel)]="request.location"></ion-searchbar>
+      <ion-list *ngIf="showList">
+        <!-- <ion-item *ngFor="let city of cities" (click)="hideList()">
+          {{city}}
+        </ion-item> -->
+        <button ion-item *ngFor="let city of cities" (click)="hideList(city)">
+          {{city}}
+        </button>
+      </ion-list>
     </ion-item>
     <ion-item>
       <ion-label stacked>Rooms</ion-label>

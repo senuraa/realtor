@@ -30,6 +30,7 @@ import { VerifyPage } from '../pages/verify/verify';
 
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { CONFIG } from '../providers/app-config/app-config';
 
 @NgModule({
   declarations: [

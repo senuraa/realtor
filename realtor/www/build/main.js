@@ -355,6 +355,7 @@ var SearchPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__search_results_search_results__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_app_config_app_config__ = __webpack_require__(263);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -364,6 +365,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -377,6 +379,7 @@ var ReqCapturePage = /** @class */ (function () {
     function ReqCapturePage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.showList = false;
         this.request = {
             location: '',
             noOfRooms: 1,
@@ -391,20 +394,47 @@ var ReqCapturePage = /** @class */ (function () {
             },
             showLastSeven: false
         };
+        this.setCities();
     }
     ReqCapturePage.prototype.gotoSearchResults = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__search_results_search_results__["a" /* SearchResultsPage */], this.request);
     };
+    ReqCapturePage.prototype.setCities = function () {
+        this.cities = __WEBPACK_IMPORTED_MODULE_3__providers_app_config_app_config__["a" /* CONFIG */].cities;
+        //console.log(this.cities[1]);
+    };
+    ReqCapturePage.prototype.filterItems = function (ev) {
+        this.setCities();
+        var val = ev.target.value;
+        if (val && val.trim() !== '') {
+            this.cities = this.cities.filter(function (item) {
+                return item.toLowerCase().includes(val.toLowerCase());
+            });
+            this.showList = true;
+        }
+        else {
+            this.showList = false;
+        }
+    };
+    ReqCapturePage.prototype.hideList = function (city) {
+        this.showList = false;
+        this.request.location = city;
+    };
+    // ngOnInit(){
+    //   this.setCities()
+    // }
     ReqCapturePage.prototype.ionViewDidLoad = function () {
+        this.setCities();
         console.log('ionViewDidLoad ReqCapturePage');
     };
     ReqCapturePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-req-capture',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/req-capture/req-capture.html"*/'<!--\n  Generated template for the ReqCapturePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Request</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="outer-content">\n\n\n  <ion-list>\n    <ion-list-header>\n      Request Details\n    </ion-list-header>\n    <ion-item>\n      <ion-label stacked>Location</ion-label>\n      <ion-input type="text" [(ngModel)]="request.location"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label stacked>Rooms</ion-label>\n      <ion-badge item-end color="danger">{{request.noOfRooms}}</ion-badge>\n      <ion-range min="1" max="9" step="1" snaps="true" [(ngModel)]="request.noOfRooms" color="danger">\n        <ion-icon range-left small color="danger" name="remove-circle"></ion-icon>\n        <ion-icon range-right color="danger" name="add-circle"></ion-icon>\n      </ion-range>\n    </ion-item>\n    <ion-item>\n      <ion-label stacked>Price range</ion-label>\n      <!-- <ion-badge item-start color="danger">{{request.priceRange.lower}}</ion-badge>\n        <ion-badge item-end color="secondary">{{request.priceRange.upper}}</ion-badge> -->\n      <ion-badge item-start color="dark">{{request.priceRange.lower}}</ion-badge>\n      <ion-badge item-end color="dark">{{request.priceRange.upper}}</ion-badge>\n      <ion-range dualKnobs="true" pin="true" [(ngModel)]="request.priceRange" color="dark" min="100" max="1000" step="10">\n        <!-- <ion-icon range-left small name="logo-usd">{{request.priceRange.lower}}</ion-icon>\n        <ion-icon range-right name="logo-usd" color="secondary">{{request.priceRange.upper}}</ion-icon> -->\n      </ion-range>\n    </ion-item>\n\n    <ion-item>\n      <ion-label stacked>Category</ion-label>\n      <ion-select [(ngModel)]="request.category" interface="popover">\n        <ion-option value="Commercial">Commercial</ion-option>\n        <ion-option value="House">House</ion-option>\n        <ion-option value="Land">Land</ion-option>\n\n        <ion-option value="Apartment">Apartment</ion-option>\n      </ion-select>\n    </ion-item>\n    <ion-item>\n      <ion-label stacked>Area (sqft)</ion-label>\n      <ion-badge item-start color="dark">{{request.areaRange.lower}}</ion-badge>\n      <ion-badge item-end color="dark">{{request.areaRange.upper}}</ion-badge>\n      <ion-range dualKnobs="true" pin="true" [(ngModel)]="request.areaRange" color="dark" min="100" max="1000" step="10">\n        <!-- <ion-icon range-left small name="logo-usd">{{request.priceRange.lower}}</ion-icon>\n          <ion-icon range-right name="logo-usd" color="secondary">{{request.priceRange.upper}}</ion-icon> -->\n      </ion-range>\n    </ion-item>\n    <ion-item>\n      <ion-label>Only show posts from last 7 days</ion-label>\n      <ion-toggle [(ngModel)]="request.showLastSeven"></ion-toggle>\n    </ion-item>\n\n  </ion-list>\n  <div class="button--wrapper">\n    <button ion-button color="primary" (click)="gotoSearchResults()">Continue</button>\n  </div>\n\n\n</ion-content>'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/req-capture/req-capture.html"*/,
+            selector: 'page-req-capture',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/req-capture/req-capture.html"*/'<!--\n  Generated template for the ReqCapturePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Request</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="outer-content">\n\n\n  <ion-list>\n    <ion-list-header>\n      Request Details\n    </ion-list-header>\n    <ion-item>\n      <!-- <ion-label stacked>Location</ion-label> -->\n      <!-- <ion-input type="text" [(ngModel)]="request.location"></ion-input> -->\n      <ion-searchbar (ionInput)="filterItems($event)" [(ngModel)]="request.location"></ion-searchbar>\n      <ion-list *ngIf="showList">\n        <!-- <ion-item *ngFor="let city of cities" (click)="hideList()">\n          {{city}}\n        </ion-item> -->\n        <button ion-item *ngFor="let city of cities" (click)="hideList(city)">\n          {{city}}\n        </button>\n      </ion-list>\n    </ion-item>\n    <ion-item>\n      <ion-label stacked>Rooms</ion-label>\n      <ion-badge item-end color="danger">{{request.noOfRooms}}</ion-badge>\n      <ion-range min="1" max="9" step="1" snaps="true" [(ngModel)]="request.noOfRooms" color="danger">\n        <ion-icon range-left small color="danger" name="remove-circle"></ion-icon>\n        <ion-icon range-right color="danger" name="add-circle"></ion-icon>\n      </ion-range>\n    </ion-item>\n    <ion-item>\n      <ion-label stacked>Price range</ion-label>\n      <!-- <ion-badge item-start color="danger">{{request.priceRange.lower}}</ion-badge>\n        <ion-badge item-end color="secondary">{{request.priceRange.upper}}</ion-badge> -->\n      <ion-badge item-start color="dark">{{request.priceRange.lower}}</ion-badge>\n      <ion-badge item-end color="dark">{{request.priceRange.upper}}</ion-badge>\n      <ion-range dualKnobs="true" pin="true" [(ngModel)]="request.priceRange" color="dark" min="100" max="1000" step="10">\n        <!-- <ion-icon range-left small name="logo-usd">{{request.priceRange.lower}}</ion-icon>\n        <ion-icon range-right name="logo-usd" color="secondary">{{request.priceRange.upper}}</ion-icon> -->\n      </ion-range>\n    </ion-item>\n\n    <ion-item>\n      <ion-label stacked>Category</ion-label>\n      <ion-select [(ngModel)]="request.category" interface="popover">\n        <ion-option value="Commercial">Commercial</ion-option>\n        <ion-option value="House">House</ion-option>\n        <ion-option value="Land">Land</ion-option>\n\n        <ion-option value="Apartment">Apartment</ion-option>\n      </ion-select>\n    </ion-item>\n    <ion-item>\n      <ion-label stacked>Area (sqft)</ion-label>\n      <ion-badge item-start color="dark">{{request.areaRange.lower}}</ion-badge>\n      <ion-badge item-end color="dark">{{request.areaRange.upper}}</ion-badge>\n      <ion-range dualKnobs="true" pin="true" [(ngModel)]="request.areaRange" color="dark" min="100" max="1000" step="10">\n        <!-- <ion-icon range-left small name="logo-usd">{{request.priceRange.lower}}</ion-icon>\n          <ion-icon range-right name="logo-usd" color="secondary">{{request.priceRange.upper}}</ion-icon> -->\n      </ion-range>\n    </ion-item>\n    <ion-item>\n      <ion-label>Only show posts from last 7 days</ion-label>\n      <ion-toggle [(ngModel)]="request.showLastSeven"></ion-toggle>\n    </ion-item>\n\n  </ion-list>\n  <div class="button--wrapper">\n    <button ion-button color="primary" (click)="gotoSearchResults()">Continue</button>\n  </div>\n\n\n</ion-content>'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/req-capture/req-capture.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object])
     ], ReqCapturePage);
     return ReqCapturePage;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=req-capture.js.map
@@ -479,10 +509,9 @@ var SearchResultsPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-search-results',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/search-results/search-results.html"*/'<!--\n  Generated template for the SearchResultsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Search Results</ion-title>\n  </ion-navbar>\n  <ion-toolbar no-border-top>\n    <ion-segment [(ngModel)]="stepType">\n      <ion-segment-button value="Requirement">\n        Requirement\n      </ion-segment-button>\n      <ion-segment-button [disabled]="listDisable" value="Lists">\n        Lists\n      </ion-segment-button>\n      <ion-segment-button [disabled]="appointmentDisable" value="Appointment">\n        Appointment\n      </ion-segment-button>\n    </ion-segment>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content class="outer-content cards-bg">\n  <div [ngSwitch]="stepType">\n    <ion-list *ngSwitchCase="\'Requirement\'">\n        <button ion-item>\n            <ion-label>\n              Location\n            </ion-label>\n            <ion-note item-end>\n              {{req.location}}\n            </ion-note>\n          </button>\n      <button ion-item>\n        <ion-label>\n          Type\n        </ion-label>\n        <ion-note item-end>\n          {{req.type}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Minimum Area\n        </ion-label>\n        <ion-note item-end>\n          {{req.minArea}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Maximum Area\n        </ion-label>\n        <ion-note item-end>\n          {{req.maxArea}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Number of Bed Rooms\n        </ion-label>\n        <ion-note item-end>\n          {{req.noOfRooms}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Minimum Price\n        </ion-label>\n        <ion-note item-end>\n          {{req.minPrice}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Maximum Price\n        </ion-label>\n        <ion-note item-end>\n          {{req.maxPrice}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Category\n        </ion-label>\n        <ion-note item-end>\n            {{req.type}}\n        </ion-note>\n      </button>\n      <div class="button--wrapper">\n        <button ion-button color="primary" (click)="confirmReq()">Continue</button>\n      </div>\n    </ion-list>\n    <ion-list *ngSwitchCase="\'Lists\'">\n      <ion-card *ngFor="let ad of adList"> \n        <img src="../../assets/imgs/house1.jpg">\n          <ion-card-header text-center>\n              \n              <ion-title>{{ad.category}} for sale in {{ad.location}}</ion-title>\n              <ion-note>{{ad.uploaded_at | date:\'fullDate\'}}</ion-note>\n          </ion-card-header>\n          \n            <ion-item-group>\n                <ion-item>\n                    Price\n                    <div item-end>LKR {{ad.price}}</div>\n                  </ion-item>\n              <ion-item>\n                Beds\n                <div item-end>{{ad.bedrooms}}</div>\n              </ion-item>\n              <ion-item>\n                Baths\n                <div item-end>\n                  {{ad.bathrooms}}\n                </div>\n              </ion-item>\n              <ion-item>\n                House size\n                <div item-end>\n                  -\n                </div>\n              </ion-item>\n              <ion-item>\n                Land Size\n                <div item-end>\n                  {{ad.land_size}}\n                </div>\n              </ion-item>\n            </ion-item-group>\n            \n\n\n        <ion-row>\n            <ion-col text-center>\n              <button ion-button clear icon-only text-center>\n                <ion-icon name="call"></ion-icon>\n                <!-- <div>12 Likes</div> -->\n              </button>\n            </ion-col>\n            <ion-col text-center>\n              <button ion-button clear icon-only text-center>\n                <ion-icon name="mail"></ion-icon>\n                <!-- <div>4 Comments</div> -->\n              </button>\n            </ion-col>\n            <ion-col text-center>\n                <button ion-button clear icon-only text-center  (click)="addAppointment()">\n                  <ion-icon name="calendar"></ion-icon>\n                  <!-- <div>4 Comments</div> -->\n                </button>\n              </ion-col>\n          </ion-row>\n\n      </ion-card>\n      \n    </ion-list>\n    <ion-list *ngSwitchCase="\'Appointment\'">\n        <ion-item>\n            <ion-thumbnail item-start>\n              <img src="../../assets/imgs/house1.jpg">\n            </ion-thumbnail>\n            <h2>House for sale in Attidiya</h2>\n            <h3>25th Jun 2018</h3>\n            <p>11.30 AM @ the premises</p>\n            <div item-end class="appListButtonWrap">\n                <button ion-button clear icon-only text-center large><ion-icon name="call"></ion-icon></button>\n                <button ion-button clear icon-only text-center color="red" large><ion-icon name="close-circle"></ion-icon></button>\n            </div>\n          </ion-item>\n          <ion-item>\n              <ion-thumbnail item-start>\n                <img src="../../assets/imgs/house2.jpg">\n              </ion-thumbnail>\n              <h2>House for sale in Homagama</h2>\n              <h3>26th Jun 2018</h3>\n              <p>10.30 AM @ the premises</p>\n              <div item-end class="appListButtonWrap">\n                  <button ion-button clear icon-only text-center large><ion-icon name="call"></ion-icon></button>\n                  <button ion-button clear icon-only text-center color="red" large><ion-icon name="close-circle"></ion-icon></button>\n              </div>\n              \n            </ion-item>\n    </ion-list>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/search-results/search-results.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_retrieve_ads_retrieve_ads__["a" /* RetrieveAdsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_retrieve_ads_retrieve_ads__["a" /* RetrieveAdsProvider */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_retrieve_ads_retrieve_ads__["a" /* RetrieveAdsProvider */]])
     ], SearchResultsPage);
     return SearchResultsPage;
-    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=search-results.js.map
@@ -511,35 +540,35 @@ webpackEmptyAsyncContext.id = 123;
 
 var map = {
 	"../pages/favorites/favorites.module": [
-		291,
+		292,
 		7
 	],
 	"../pages/login/login.module": [
-		292,
+		293,
 		6
 	],
 	"../pages/my-profile/my-profile.module": [
-		293,
+		294,
 		5
 	],
 	"../pages/req-capture/req-capture.module": [
-		294,
+		295,
 		4
 	],
 	"../pages/search-results/search-results.module": [
-		295,
+		296,
 		3
 	],
 	"../pages/search/search.module": [
-		296,
+		297,
 		2
 	],
 	"../pages/signup/signup.module": [
-		297,
+		298,
 		1
 	],
 	"../pages/verify/verify.module": [
-		298,
+		299,
 		0
 	]
 };
@@ -650,10 +679,9 @@ var RetrieveAdsProvider = /** @class */ (function () {
     };
     RetrieveAdsProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]])
     ], RetrieveAdsProvider);
     return RetrieveAdsProvider;
-    var _a;
 }());
 
 //# sourceMappingURL=retrieve-ads.js.map
@@ -748,9 +776,9 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(280);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_about_about__ = __webpack_require__(289);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_contact_contact__ = __webpack_require__(290);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_about_about__ = __webpack_require__(290);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_contact_contact__ = __webpack_require__(291);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(165);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_tabs_tabs__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_login_login__ = __webpack_require__(106);
@@ -867,7 +895,31 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 280:
+/***/ 263:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CONFIG; });
+/*
+  Generated class for the AppConfigProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
+// @Injectable()
+// export class AppConfigProvider {
+//   constructor(public http: HttpClient) {
+//     console.log('Hello AppConfigProvider Provider');
+//   }
+// }
+var CONFIG = {
+    cities: ['Agalawatta', 'Ahungalla', 'Akaravita', 'Akuregoda', 'Alawwa', 'Algama', 'Alubomulla', 'Aluthgama', 'Aluthmawatha', 'Ambagaha Junction', 'Ambagolla', 'Ambalangoda', 'Ambalantota', 'Ambathale', 'Ambepussa', 'Ambillawatta', 'Ambuldeniya', 'Andiambalama', 'Angoda', 'Angulana', 'Anguruwatota', 'Arachchikattuwa', 'Arangala', 'Arawwala', 'Armour Street', 'Artigala', 'Aruggoda', 'Asgiriya', 'Athul Kotte', 'Athurugiriya', 'Attanagalla', 'Attidiya', 'Avissawella', 'Badalgama', 'Baddegana', 'Badulla', 'Bakmegolla', 'Balalla', 'Balangoda', 'Balapitiya', 'Ballapana', 'Balummahara', 'Bambalapitiya', 'Bandaragama', 'Banduragoda', 'Batagama', 'Batapotha', 'Battaramulla', 'Batuwandara', 'Batuwatha', 'Beliatta', 'Bellantota', 'Bellanvila', 'Bellapitiya', 'Bemmulla', 'Beruwela', 'Biyagama', 'Bokkawala', 'Bokundara', 'Bollegala', 'Bombuwela', 'Bomiriya', 'Bopagama', 'Bopitiya', 'Boralasgamuwa', 'Borella', 'Brahmanagama', 'Bulathkohupitiya', 'Bulugahagoda', 'Buthpitiya', 'Chilaw', 'CMB Kochchikade', 'Colombo - 02', 'Colombo - 03', 'Colombo - 04', 'Colombo - 05', 'Colombo - 06', 'Colombo - 07', 'Colombo - 15', 'Colpetty', 'Dagonna', 'Dahapla mawatha', 'Dalugama', 'Dalupotha', 'Dalupotha - Negombo', 'Dambadeniya', 'Dambara', 'dambulla', 'Dandugama', 'Dankotuwa', 'Danovita', 'Dehiowita', 'Dehiwela', 'Dekatana', 'Delatura', 'Delgoda', 'Delkande', 'Delpe', 'Dematagoda', 'Depanama', 'Dewalapola', 'Divulapitiya', 'Diyagama', 'Dodangoda', 'Dompe', 'Doranagoda', 'Dungalpitiya', 'E - kala', 'Eheliyagoda', 'Ekala Millenium City', 'Elakanda', 'Eldeniya', 'Elvitigala', 'Embuldeniya', 'Enderamulla', 'Epitawala', 'Erawalla', 'Eriyawetiya', 'Eswatta', 'Ethagama', 'Ethul Kotte', 'Fort', 'Galagedara', 'Galkanda', 'Galle', 'Galwana', 'Gampaha', 'Gampola', 'Ganemulla', 'Gatahaththa', 'Gemunupura', 'Getaheththa', 'Giriulla', 'Godagama', 'Gonaduwa', 'Gonahena', 'Gonapola', 'Gonawala', 'Gorakadeniya', 'Gorakana', 'Gorakapitiya', 'Gorakapola', 'Gorokgoda', 'Gothami Road', 'Gothatuwa', 'Grandpass', 'Habarakada', 'Hadapangoda', 'Haggalla', 'Halpita', 'Hanguranketha', 'Hanwella', 'Havlock Place', 'Hedigama', 'Hemathgama', 'Hemmathagama', 'Henagama', 'Hendala', 'Hettirippuwa', 'Hikkaduwa', 'Himbutana', 'Hirana', 'Hiripitiya', 'Hokandara', 'Homagama', 'Hondella', 'Honnattara', 'Horana', 'Horape', 'Hunupitiya', 'IDH', 'Imbulgoda', 'Induruwa', 'Ingiriya', 'Ja - ela', 'Jaburaliya', 'Jalthara', 'Jawatte', 'Kadawatha', 'Kadirana', 'Kadugannawa', 'Kaduwela', 'Kahanthota', 'Kahathuduwa', 'Kalagedihena', 'Kalalgoda', 'Kalamulla', 'Kalapaluwawa', 'Kaleliya', 'Kaluaggala', 'Kalubowila', 'Kaludawela', 'Kalutara', 'Kandana', 'Kanduboda', 'Kandy', 'Karagampitiya', 'Karandeniya', 'Karawanella', 'Katana', 'Kataragama', 'Kattuwa', 'Katubedda', 'katugastota', 'Katukurunda', 'Katunayaka', 'katuneriya', 'Katuwawala', 'Kawdana', 'Kegalle', 'Kelanimulla', 'Kelaniya', 'Keragala', 'Kerawalapitiya', 'Kesbewa', 'Keselhenawa', 'Keselwatta', 'Kimbulapitiya', 'Kindelpitiya', 'Kinigama', 'Kiribathgoda', 'Kirillawela', 'Kirimatiyana', 'Kirindiwela', 'Kiriwattuduwa', 'Kirulapona', 'Kochchikade', 'Kohilawatta', 'Kohuwala', 'Kolonnawa', 'Koralaima', 'Koralawella', 'Korase', 'Korathota', 'Kosetedeniya', 'Kosgama', 'Koswatha', 'Kotadeniyawa', 'Kotahena', 'Kothalawala', 'Kotikawatta', 'Kottawa', 'Kotte', 'Kotugoda', 'Kudamaduwa', 'Kuliyapitiya', 'Kurana', 'Kurunegala', 'Liyanagemulla', 'Liyenagoda', 'Lunuwila', 'Mabima', 'Mabola', 'Madagampitiya', 'Madampe', 'madamulla', 'Madapatha', 'Madelgamuwa', 'Madinnagoda', 'Madiwela', 'Magalegoda', 'Magammana', 'Maggona', 'MahaInduruwa', 'Mahabage', 'Mahakanda', 'Mahara', 'Maharachchimulla', 'Maharagama', 'Mahawewa', 'Mahena', 'Makandana', 'Makandura', 'Makewita', 'Makola', 'Makuludoowa', 'Makumbura', 'Malabe', 'Mallehewa', 'Malwana', 'Mambulgoda', 'Mandawala', 'Maradagahamulla', 'Maradana', 'Marassana', 'Marawila', 'Matale', 'Matara', 'Mathammana', 'Maththegama', 'Matiyagane', 'Mattakkuliya', 'Mattegoda', 'Matugama', 'Mawanella', 'Mawaramandiya', 'Mawathagama', 'Mawathgama', 'Medamahanuwara', 'Meegahawatte', 'Meegoda', 'Meepa', 'Meethotamulla', 'Minuwangoda', 'Mirigama', 'Mirihana', 'Miriswatta', 'Modara', 'Molagoda', 'Moragahahena', 'Moragasmulla', 'Moraketiya', 'Moratuwa', 'Moronthuduwa', 'Mt.Lavinia', 'Muddaragama', 'Mulleriyawa', 'Munnessaram', 'Naiwala', 'Nakandapola', 'Nakkawatta', 'Nalluruwa', 'Narahenpita', 'Narammala', 'Naranwala', 'Nattandiya', 'Navinna', 'Nawagamuwa', 'Nawala', 'Nawalamulla', 'Nawalapitiya', 'Nedagamuwa', 'Nedimala', 'Neelammahara', 'Negombo', 'Nelundeniya', 'Neluwa', 'Nikaweratiya', 'Nilpanagoda', 'Nitambuwa', 'Niwandama', 'Nugegoda', 'Opatha', 'Oruwala', 'Padukka', 'Pagoda', 'Palanwatta', 'Palathota', 'Pallewela', 'Pamankada', 'Pamunugama', 'Pamunuwa', 'Panadura', 'Panagoda', 'Pannala', 'Pannipitiya', 'Papiliyawala', 'Park Road', 'Pasyala', 'Pattiya Junction', 'Payagala', 'Peellawatta', 'Pelawatte', 'Peliyagoda', 'Pepiliyana', 'Periyamulla', ' Negombo', 'Pethiyagoda', 'Pettah', 'Pilimathalawa', 'Piliyandala', 'Pinwatta', 'Pirivan Junction', 'Pitadeniya', 'Pitipana', 'Pitipana', 'Pitta Kotte', 'Pittugala', 'Polgahawela', 'Polgasowita', 'Polgolla', 'Polhengoda', 'Polwatta', 'Poruwadanda', 'Pothupitiya', 'Pugoda', 'Punchi Borella', 'Puwakwatiya', 'Radawana', 'Raddoluwa', 'Ragalkanda', 'Ragama', 'Raigama', 'Rajagiriya', 'Rambukkana', 'Ranala', 'Ranmuthugala', 'Ranpokunagama', 'Rathambale', 'Rathnapura', 'Rathupaswala', 'Ratmalana', 'Rattanapitiya', 'Renuka hotel', 'Ruhunupura', 'Rukattana', 'Rukmalgama', 'Ruwanwella', 'Sapugaskande', 'Seeduwa', 'Siddamulla', 'Siyambalagoda', 'Siyambalape', 'Soysapura', 'Teldeniya', 'Thalagala', 'Thalagama', 'Thalahena', 'Thalapathpitiya', 'Thalawathugoda', 'Thalwilla', 'Thanthirimulla', 'Thibbotugoda', 'Thihariya', 'Thimbirigasyaya', 'Thorana Junction', 'Thummodara', 'Thuththiripitiya', 'Torrington', 'Tudella', 'Udahamulla', 'Udammita', 'Udugampola', 'Udupila', 'Uduwana', 'Uggalboda', 'Unawatuna', 'Urapola', 'Uswetakeiyawa', 'Valipillawa', 'Veyangoda', 'Vihara Mawatha', 'Wadduwa', 'Waga', 'Walasgala', 'Walipillawa', 'Walpitamulla', 'Walpola', 'Wanawasala', 'Wandurawa', 'Waragoda', 'Warakapola', 'Waskaduwa', 'Watareka', 'Wathupitiwala', 'Wathurugama', 'Wattala', 'Wattegama', 'Weboda', 'Welikanna', 'Welimada', 'Welipenna', 'Welipillewe', 'Welisara', 'Welivita', 'Weliweriya', 'Wellampitiya', 'Wellawatte', 'Wennappuwa', 'Werahara', 'Weuda', 'Wewalduwa', 'Weweldeniya', 'Wigoda', 'Wijerama', 'Yagodamulla', 'Yakkaduwa', 'Yakkala', 'Yalagala', 'Yatiyana', 'Yogiyana']
+};
+//# sourceMappingURL=app-config.js.map
+
+/***/ }),
+
+/***/ 281:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -913,7 +965,7 @@ var MyApp = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 289:
+/***/ 290:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -948,7 +1000,7 @@ var AboutPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 290:
+/***/ 291:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

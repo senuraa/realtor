@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { RetrieveAdsProvider } from '../../providers/retrieve-ads/retrieve-ads'
+import { RetrieveAdsProvider } from '../../providers/retrieve-ads/retrieve-ads';
 
 /**
  * Generated class for the SearchResultsPage page.
