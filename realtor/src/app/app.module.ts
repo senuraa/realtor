@@ -28,9 +28,7 @@ import { SignupServiceProvider } from '../providers/signup-service/signup-servic
 import { RetrieveAdsProvider } from '../providers/retrieve-ads/retrieve-ads';
 import { VerifyPage } from '../pages/verify/verify';
 
-import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { CONFIG } from '../providers/app-config/app-config';
 
 @NgModule({
   declarations: [
@@ -51,7 +49,6 @@ import { CONFIG } from '../providers/app-config/app-config';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule,
     HttpClientModule
   ],
   bootstrap: [IonicApp],
