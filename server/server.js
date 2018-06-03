@@ -13,7 +13,7 @@ require('./model/ad_model.js');
 
 var cors = require('cors');
 
-console.log(process.env.MONGO_USER)
+console.log("Logged in as - "+process.env.MONGO_USER)
 
 var options = {
     user : process.env.MONGO_USER,
@@ -22,7 +22,7 @@ var options = {
 var server = require('http').Server(app);
 
 //mongoose.connect(process.env.MONGO_URL,options);
-mongoose.connect(process.env.MONGO_URL)
+mongoose.connect(process.env.MONGO_URL,options)
 var db = mongoose.connection;
 
 app.use(morgan('dev'));

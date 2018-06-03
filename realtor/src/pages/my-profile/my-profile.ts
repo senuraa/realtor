@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { App,IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoginPage } from '../login/login'
 /**
  * Generated class for the MyProfilePage page.
  *
@@ -15,11 +15,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MyProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public app:App) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyProfilePage');
+  }
+  logout():void {
+    window.localStorage.removeItem('phone_number');
+    window.localStorage.removeItem('password');
+    this.app.getRootNav().setRoot(LoginPage);
+    this.navCtrl.popToRoot();
   }
 
 }

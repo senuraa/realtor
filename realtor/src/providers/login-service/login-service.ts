@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-
+// import { Http } from '@angular/http';
+import {HttpClient} from '@angular/common/http'
 import 'rxjs/add/operator/map';
 
 /*
@@ -14,14 +14,13 @@ const API_URL = 'http://localhost:1500/api/'
 @Injectable()
 export class LoginServiceProvider {
   user: any;
-  constructor(public http: Http) {
+  constructor(public http: HttpClient) {
     this.user = null;
 
   }
   userLogin(userData) {
     return new Promise(((resolve, reject) => {
       this.http.post(API_URL + 'auth/login', userData)
-        .map(res => res.json())
         .subscribe(data => {
           this.user = data;
           resolve(this.user);

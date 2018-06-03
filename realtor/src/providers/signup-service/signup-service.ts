@@ -1,7 +1,8 @@
 //import { HttpClient, HttpClientJsonpModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+// import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import {HttpClient} from '@angular/common/http';
 
 /*
   Generated class for the SignupServiceProvider provider.
@@ -14,13 +15,12 @@ const API_URL = 'http://localhost:1500/api/'
 export class SignupServiceProvider {
   data: any;
   
-  constructor(public http: Http) {
+  constructor(public http: HttpClient) {
     this.data = null;
   }
   userSignup(userData) {
     return new Promise((resolve, reject) => {
       this.http.post(API_URL + 'auth/register', userData)
-        .map(res => res.json())
         .subscribe(data => {
           this.data = data;
           resolve(this.data);
@@ -35,7 +35,6 @@ export class SignupServiceProvider {
   userVerify(userData) {
     return new Promise((resolve, reject) => {
       this.http.post(API_URL + 'auth/verify', userData)
-        .map(res => res.json())
         .subscribe(data => {
           this.data = data;
           resolve(this.data);

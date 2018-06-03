@@ -25,7 +25,9 @@ export class LoginPage {
   }
   login() {
     this.loginService.userLogin(this.user).then((response) => {
-      console.log('success')
+      console.log('success');
+      window.localStorage.setItem('phone_number', this.user.phone_number);
+      window.localStorage.setItem('password', this.user.password);
       this.navCtrl.push(TabsPage, this.user);
     },
       (err) => {
