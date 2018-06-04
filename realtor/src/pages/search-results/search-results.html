@@ -28,20 +28,28 @@
 <ion-content class="outer-content cards-bg">
   <div [ngSwitch]="stepType">
     <ion-list *ngSwitchCase="'Requirement'">
-        <button ion-item>
-            <ion-label>
-              Location
-            </ion-label>
-            <ion-note item-end>
-              {{req.location}}
-            </ion-note>
-          </button>
+      <button ion-item>
+        <ion-label>
+          Location
+        </ion-label>
+        <ion-note item-end>
+          {{req.location}}
+        </ion-note>
+      </button>
       <button ion-item>
         <ion-label>
           Type
         </ion-label>
         <ion-note item-end>
           {{req.type}}
+        </ion-note>
+      </button>
+      <button ion-item>
+        <ion-label>
+          Category
+        </ion-label>
+        <ion-note item-end>
+          {{req.category}}
         </ion-note>
       </button>
       <button ion-item>
@@ -60,7 +68,7 @@
           {{req.maxArea}}
         </ion-note>
       </button>
-      <button ion-item>
+      <button ion-item *ngIf="req.category=='House'">
         <ion-label>
           Number of Bed Rooms
         </ion-label>
@@ -84,108 +92,112 @@
           {{req.maxPrice}}
         </ion-note>
       </button>
-      <button ion-item>
-        <ion-label>
-          Category
-        </ion-label>
-        <ion-note item-end>
-            {{req.type}}
-        </ion-note>
-      </button>
+
       <div class="button--wrapper">
         <button ion-button color="primary" (click)="confirmReq()">Continue</button>
       </div>
     </ion-list>
     <ion-list *ngSwitchCase="'Lists'">
-      <ion-card *ngFor="let ad of adList"> 
+      <ion-card *ngFor="let ad of adList">
         <img src="../../assets/imgs/house1.jpg">
-          <ion-card-header text-center>
-              
-              <ion-title>{{ad.category}} for sale in {{ad.location}}</ion-title>
-              <ion-note>{{ad.uploaded_at | date:'fullDate'}}</ion-note>
-          </ion-card-header>
-          
-            <ion-item-group>
-                <ion-item>
-                    Price
-                    <div item-end>LKR {{ad.price}}</div>
-                  </ion-item>
-              <ion-item>
-                Beds
-                <div item-end>{{ad.bedrooms}}</div>
-              </ion-item>
-              <ion-item>
-                Baths
-                <div item-end>
-                  {{ad.bathrooms}}
-                </div>
-              </ion-item>
-              <ion-item>
-                House size
-                <div item-end>
-                  -
-                </div>
-              </ion-item>
-              <ion-item>
-                Land Size
-                <div item-end>
-                  {{ad.land_size}}
-                </div>
-              </ion-item>
-            </ion-item-group>
-            
+        <ion-card-header text-center>
+
+          <ion-title>{{ad.category}} for sale in {{ad.location}}</ion-title>
+          <ion-note>{{ad.uploaded_at | date:'fullDate'}}</ion-note>
+        </ion-card-header>
+
+        <ion-item-group>
+          <ion-item>
+            Price
+            <div item-end>LKR {{ad.price}}</div>
+          </ion-item>
+          <div *ngIf="ad.category=='House'">
+            <ion-item>
+              Beds
+              <div item-end>{{ad.bedrooms}}</div>
+            </ion-item>
+            <ion-item>
+              Baths
+              <div item-end>
+                {{ad.bathrooms}}
+              </div>
+            </ion-item>
+            <ion-item>
+              House size
+              <div item-end>
+                -
+              </div>
+            </ion-item>
+          </div>
+
+          <ion-item>
+            Land Size
+            <div item-end>
+              {{ad.land_size}}
+            </div>
+          </ion-item>
+        </ion-item-group>
+
 
 
         <ion-row>
-            <ion-col text-center>
-              <button ion-button clear icon-only text-center>
-                <ion-icon name="call"></ion-icon>
-                <!-- <div>12 Likes</div> -->
-              </button>
-            </ion-col>
-            <ion-col text-center>
-              <button ion-button clear icon-only text-center>
-                <ion-icon name="mail"></ion-icon>
-                <!-- <div>4 Comments</div> -->
-              </button>
-            </ion-col>
-            <ion-col text-center>
-                <button ion-button clear icon-only text-center  (click)="addAppointment()">
-                  <ion-icon name="calendar"></ion-icon>
-                  <!-- <div>4 Comments</div> -->
-                </button>
-              </ion-col>
-          </ion-row>
+          <ion-col text-center>
+            <button ion-button clear icon-only text-center>
+              <ion-icon name="call"></ion-icon>
+              <!-- <div>12 Likes</div> -->
+            </button>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button clear icon-only text-center>
+              <ion-icon name="mail"></ion-icon>
+              <!-- <div>4 Comments</div> -->
+            </button>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button clear icon-only text-center (click)="addAppointment()">
+              <ion-icon name="calendar"></ion-icon>
+              <!-- <div>4 Comments</div> -->
+            </button>
+          </ion-col>
+        </ion-row>
 
       </ion-card>
-      
+
     </ion-list>
     <ion-list *ngSwitchCase="'Appointment'">
-        <ion-item>
-            <ion-thumbnail item-start>
-              <img src="../../assets/imgs/house1.jpg">
-            </ion-thumbnail>
-            <h2>House for sale in Attidiya</h2>
-            <h3>25th Jun 2018</h3>
-            <p>11.30 AM @ the premises</p>
-            <div item-end class="appListButtonWrap">
-                <button ion-button clear icon-only text-center large><ion-icon name="call"></ion-icon></button>
-                <button ion-button clear icon-only text-center color="red" large><ion-icon name="close-circle"></ion-icon></button>
-            </div>
-          </ion-item>
-          <ion-item>
-              <ion-thumbnail item-start>
-                <img src="../../assets/imgs/house2.jpg">
-              </ion-thumbnail>
-              <h2>House for sale in Homagama</h2>
-              <h3>26th Jun 2018</h3>
-              <p>10.30 AM @ the premises</p>
-              <div item-end class="appListButtonWrap">
-                  <button ion-button clear icon-only text-center large><ion-icon name="call"></ion-icon></button>
-                  <button ion-button clear icon-only text-center color="red" large><ion-icon name="close-circle"></ion-icon></button>
-              </div>
-              
-            </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="../../assets/imgs/house1.jpg">
+        </ion-thumbnail>
+        <h2>House for sale in Attidiya</h2>
+        <h3>25th Jun 2018</h3>
+        <p>11.30 AM @ the premises</p>
+        <div item-end class="appListButtonWrap">
+          <button ion-button clear icon-only text-center large>
+            <ion-icon name="call"></ion-icon>
+          </button>
+          <button ion-button clear icon-only text-center color="red" large>
+            <ion-icon name="close-circle"></ion-icon>
+          </button>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="../../assets/imgs/house2.jpg">
+        </ion-thumbnail>
+        <h2>House for sale in Homagama</h2>
+        <h3>26th Jun 2018</h3>
+        <p>10.30 AM @ the premises</p>
+        <div item-end class="appListButtonWrap">
+          <button ion-button clear icon-only text-center large>
+            <ion-icon name="call"></ion-icon>
+          </button>
+          <button ion-button clear icon-only text-center color="red" large>
+            <ion-icon name="close-circle"></ion-icon>
+          </button>
+        </div>
+
+      </ion-item>
     </ion-list>
   </div>
 

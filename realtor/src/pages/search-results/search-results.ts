@@ -22,7 +22,8 @@ export class SearchResultsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public retrieveAds: RetrieveAdsProvider) {
   }
   req: any = {
-    type: this.navParams.get('category'),
+    type: this.navParams.get('type'),
+    category: this.navParams.get('category'),
     location: this.navParams.get('location'),
     minArea: this.navParams.get('areaRange').lower,
     maxArea: this.navParams.get('areaRange').upper,

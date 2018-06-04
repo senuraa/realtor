@@ -30682,6 +30682,10 @@ page-req-capture .button--wrapper {
   text-align: center;
 }
 
+page-req-capture ion-searchbar {
+  background-color: transparent !important;
+}
+
 page-search-results .button--wrapper {
   text-align: center;
 }

@@ -26,12 +26,13 @@ export class ReqCapturePage {
       lower:'500',
       upper:'900'
     },
-    category:'',
+    category:'House',
     areaRange:{
       lower:'500',
       upper:'900'
     },
-    showLastSeven:false
+    showLastSeven:false,
+    type:'Buy'
 
   }
   constructor(public navCtrl: NavController, public navParams: NavParams) {

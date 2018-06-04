@@ -9,10 +9,11 @@ var qs = require('qs');
  */
 exports.retrieveAds= function(req,res){
     console.log(req.body);
-    var location = req.body.location;
+    var location = req.body.location.toUpperCase();
     var rooms = req.body.noOfRooms;
     //var priceRange = req.body.priceRange;
-    var category = req.body.type;
+    var category = req.body.category;
+    var type = req.body.type;
     //var areaRange = req.body.areaRange;
     var minArea = req.body.minArea;
     var maxArea = req.body.maxArea;
