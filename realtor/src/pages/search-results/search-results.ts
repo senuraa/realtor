@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { RetrieveAdsProvider } from '../../providers/retrieve-ads/retrieve-ads';
-
+import { DateTimeModalPage } from '../date-time-modal/date-time-modal'
 /**
  * Generated class for the SearchResultsPage page.
  *
@@ -19,7 +19,7 @@ export class SearchResultsPage {
   listDisable: boolean = true;
   appointmentDisable: boolean = true;
   adList: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public retrieveAds: RetrieveAdsProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public retrieveAds: RetrieveAdsProvider, public modalCtrl: ModalController) {
   }
   req: any = {
     type: this.navParams.get('type'),
@@ -29,12 +29,13 @@ export class SearchResultsPage {
     maxArea: this.navParams.get('areaRange').upper,
     noOfRooms: this.navParams.get('noOfRooms'),
     minPrice: this.navParams.get('priceRange').lower,
-    maxPrice: this.navParams.get('priceRange').upper
+    maxPrice: this.navParams.get('priceRange').upper,
+    _id:''
   }
   confirmReq() {
     // this.listDisable = false;
     //   this.stepType = "Lists";
-    
+
     this.retrieveAds.getAds(this.req).then((response) => {
       console.log(response);
       this.listDisable = false;
@@ -46,6 +47,15 @@ export class SearchResultsPage {
 
   }
   addAppointment() {
+    this.appointmentDisable = false;
+    this.stepType = "Appointment";
+  }
+  openAddAppointment(ad){
+    let appModal = this.modalCtrl.create(DateTimeModalPage,{"_id":ad._id});
+    appModal.present();
+    appModal.onDidDismiss(data=>{
+      console.log(data)
+    })
     this.appointmentDisable = false;
     this.stepType = "Appointment";
   }

@@ -10,6 +10,7 @@ var mongoStore = require('connect-mongo')({ session: expressSession });
 require('./model/auth_model.js')
 require('./model/user_model.js');
 require('./model/ad_model.js');
+require('./model/appointment_model.js');
 
 var cors = require('cors');
 
@@ -69,11 +70,13 @@ db.once('open', function (err) {
 var router = express.Router();
 var auth = require('./controllers/auth');
 var ads = require('./controllers/ads');
+var apps = require('./controllers/appointments');
 
 router.route('/auth/register').post(auth.requestPhoneVerification);
 router.route('/auth/verify').post(auth.verifyPhoneToken);
 router.route('/auth/login').post(auth.login);
 router.route('/ads/getads').post(ads.retrieveAds);
+router.route('/app/addAppointment').post(apps.addAppointments);
 
 app.use('/api',router);
 

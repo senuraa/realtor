@@ -27,8 +27,9 @@ import { LoginServiceProvider } from '../providers/login-service/login-service';
 import { SignupServiceProvider } from '../providers/signup-service/signup-service';
 import { RetrieveAdsProvider } from '../providers/retrieve-ads/retrieve-ads';
 import { VerifyPage } from '../pages/verify/verify';
-
+import { DateTimeModalPageModule } from '../pages/date-time-modal/date-time-modal.module'
 import { HttpClientModule } from '@angular/common/http';
+import { AppointmentProvider } from '../providers/appointment/appointment';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    DateTimeModalPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -73,7 +75,8 @@ import { HttpClientModule } from '@angular/common/http';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     LoginServiceProvider,
     SignupServiceProvider,
-    RetrieveAdsProvider
+    RetrieveAdsProvider,
+    AppointmentProvider
   ]
 })
 export class AppModule { }

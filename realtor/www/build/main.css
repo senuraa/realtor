@@ -30565,6 +30565,10 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+page-date-time-modal .button--wrapper {
+  text-align: center;
+}
+
 page-home {
   font-family: 'Muli', sans-serif !important;
 }
