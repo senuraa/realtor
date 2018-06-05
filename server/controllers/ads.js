@@ -22,6 +22,7 @@ exports.retrieveAds= function(req,res){
 
     var onlyLastSevenDays = req.body.showLastSeven;
     ads.find({category:category,location:location}).exec(function(err,docs){
+        
         if(err){
             console.log(err);
             res.status(500).json({message:err})

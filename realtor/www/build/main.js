@@ -1,6 +1,6 @@
 webpackJsonp([9],{
 
-/***/ 106:
+/***/ 107:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ webpackJsonp([9],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_signup_service_signup_service__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__verify_verify__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__verify_verify__ = __webpack_require__(110);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -67,7 +67,7 @@ var SignupPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-signup',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/signup/signup.html"*/'<!--\n  Generated template for the SignupPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>signup</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  \n    <ion-item>\n      <ion-label floating>First Name</ion-label>\n      <ion-input type="text" [(ngModel)]="user.first_name"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label floating>Last Name</ion-label>\n      <ion-input type="text" [(ngModel)]="user.last_name"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label floating>Mobile Number</ion-label>\n      <ion-input type="tel" [(ngModel)]="user.phone_number"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label floating>Password</ion-label>\n      <ion-input type="password" [(ngModel)]="user.password"></ion-input>\n    </ion-item>\n    <div padding>\n      <button ion-button color="red" block (click)="signup()">Sign up</button>\n    </div>\n    \n</ion-content>'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/signup/signup.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_signup_service_signup_service__["a" /* SignupServiceProvider */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_signup_service_signup_service__["a" /* SignupServiceProvider */]])
     ], SignupPage);
     return SignupPage;
 }());
@@ -76,14 +76,14 @@ var SignupPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 107:
+/***/ 108:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AllAppointmentsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_appointment_appointment__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_appointment_appointment__ = __webpack_require__(47);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -127,17 +127,16 @@ var AllAppointmentsPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-all-appointments',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/all-appointments/all-appointments.html"*/'<!--\n  Generated template for the AllAppointmentsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Appointments</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n    <ion-item *ngFor="let app of appData">\n        <ion-thumbnail item-start>\n          <img src="../../assets/imgs/house1.jpg">\n        </ion-thumbnail>\n        <h2>{{app.ad_id.category}} for sale in {{app.ad_id.location}}</h2>\n        <h3>{{app.app_date | date:\'fullDate\'}}</h3>\n        <p>{{app.app_date | date:\'shortTime\'}} @ the premises</p>\n        <div item-end class="appListButtonWrap">\n          <button ion-button clear icon-only text-center>\n            <ion-icon name="call"></ion-icon>\n          </button>\n          <button ion-button clear icon-only text-center color="red">\n            <ion-icon name="close-circle"></ion-icon>\n          </button>\n        </div>\n      </ion-item>\n</ion-content>\n'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/all-appointments/all-appointments.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_appointment_appointment__["a" /* AppointmentProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_appointment_appointment__["a" /* AppointmentProvider */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_appointment_appointment__["a" /* AppointmentProvider */]])
     ], AllAppointmentsPage);
     return AllAppointmentsPage;
-    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=all-appointments.js.map
 
 /***/ }),
 
-/***/ 108:
+/***/ 109:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -173,7 +172,7 @@ var FavoritesPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-favorites',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/favorites/favorites.html"*/'<!--\n  Generated template for the FavoritesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>favorites</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/favorites/favorites.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
     ], FavoritesPage);
     return FavoritesPage;
 }());
@@ -182,7 +181,7 @@ var FavoritesPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 109:
+/***/ 110:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -190,7 +189,7 @@ var FavoritesPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_signup_service_signup_service__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tabs_tabs__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tabs_tabs__ = __webpack_require__(49);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -241,7 +240,7 @@ var VerifyPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-verify',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/verify/verify.html"*/'<!--\n  Generated template for the VerifyPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>verify</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-item>\n    <ion-label floating>Verification code</ion-label>\n    <ion-input type="number" [(ngModel)]="user.token"></ion-input>\n  </ion-item>\n  <div padding>\n    <button ion-button color="primary" block (click)="verify()">Sign up</button>\n  </div>\n</ion-content>'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/verify/verify.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_signup_service_signup_service__["a" /* SignupServiceProvider */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_signup_service_signup_service__["a" /* SignupServiceProvider */]])
     ], VerifyPage);
     return VerifyPage;
 }());
@@ -250,14 +249,14 @@ var VerifyPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 110:
+/***/ 111:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyProfilePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_login__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_login__ = __webpack_require__(54);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -295,7 +294,7 @@ var MyProfilePage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-my-profile',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/my-profile/my-profile.html"*/'<!--\n  Generated template for the MyProfilePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>myProfile</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n<button ion-item (click)="logout()">Logout</button>\n</ion-content>\n'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/my-profile/my-profile.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */]])
     ], MyProfilePage);
     return MyProfilePage;
 }());
@@ -304,15 +303,15 @@ var MyProfilePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 111:
+/***/ 112:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReqCapturePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__search_results_search_results__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_app_config_app_config__ = __webpack_require__(266);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__search_results_search_results__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_app_config_app_config__ = __webpack_require__(275);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -389,7 +388,7 @@ var ReqCapturePage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-req-capture',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/req-capture/req-capture.html"*/'<!--\n  Generated template for the ReqCapturePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Request</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content class="outer-content">\n\n\n  <ion-list>\n    <ion-list-header>\n      Request Details\n    </ion-list-header>\n    <ion-item>\n      <!-- <ion-label color="primary">Location</ion-label> -->\n      <!-- <ion-input type="text" [(ngModel)]="request.location"></ion-input> -->\n      <ion-searchbar (ionInput)="filterItems($event)" [(ngModel)]="request.location" placeholder="Location" clear></ion-searchbar>\n\n      <ion-list *ngIf="showList">\n        <!-- <ion-item *ngFor="let city of cities" (click)="hideList()">\n          {{city}}\n        </ion-item> -->\n        <button ion-item *ngFor="let city of cities" (click)="hideList(city)">\n          {{city}}\n        </button>\n      </ion-list>\n    </ion-item>\n    <ion-item>\n      <ion-label color="primary">Buy / Rent</ion-label>\n      <ion-select [(ngModel)]="request.type" interface="popover" item-end>\n        <ion-option value="Buy">Buy</ion-option>\n        <ion-option value="Rent">Rent</ion-option>\n      </ion-select>\n    </ion-item>\n    <ion-item>\n      <ion-label color="primary">Category</ion-label>\n      <ion-select [(ngModel)]="request.category" interface="popover" item-end>\n\n        <ion-option value="House">House</ion-option>\n        <ion-option value="Land">Land</ion-option>\n        <ion-option value="Commercial">Commercial</ion-option>\n        <ion-option value="Apartment">Apartment</ion-option>\n      </ion-select>\n    </ion-item>\n    \n  \n    <ion-item>\n      <ion-label color="primary">Only show posts from last 7 days</ion-label>\n      <ion-toggle [(ngModel)]="request.showLastSeven"></ion-toggle>\n    </ion-item>\n\n  </ion-list>\n  <ion-list  *ngIf="request.category==\'House\'">\n    <ion-list-header>\n      Rooms\n    </ion-list-header>\n    <ion-item>\n      <!-- <ion-label color="primary"  item-start>Rooms</ion-label> -->\n      <ion-badge item-end color="danger">{{request.noOfRooms}}</ion-badge>\n      <ion-range min="1" max="9" step="1" snaps="true" [(ngModel)]="request.noOfRooms" color="danger">\n        <ion-icon range-left small color="danger" name="remove-circle"></ion-icon>\n        <ion-icon range-right color="danger" name="add-circle"></ion-icon>\n      </ion-range>\n    </ion-item>\n  </ion-list>\n  <ion-list>\n    <ion-list-header>\n      Price range\n    </ion-list-header>\n    <ion-item>\n      <ion-badge item-start color="dark">{{request.priceRange.lower}}</ion-badge>\n      <ion-badge item-end color="dark">{{request.priceRange.upper}}</ion-badge>\n      <ion-range dualKnobs="true" pin="true" [(ngModel)]="request.priceRange" color="dark" min="100" max="1000" step="10">\n      </ion-range>\n    </ion-item>\n    \n\n  </ion-list>\n  <ion-list>\n    <ion-list-header>Area range</ion-list-header>\n    <ion-item>\n      <ion-badge item-start color="dark">{{request.areaRange.lower}}</ion-badge>\n      <ion-badge item-end color="dark">{{request.areaRange.upper}}</ion-badge>\n      <ion-range dualKnobs="true" pin="true" [(ngModel)]="request.areaRange" color="dark" min="100" max="1000" step="10">\n      </ion-range>\n    </ion-item>\n  </ion-list>\n  <div class="button--wrapper">\n    <button ion-button color="primary" (click)="gotoSearchResults()">Continue</button>\n  </div>\n\n\n</ion-content>'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/req-capture/req-capture.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
     ], ReqCapturePage);
     return ReqCapturePage;
 }());
@@ -398,16 +397,17 @@ var ReqCapturePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 112:
+/***/ 113:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SearchResultsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_retrieve_ads_retrieve_ads__ = __webpack_require__(169);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__date_time_modal_date_time_modal__ = __webpack_require__(167);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_appointment_appointment__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_retrieve_ads_retrieve_ads__ = __webpack_require__(170);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__date_time_modal_date_time_modal__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_appointment_appointment__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_call_number__ = __webpack_require__(171);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -422,6 +422,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
  * Generated class for the SearchResultsPage page.
  *
@@ -429,12 +430,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var SearchResultsPage = /** @class */ (function () {
-    function SearchResultsPage(navCtrl, navParams, retrieveAds, modalCtrl, appService) {
+    function SearchResultsPage(navCtrl, navParams, retrieveAds, modalCtrl, appService, alertCtrl, callNumber) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.retrieveAds = retrieveAds;
         this.modalCtrl = modalCtrl;
         this.appService = appService;
+        this.alertCtrl = alertCtrl;
+        this.callNumber = callNumber;
         this.stepType = "Requirement";
         this.listDisable = true;
         this.appointmentDisable = true;
@@ -468,10 +471,55 @@ var SearchResultsPage = /** @class */ (function () {
             console.log(err);
         });
     };
-    // addAppointment() {
-    //   this.appointmentDisable = false;
-    //   this.stepType = "Appointment";
-    // }
+    SearchResultsPage.prototype.call = function (numArray) {
+        var _this = this;
+        var nums = numArray.split(',');
+        console.log(nums);
+        if (nums.length > 1) {
+            var alert = this.alertCtrl.create();
+            alert.setTitle('Select number');
+            for (var i = 0; i < nums.length; i++) {
+                alert.addInput({
+                    type: 'radio',
+                    label: nums[i],
+                    value: nums[i],
+                    checked: false
+                });
+            }
+            alert.addButton('Cancel');
+            alert.addButton({
+                text: 'Ok',
+                handler: function (data) {
+                    // this.callNumber
+                    _this.callNumber.callNumber(data, true).then(function (res) { return console.log('Launched dialer!', res); })
+                        .catch(function (err) { return console.log('Error launching dialer', err); });
+                    console.log('Radio data:', data);
+                }
+            });
+            alert.present();
+        }
+        else if (nums.length == 1 && nums[0] != "") {
+            var alert = this.alertCtrl.create();
+            alert.setTitle('Confirm Call');
+            alert.setMessage('Are you sure you want to call ' + nums[0] + ' ?');
+            alert.addButton({
+                text: 'Ok',
+                handler: function (data) {
+                    _this.callNumber.callNumber(nums, true).then(function (res) { return console.log('Launched dialer!', res); })
+                        .catch(function (err) { return console.log('Error launching dialer', err); });
+                }
+            });
+            alert.addButton('Cancel');
+            alert.present();
+        }
+        else if (nums.length == 1 && nums[0] == "") {
+            var alert = this.alertCtrl.create();
+            alert.setTitle('Contact Number');
+            alert.setMessage('Sorry! No number available');
+            alert.addButton('Ok');
+            alert.present();
+        }
+    };
     SearchResultsPage.prototype.openAddAppointment = function (ad) {
         var _this = this;
         var appModal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_3__date_time_modal_date_time_modal__["a" /* DateTimeModalPage */], { "_id": ad._id });
@@ -495,18 +543,19 @@ var SearchResultsPage = /** @class */ (function () {
     };
     SearchResultsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-search-results',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/search-results/search-results.html"*/'<!--\n  Generated template for the SearchResultsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Search Results</ion-title>\n  </ion-navbar>\n  <ion-toolbar no-border-top>\n    <ion-segment [(ngModel)]="stepType">\n      <ion-segment-button value="Requirement">\n        Requirement\n      </ion-segment-button>\n      <ion-segment-button [disabled]="listDisable" value="Lists">\n        Lists\n      </ion-segment-button>\n      <ion-segment-button [disabled]="appointmentDisable" value="Appointment">\n        Appointment\n      </ion-segment-button>\n    </ion-segment>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content class="outer-content cards-bg">\n  <div [ngSwitch]="stepType">\n    <ion-list *ngSwitchCase="\'Requirement\'">\n      <button ion-item>\n        <ion-label>\n          Location\n        </ion-label>\n        <ion-note item-end>\n          {{req.location}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Type\n        </ion-label>\n        <ion-note item-end>\n          {{req.type}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Category\n        </ion-label>\n        <ion-note item-end>\n          {{req.category}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Minimum Area\n        </ion-label>\n        <ion-note item-end>\n          {{req.minArea}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Maximum Area\n        </ion-label>\n        <ion-note item-end>\n          {{req.maxArea}}\n        </ion-note>\n      </button>\n      <button ion-item *ngIf="req.category==\'House\'">\n        <ion-label>\n          Number of Bed Rooms\n        </ion-label>\n        <ion-note item-end>\n          {{req.noOfRooms}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Minimum Price\n        </ion-label>\n        <ion-note item-end>\n          {{req.minPrice}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Maximum Price\n        </ion-label>\n        <ion-note item-end>\n          {{req.maxPrice}}\n        </ion-note>\n      </button>\n\n      <div class="button--wrapper">\n        <button ion-button color="primary" (click)="confirmReq()">Continue</button>\n      </div>\n    </ion-list>\n    <ion-list *ngSwitchCase="\'Lists\'">\n      <ion-card *ngFor="let ad of adList">\n        <img src="../../assets/imgs/house1.jpg">\n        <ion-card-header text-center>\n\n          <ion-title>{{ad.category}} for sale in {{ad.location}}</ion-title>\n          <ion-note>{{ad.uploaded_at | date:\'fullDate\'}}</ion-note>\n        </ion-card-header>\n\n        <ion-item-group>\n          <ion-item>\n            Price\n            <div item-end>LKR {{ad.price}}</div>\n          </ion-item>\n          <div *ngIf="ad.category==\'House\'">\n            <ion-item>\n              Beds\n              <div item-end>{{ad.bedrooms}}</div>\n            </ion-item>\n            <ion-item>\n              Baths\n              <div item-end>\n                {{ad.bathrooms}}\n              </div>\n            </ion-item>\n            <ion-item>\n              House size\n              <div item-end>\n                -\n              </div>\n            </ion-item>\n          </div>\n\n          <ion-item>\n            Land Size\n            <div item-end>\n              {{ad.land_size}}\n            </div>\n          </ion-item>\n        </ion-item-group>\n\n\n\n        <ion-row>\n          <ion-col text-center>\n            <button ion-button clear icon-only text-center>\n              <ion-icon name="call"></ion-icon>\n              <!-- <div>12 Likes</div> -->\n            </button>\n          </ion-col>\n          <ion-col text-center>\n            <button ion-button clear icon-only text-center>\n              <ion-icon name="mail"></ion-icon>\n              <!-- <div>4 Comments</div> -->\n            </button>\n          </ion-col>\n          <ion-col text-center>\n            <button ion-button clear icon-only text-center (click)="openAddAppointment(ad)">\n              <ion-icon name="calendar"></ion-icon>\n              <!-- <div>4 Comments</div> -->\n            </button>\n          </ion-col>\n        </ion-row>\n        <ion-item *ngIf="">\n\n        </ion-item>\n\n      </ion-card>\n\n    </ion-list>\n    <ion-list *ngSwitchCase="\'Appointment\'">\n      <div *ngIf="appointmentList">\n          <ion-item *ngFor="let app of appointmentList">\n              <ion-thumbnail item-start>\n                <img src="../../assets/imgs/house1.jpg">\n              </ion-thumbnail>\n              <h2>{{app.ad_id.category}} for sale in {{app.ad_id.location}}</h2>\n              <h3>{{app.app_date | date:\'fullDate\'}}</h3>\n              <p>{{app.app_date | date:\'shortTime\'}} @ the premises</p>\n              <div item-end class="appListButtonWrap">\n                <button ion-button clear icon-only text-center>\n                  <ion-icon name="call"></ion-icon>\n                </button>\n                <button ion-button clear icon-only text-center color="red">\n                  <ion-icon name="close-circle"></ion-icon>\n                </button>\n              </div>\n            </ion-item>\n      </div>\n      \n      <!-- <ion-item>\n        <ion-thumbnail item-start>\n          <img src="../../assets/imgs/house2.jpg">\n        </ion-thumbnail>\n        <h2>House for sale in Homagama</h2>\n        <h3>26th Jun 2018</h3>\n        <p>10.30 AM @ the premises</p>\n        <div item-end class="appListButtonWrap">\n          <button ion-button clear icon-only text-center large>\n            <ion-icon name="call"></ion-icon>\n          </button>\n          <button ion-button clear icon-only text-center color="red" large>\n            <ion-icon name="close-circle"></ion-icon>\n          </button>\n        </div>\n\n      </ion-item> -->\n    </ion-list>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/search-results/search-results.html"*/,
+            selector: 'page-search-results',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/search-results/search-results.html"*/'<!--\n  Generated template for the SearchResultsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Search Results</ion-title>\n  </ion-navbar>\n  <ion-toolbar no-border-top>\n    <ion-segment [(ngModel)]="stepType">\n      <ion-segment-button value="Requirement">\n        Requirement\n      </ion-segment-button>\n      <ion-segment-button [disabled]="listDisable" value="Lists">\n        Lists\n      </ion-segment-button>\n      <ion-segment-button [disabled]="appointmentDisable" value="Appointment">\n        Appointment\n      </ion-segment-button>\n    </ion-segment>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content class="outer-content cards-bg">\n  <div [ngSwitch]="stepType">\n    <ion-list *ngSwitchCase="\'Requirement\'">\n      <button ion-item>\n        <ion-label>\n          Location\n        </ion-label>\n        <ion-note item-end>\n          {{req.location}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Type\n        </ion-label>\n        <ion-note item-end>\n          {{req.type}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Category\n        </ion-label>\n        <ion-note item-end>\n          {{req.category}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Minimum Area\n        </ion-label>\n        <ion-note item-end>\n          {{req.minArea}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Maximum Area\n        </ion-label>\n        <ion-note item-end>\n          {{req.maxArea}}\n        </ion-note>\n      </button>\n      <button ion-item *ngIf="req.category==\'House\'">\n        <ion-label>\n          Number of Bed Rooms\n        </ion-label>\n        <ion-note item-end>\n          {{req.noOfRooms}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Minimum Price\n        </ion-label>\n        <ion-note item-end>\n          {{req.minPrice}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Maximum Price\n        </ion-label>\n        <ion-note item-end>\n          {{req.maxPrice}}\n        </ion-note>\n      </button>\n\n      <div class="button--wrapper">\n        <button ion-button color="primary" (click)="confirmReq()">Continue</button>\n      </div>\n    </ion-list>\n    <ion-list *ngSwitchCase="\'Lists\'">\n      <ion-card *ngFor="let ad of adList">\n        <img src="../../assets/imgs/house1.jpg">\n        <ion-card-header text-center>\n\n          <ion-title>{{ad.category}} for sale in {{ad.location}}</ion-title>\n          <ion-note>{{ad.uploaded_at | date:\'fullDate\'}}</ion-note>\n        </ion-card-header>\n\n        <ion-item-group>\n          <ion-item>\n            Price\n            <div item-end>LKR {{ad.price}}</div>\n          </ion-item>\n          <div *ngIf="ad.category==\'House\'">\n            <ion-item>\n              Beds\n              <div item-end>{{ad.bedrooms}}</div>\n            </ion-item>\n            <ion-item>\n              Baths\n              <div item-end>\n                {{ad.bathrooms}}\n              </div>\n            </ion-item>\n            <ion-item>\n              House size\n              <div item-end>\n                -\n              </div>\n            </ion-item>\n          </div>\n\n          <ion-item>\n            Land Size\n            <div item-end>\n              {{ad.land_size}}\n            </div>\n          </ion-item>\n        </ion-item-group>\n\n\n\n        <ion-row>\n          <ion-col text-center>\n            <button ion-button clear icon-only text-center (click)="call(ad.contact)">\n              <ion-icon name="call"></ion-icon>\n              <!-- <div>12 Likes</div> -->\n            </button>\n          </ion-col>\n          <ion-col text-center>\n            <button ion-button clear icon-only text-center>\n              <ion-icon name="mail"></ion-icon>\n              <!-- <div>4 Comments</div> -->\n            </button>\n          </ion-col>\n          <ion-col text-center>\n            <button ion-button clear icon-only text-center (click)="openAddAppointment(ad)">\n              <ion-icon name="calendar"></ion-icon>\n              <!-- <div>4 Comments</div> -->\n            </button>\n          </ion-col>\n        </ion-row>\n        <ion-item *ngIf="">\n\n        </ion-item>\n\n      </ion-card>\n\n    </ion-list>\n    <ion-list *ngSwitchCase="\'Appointment\'">\n      <div *ngIf="appointmentList">\n          <ion-item *ngFor="let app of appointmentList">\n              <ion-thumbnail item-start>\n                <img src="../../assets/imgs/house1.jpg">\n              </ion-thumbnail>\n              <h2>{{app.ad_id.category}} for sale in {{app.ad_id.location}}</h2>\n              <h3>{{app.app_date | date:\'fullDate\'}}</h3>\n              <p>{{app.app_date | date:\'shortTime\'}} @ the premises</p>\n              <div item-end class="appListButtonWrap">\n                <button ion-button clear icon-only text-center>\n                  <ion-icon name="call"></ion-icon>\n                </button>\n                <button ion-button clear icon-only text-center color="red">\n                  <ion-icon name="close-circle"></ion-icon>\n                </button>\n              </div>\n            </ion-item>\n      </div>\n      \n      <!-- <ion-item>\n        <ion-thumbnail item-start>\n          <img src="../../assets/imgs/house2.jpg">\n        </ion-thumbnail>\n        <h2>House for sale in Homagama</h2>\n        <h3>26th Jun 2018</h3>\n        <p>10.30 AM @ the premises</p>\n        <div item-end class="appListButtonWrap">\n          <button ion-button clear icon-only text-center large>\n            <ion-icon name="call"></ion-icon>\n          </button>\n          <button ion-button clear icon-only text-center color="red" large>\n            <ion-icon name="close-circle"></ion-icon>\n          </button>\n        </div>\n\n      </ion-item> -->\n    </ion-list>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/search-results/search-results.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_retrieve_ads_retrieve_ads__["a" /* RetrieveAdsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* ModalController */], __WEBPACK_IMPORTED_MODULE_4__providers_appointment_appointment__["a" /* AppointmentProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_retrieve_ads_retrieve_ads__["a" /* RetrieveAdsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_retrieve_ads_retrieve_ads__["a" /* RetrieveAdsProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__providers_appointment_appointment__["a" /* AppointmentProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_appointment_appointment__["a" /* AppointmentProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_call_number__["a" /* CallNumber */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_call_number__["a" /* CallNumber */]) === "function" && _g || Object])
     ], SearchResultsPage);
     return SearchResultsPage;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=search-results.js.map
 
 /***/ }),
 
-/***/ 124:
+/***/ 125:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -519,51 +568,51 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 124;
+webpackEmptyAsyncContext.id = 125;
 
 /***/ }),
 
-/***/ 165:
+/***/ 166:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"../pages/all-appointments/all-appointments.module": [
-		295,
+		296,
 		8
 	],
 	"../pages/date-time-modal/date-time-modal.module": [
-		166
+		167
 	],
 	"../pages/favorites/favorites.module": [
-		296,
+		297,
 		7
 	],
 	"../pages/login/login.module": [
-		297,
+		298,
 		6
 	],
 	"../pages/my-profile/my-profile.module": [
-		298,
+		299,
 		5
 	],
 	"../pages/req-capture/req-capture.module": [
-		299,
+		300,
 		4
 	],
 	"../pages/search-results/search-results.module": [
-		300,
+		301,
 		3
 	],
 	"../pages/search/search.module": [
-		301,
+		302,
 		2
 	],
 	"../pages/signup/signup.module": [
-		302,
+		303,
 		1
 	],
 	"../pages/verify/verify.module": [
-		303,
+		304,
 		0
 	]
 };
@@ -578,12 +627,12 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 165;
+webpackAsyncContext.id = 166;
 module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 166:
+/***/ 167:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -591,7 +640,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DateTimeModalPageModule", function() { return DateTimeModalPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__date_time_modal__ = __webpack_require__(167);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__date_time_modal__ = __webpack_require__(168);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -610,7 +659,7 @@ var DateTimeModalPageModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2__date_time_modal__["a" /* DateTimeModalPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__date_time_modal__["a" /* DateTimeModalPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__date_time_modal__["a" /* DateTimeModalPage */]),
             ],
         })
     ], DateTimeModalPageModule);
@@ -621,14 +670,14 @@ var DateTimeModalPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 167:
+/***/ 168:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DateTimeModalPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_appointment_appointment__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_appointment_appointment__ = __webpack_require__(47);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -680,7 +729,7 @@ var DateTimeModalPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-date-time-modal',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/date-time-modal/date-time-modal.html"*/'<!--\n  Generated template for the DateTimeModalPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Set Appointment</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="outer-content">\n  <ion-list>\n    <ion-list-header>\n      Appointment Details\n    </ion-list-header>\n    <ion-item>\n      <ion-label>Date & Time</ion-label>\n      <ion-datetime displayFormat="MM/DD/YYYY hh:mm A" [(ngModel)]="appDet.datetime" color="primary"></ion-datetime>\n    </ion-item>\n\n    <ion-item>\n      <ion-label>Comments</ion-label>\n      <ion-textarea [(ngModel)]="appDet.comments"></ion-textarea>\n    </ion-item>\n  </ion-list>\n\n  <div class="button--wrapper">\n    <button ion-button color="danger" (click)="dismiss()">Cancel</button>\n    <button ion-button color="primary" (click)="confirmApp()">\n      Confirm\n    </button>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/date-time-modal/date-time-modal.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__providers_appointment_appointment__["a" /* AppointmentProvider */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__providers_appointment_appointment__["a" /* AppointmentProvider */]])
     ], DateTimeModalPage);
     return DateTimeModalPage;
 }());
@@ -689,14 +738,14 @@ var DateTimeModalPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 168:
+/***/ 169:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__req_capture_req_capture__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__req_capture_req_capture__ = __webpack_require__(112);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -720,7 +769,7 @@ var HomePage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/home/home.html"*/'<ion-content padding>\n  <div id="top-banner">\n    <div class="banner-content">\n      <h1>DISCOVER</h1>\n      <span class="tag-line">Let\'s discover your dream home</span>\n      <button ion-button id="start-button" color="red" (click)="startReqCapture()">Start</button>\n    </div>\n\n  </div>\n\n  <div class="content-wrap">\n    <ion-title>\n      Top Picks\n    </ion-title>\n    <ion-slides loop=\'true\' pager=\'true\' paginationType=\'bullets\'>\n      <ion-slide>\n        <ion-card>\n\n          <img src="assets/imgs/house1.jpg" />\n\n          <ion-card-content>\n            <ion-card-title>\n              Nine Inch Nails Live\n            </ion-card-title>\n            <p>\n              The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.\n            </p>\n          </ion-card-content>\n\n          <ion-row no-padding>\n            <ion-col>\n              <button ion-button clear small color="danger" icon-start>\n                <ion-icon name=\'star\'></ion-icon>\n                Favorite\n              </button>\n            </ion-col>\n            <!-- <ion-col text-center>\n              <button ion-button clear small color="danger" icon-start>\n                <ion-icon name=\'musical-notes\'></ion-icon>\n                Listen\n              </button>\n            </ion-col> -->\n            <ion-col text-right>\n              <button ion-button clear small color="danger" icon-start>\n                <ion-icon name=\'share-alt\'></ion-icon>\n                Share\n              </button>\n            </ion-col>\n          </ion-row>\n\n        </ion-card>\n      </ion-slide>\n\n      <ion-slide>\n        <ion-card>\n\n          <img src="assets/imgs/house2.jpg" />\n\n          <ion-card-content>\n            <ion-card-title>\n              Nine Inch Nails Live\n            </ion-card-title>\n            <p>\n              The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.\n            </p>\n          </ion-card-content>\n\n          <ion-row no-padding>\n            <ion-col>\n              <button ion-button clear small color="danger" icon-start>\n                <ion-icon name=\'star\'></ion-icon>\n                Favorite\n              </button>\n            </ion-col>\n            <!-- <ion-col text-center>\n              <button ion-button clear small color="danger" icon-start>\n                <ion-icon name=\'musical-notes\'></ion-icon>\n                Listen\n              </button>\n            </ion-col> -->\n            <ion-col text-right>\n              <button ion-button clear small color="danger" icon-start>\n                <ion-icon name=\'share-alt\'></ion-icon>\n                Share\n              </button>\n            </ion-col>\n          </ion-row>\n\n        </ion-card>\n      </ion-slide>\n    </ion-slides>\n\n\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]])
     ], HomePage);
     return HomePage;
 }());
@@ -729,13 +778,13 @@ var HomePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 169:
+/***/ 170:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RetrieveAdsProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(41);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -789,14 +838,14 @@ var RetrieveAdsProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 170:
+/***/ 173:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginServiceProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -855,7 +904,7 @@ var LoginServiceProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 214:
+/***/ 215:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -891,7 +940,7 @@ var SearchPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-search',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/search/search.html"*/'<!--\n  Generated template for the SearchPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>search</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/search/search.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
     ], SearchPage);
     return SearchPage;
 }());
@@ -900,13 +949,13 @@ var SearchPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 215:
+/***/ 216:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(216);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(237);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -914,7 +963,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 236:
+/***/ 237:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -922,34 +971,36 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(284);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_about_about__ = __webpack_require__(293);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_contact_contact__ = __webpack_require__(294);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(168);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_tabs_tabs__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_login_login__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_status_bar__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_splash_screen__ = __webpack_require__(213);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_signup_signup__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_my_profile_my_profile__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_favorites_favorites__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_search_search__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_req_capture_req_capture__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_search_results_search_results__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_login_service_login_service__ = __webpack_require__(170);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(293);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_about_about__ = __webpack_require__(294);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_contact_contact__ = __webpack_require__(295);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(169);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_tabs_tabs__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_login_login__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_status_bar__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_splash_screen__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_signup_signup__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_my_profile_my_profile__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_favorites_favorites__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_search_search__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_req_capture_req_capture__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_search_results_search_results__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_login_service_login_service__ = __webpack_require__(173);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__providers_signup_service_signup_service__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_retrieve_ads_retrieve_ads__ = __webpack_require__(169);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_verify_verify__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_date_time_modal_date_time_modal_module__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_retrieve_ads_retrieve_ads__ = __webpack_require__(170);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_verify_verify__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_date_time_modal_date_time_modal_module__ = __webpack_require__(167);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__angular_common_http__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_appointment_appointment__ = __webpack_require__(82);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_all_appointments_all_appointments__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_appointment_appointment__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_all_appointments_all_appointments__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__ionic_native_call_number__ = __webpack_require__(171);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -998,7 +1049,7 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
+                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/all-appointments/all-appointments.module#AllAppointmentsPageModule', name: 'AllAppointmentsPage', segment: 'all-appointments', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/date-time-modal/date-time-modal.module#DateTimeModalPageModule', name: 'DateTimeModalPage', segment: 'date-time-modal', priority: 'low', defaultHistory: [] },
@@ -1015,7 +1066,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_22__angular_common_http__["b" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_21__pages_date_time_modal_date_time_modal_module__["DateTimeModalPageModule"]
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicApp */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicApp */]],
             entryComponents: [
                 __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */],
                 __WEBPACK_IMPORTED_MODULE_4__pages_about_about__["a" /* AboutPage */],
@@ -1035,11 +1086,12 @@ var AppModule = /** @class */ (function () {
             providers: [
                 __WEBPACK_IMPORTED_MODULE_9__ionic_native_status_bar__["a" /* StatusBar */],
                 __WEBPACK_IMPORTED_MODULE_10__ionic_native_splash_screen__["a" /* SplashScreen */],
-                { provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicErrorHandler */] },
+                { provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicErrorHandler */] },
                 __WEBPACK_IMPORTED_MODULE_17__providers_login_service_login_service__["a" /* LoginServiceProvider */],
                 __WEBPACK_IMPORTED_MODULE_18__providers_signup_service_signup_service__["a" /* SignupServiceProvider */],
                 __WEBPACK_IMPORTED_MODULE_19__providers_retrieve_ads_retrieve_ads__["a" /* RetrieveAdsProvider */],
-                __WEBPACK_IMPORTED_MODULE_23__providers_appointment_appointment__["a" /* AppointmentProvider */]
+                __WEBPACK_IMPORTED_MODULE_23__providers_appointment_appointment__["a" /* AppointmentProvider */],
+                __WEBPACK_IMPORTED_MODULE_25__ionic_native_call_number__["a" /* CallNumber */]
             ]
         })
     ], AppModule);
@@ -1050,7 +1102,7 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 266:
+/***/ 275:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1074,17 +1126,17 @@ var CONFIG = {
 
 /***/ }),
 
-/***/ 284:
+/***/ 293:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(213);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_login_login__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_tabs_tabs__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_login_login__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_tabs_tabs__ = __webpack_require__(49);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1123,7 +1175,7 @@ var MyApp = /** @class */ (function () {
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/app/app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
     return MyApp;
 }());
@@ -1132,7 +1184,7 @@ var MyApp = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 293:
+/***/ 294:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1158,7 +1210,7 @@ var AboutPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-about',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/about/about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      About\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/about/about.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]])
     ], AboutPage);
     return AboutPage;
 }());
@@ -1167,7 +1219,7 @@ var AboutPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 294:
+/***/ 295:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1193,7 +1245,7 @@ var ContactPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-contact',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/contact/contact.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Contact\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n    <ion-item>\n      <ion-icon name="ionic" item-start></ion-icon>\n      @ionicframework\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/contact/contact.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]])
     ], ContactPage);
     return ContactPage;
 }());
@@ -1202,127 +1254,14 @@ var ContactPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 48:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__my_profile_my_profile__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__favorites_favorites__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(168);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__all_appointments_all_appointments__ = __webpack_require__(107);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var TabsPage = /** @class */ (function () {
-    function TabsPage() {
-        this.tab1Root = __WEBPACK_IMPORTED_MODULE_3__home_home__["a" /* HomePage */];
-        this.tab2Root = __WEBPACK_IMPORTED_MODULE_1__my_profile_my_profile__["a" /* MyProfilePage */];
-        this.tab3Root = __WEBPACK_IMPORTED_MODULE_2__favorites_favorites__["a" /* FavoritesPage */];
-        this.tab4Root = __WEBPACK_IMPORTED_MODULE_4__all_appointments_all_appointments__["a" /* AllAppointmentsPage */];
-    }
-    TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="My Profile" tabIcon="contact"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Favorites" tabIcon="heart"></ion-tab>\n  <ion-tab [root]="tab4Root" tabTitle="Appointments" tabIcon="notifications"></ion-tab>\n\n</ion-tabs>\n'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/tabs/tabs.html"*/
-        }),
-        __metadata("design:paramtypes", [])
-    ], TabsPage);
-    return TabsPage;
-}());
-
-//# sourceMappingURL=tabs.js.map
-
-/***/ }),
-
-/***/ 53:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup_signup__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_login_service_login_service__ = __webpack_require__(170);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__tabs_tabs__ = __webpack_require__(48);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var LoginPage = /** @class */ (function () {
-    function LoginPage(navCtrl, navParams, loginService) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.loginService = loginService;
-        this.user = {
-            phone_number: '',
-            password: ''
-        };
-    }
-    LoginPage.prototype.login = function () {
-        var _this = this;
-        this.loginService.userLogin(this.user).then(function (response) {
-            console.log('success');
-            window.localStorage.setItem('phone_number', _this.user.phone_number);
-            window.localStorage.setItem('password', _this.user.password);
-            _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__tabs_tabs__["a" /* TabsPage */], _this.user);
-        }, function (err) {
-            console.log(err);
-        });
-    };
-    LoginPage.prototype.openSignup = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__signup_signup__["a" /* SignupPage */]);
-    };
-    LoginPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad LoginPage');
-    };
-    LoginPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/login/login.html"*/'<!--\n  Generated template for the LoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <!-- <ion-navbar>\n    <ion-title>Sign in</ion-title>\n  </ion-navbar> -->\n\n</ion-header>\n\n\n<ion-content padding scroll="false">\n  <div class="content-wrapper">\n    <div class="logo">\n      <span>realtor</span>\n    </div>\n    <ion-item>\n      <ion-label floating>Phone number</ion-label>\n      <ion-input type="number" [(ngModel)]="user.phone_number"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label floating>Password</ion-label>\n      <ion-input type="password" [(ngModel)]="user.password"></ion-input>\n    </ion-item>\n    <div padding>\n      <button ion-button color="red" block (click)="login()">Sign In</button>\n    </div>\n\n    <div padding id="nUser">\n      <span>New user?</span>\n    </div>\n    <div padding>\n      <button ion-button color="light" block (click)="openSignup()">Sign Up</button>\n    </div>\n\n    <div padding id=\'forgotDetails\'>\n      <span>Forgot your login details?</span>\n      <a href="#">Get help signing in</a>\n    </div>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/login/login.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_login_service_login_service__["a" /* LoginServiceProvider */]])
-    ], LoginPage);
-    return LoginPage;
-}());
-
-//# sourceMappingURL=login.js.map
-
-/***/ }),
-
-/***/ 82:
+/***/ 47:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppointmentProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1384,13 +1323,126 @@ var AppointmentProvider = /** @class */ (function () {
 
 /***/ }),
 
+/***/ 49:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__my_profile_my_profile__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__favorites_favorites__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(169);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__all_appointments_all_appointments__ = __webpack_require__(108);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var TabsPage = /** @class */ (function () {
+    function TabsPage() {
+        this.tab1Root = __WEBPACK_IMPORTED_MODULE_3__home_home__["a" /* HomePage */];
+        this.tab2Root = __WEBPACK_IMPORTED_MODULE_1__my_profile_my_profile__["a" /* MyProfilePage */];
+        this.tab3Root = __WEBPACK_IMPORTED_MODULE_2__favorites_favorites__["a" /* FavoritesPage */];
+        this.tab4Root = __WEBPACK_IMPORTED_MODULE_4__all_appointments_all_appointments__["a" /* AllAppointmentsPage */];
+    }
+    TabsPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="My Profile" tabIcon="contact"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Favorites" tabIcon="heart"></ion-tab>\n  <ion-tab [root]="tab4Root" tabTitle="Appointments" tabIcon="notifications"></ion-tab>\n\n</ion-tabs>\n'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/tabs/tabs.html"*/
+        }),
+        __metadata("design:paramtypes", [])
+    ], TabsPage);
+    return TabsPage;
+}());
+
+//# sourceMappingURL=tabs.js.map
+
+/***/ }),
+
+/***/ 54:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup_signup__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_login_service_login_service__ = __webpack_require__(173);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__tabs_tabs__ = __webpack_require__(49);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+/**
+ * Generated class for the LoginPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var LoginPage = /** @class */ (function () {
+    function LoginPage(navCtrl, navParams, loginService) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.loginService = loginService;
+        this.user = {
+            phone_number: '',
+            password: ''
+        };
+    }
+    LoginPage.prototype.login = function () {
+        var _this = this;
+        this.loginService.userLogin(this.user).then(function (response) {
+            console.log('success');
+            window.localStorage.setItem('phone_number', _this.user.phone_number);
+            window.localStorage.setItem('password', _this.user.password);
+            _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__tabs_tabs__["a" /* TabsPage */], _this.user);
+        }, function (err) {
+            console.log(err);
+        });
+    };
+    LoginPage.prototype.openSignup = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__signup_signup__["a" /* SignupPage */]);
+    };
+    LoginPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad LoginPage');
+    };
+    LoginPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-login',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/login/login.html"*/'<!--\n  Generated template for the LoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <!-- <ion-navbar>\n    <ion-title>Sign in</ion-title>\n  </ion-navbar> -->\n\n</ion-header>\n\n\n<ion-content padding scroll="false">\n  <div class="content-wrapper">\n    <div class="logo">\n      <span>realtor</span>\n    </div>\n    <ion-item>\n      <ion-label floating>Phone number</ion-label>\n      <ion-input type="number" [(ngModel)]="user.phone_number"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label floating>Password</ion-label>\n      <ion-input type="password" [(ngModel)]="user.password"></ion-input>\n    </ion-item>\n    <div padding>\n      <button ion-button color="red" block (click)="login()">Sign In</button>\n    </div>\n\n    <div padding id="nUser">\n      <span>New user?</span>\n    </div>\n    <div padding>\n      <button ion-button color="light" block (click)="openSignup()">Sign Up</button>\n    </div>\n\n    <div padding id=\'forgotDetails\'>\n      <span>Forgot your login details?</span>\n      <a href="#">Get help signing in</a>\n    </div>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/login/login.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_login_service_login_service__["a" /* LoginServiceProvider */]])
+    ], LoginPage);
+    return LoginPage;
+}());
+
+//# sourceMappingURL=login.js.map
+
+/***/ }),
+
 /***/ 83:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignupServiceProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(41);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1454,5 +1506,5 @@ var SignupServiceProvider = /** @class */ (function () {
 
 /***/ })
 
-},[215]);
+},[216]);
 //# sourceMappingURL=main.js.map

@@ -31,7 +31,8 @@ import { DateTimeModalPageModule } from '../pages/date-time-modal/date-time-moda
 import { HttpClientModule } from '@angular/common/http';
 import { AppointmentProvider } from '../providers/appointment/appointment';
 
-import {AllAppointmentsPage} from '../pages/all-appointments/all-appointments'
+import {AllAppointmentsPage} from '../pages/all-appointments/all-appointments';
+import { CallNumber } from '@ionic-native/call-number';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import {AllAppointmentsPage} from '../pages/all-appointments/all-appointments'
     ReqCapturePage,
     SearchResultsPage,
     AllAppointmentsPage
+
   ],
   imports: [
     BrowserModule,
@@ -80,7 +82,8 @@ import {AllAppointmentsPage} from '../pages/all-appointments/all-appointments'
     LoginServiceProvider,
     SignupServiceProvider,
     RetrieveAdsProvider,
-    AppointmentProvider
+    AppointmentProvider,
+    CallNumber
   ]
 })
 export class AppModule { }
