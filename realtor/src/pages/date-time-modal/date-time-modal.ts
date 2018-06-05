@@ -26,7 +26,6 @@ export class DateTimeModalPage {
     }
   }
   confirmApp() {
-    console.log(this.appDet)
     this.addApp.addAppointment(this.appDet).then((response)=>{
       this.viewCtrl.dismiss(response)
     },(err)=>{

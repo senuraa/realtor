@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var Apps = mongoose.model('appointments');
 var Ads = mongoose.model('advertisements');
 var qs = require('qs');
-var async = require('async')
 /**
  * Retrieve ads according to requirement
  *

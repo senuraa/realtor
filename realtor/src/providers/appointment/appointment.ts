@@ -12,11 +12,13 @@ const API_URL = 'http://localhost:1500/api/'
 @Injectable()
 export class AppointmentProvider {
   data: any;
+  appData: any;
   constructor(public http: HttpClient) {
     this.data = null;
+    this.appData = null;
   }
   addAppointment(appData) {
-    return new Promise(((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       this.http.post(API_URL + 'app/addAppointment', appData)
         .subscribe(data => {
           this.data = data;
@@ -26,6 +28,20 @@ export class AppointmentProvider {
             reject(err);
           }
         )
-    }))
+    })
+  }
+
+  getAppointment(userData){
+    return new Promise((resolve,reject)=>{
+      this.http.post(API_URL+'app/getAppointment',userData)
+        .subscribe(data=>{
+          this.appData=data;
+          resolve(this.appData)
+        },
+        err =>{
+          reject(err);
+        }
+      )
+    })
   }
 }

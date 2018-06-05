@@ -31,6 +31,8 @@ import { DateTimeModalPageModule } from '../pages/date-time-modal/date-time-moda
 import { HttpClientModule } from '@angular/common/http';
 import { AppointmentProvider } from '../providers/appointment/appointment';
 
+import {AllAppointmentsPage} from '../pages/all-appointments/all-appointments'
+
 @NgModule({
   declarations: [
     MyApp,
@@ -45,7 +47,8 @@ import { AppointmentProvider } from '../providers/appointment/appointment';
     FavoritesPage,
     SearchPage,
     ReqCapturePage,
-    SearchResultsPage
+    SearchResultsPage,
+    AllAppointmentsPage
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,8 @@ import { AppointmentProvider } from '../providers/appointment/appointment';
     FavoritesPage,
     SearchPage,
     ReqCapturePage,
-    SearchResultsPage
+    SearchResultsPage,
+    AllAppointmentsPage
   ],
   providers: [
     StatusBar,

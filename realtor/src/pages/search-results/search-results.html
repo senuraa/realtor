@@ -168,23 +168,26 @@
 
     </ion-list>
     <ion-list *ngSwitchCase="'Appointment'">
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="../../assets/imgs/house1.jpg">
-        </ion-thumbnail>
-        <h2>House for sale in Attidiya</h2>
-        <h3>25th Jun 2018</h3>
-        <p>11.30 AM @ the premises</p>
-        <div item-end class="appListButtonWrap">
-          <button ion-button clear icon-only text-center large>
-            <ion-icon name="call"></ion-icon>
-          </button>
-          <button ion-button clear icon-only text-center color="red" large>
-            <ion-icon name="close-circle"></ion-icon>
-          </button>
-        </div>
-      </ion-item>
-      <ion-item>
+      <div *ngIf="appointmentList">
+          <ion-item *ngFor="let app of appointmentList">
+              <ion-thumbnail item-start>
+                <img src="../../assets/imgs/house1.jpg">
+              </ion-thumbnail>
+              <h2>{{app.ad_id.category}} for sale in {{app.ad_id.location}}</h2>
+              <h3>{{app.app_date | date:'fullDate'}}</h3>
+              <p>{{app.app_date | date:'shortTime'}} @ the premises</p>
+              <div item-end class="appListButtonWrap">
+                <button ion-button clear icon-only text-center>
+                  <ion-icon name="call"></ion-icon>
+                </button>
+                <button ion-button clear icon-only text-center color="red">
+                  <ion-icon name="close-circle"></ion-icon>
+                </button>
+              </div>
+            </ion-item>
+      </div>
+      
+      <!-- <ion-item>
         <ion-thumbnail item-start>
           <img src="../../assets/imgs/house2.jpg">
         </ion-thumbnail>
@@ -200,7 +203,7 @@
           </button>
         </div>
 
-      </ion-item>
+      </ion-item> -->
     </ion-list>
   </div>
 

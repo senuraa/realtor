@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { RetrieveAdsProvider } from '../../providers/retrieve-ads/retrieve-ads';
-import { DateTimeModalPage } from '../date-time-modal/date-time-modal'
+import { DateTimeModalPage } from '../date-time-modal/date-time-modal';
+import { AppointmentProvider } from '../../providers/appointment/appointment';
 /**
  * Generated class for the SearchResultsPage page.
  *
@@ -19,7 +20,9 @@ export class SearchResultsPage {
   listDisable: boolean = true;
   appointmentDisable: boolean = true;
   adList: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public retrieveAds: RetrieveAdsProvider, public modalCtrl: ModalController) {
+  appointmentList:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public retrieveAds: RetrieveAdsProvider, public modalCtrl: ModalController, public appService: AppointmentProvider) {
+    this.appointmentList=[];
   }
   req: any = {
     type: this.navParams.get('type'),
@@ -30,8 +33,13 @@ export class SearchResultsPage {
     noOfRooms: this.navParams.get('noOfRooms'),
     minPrice: this.navParams.get('priceRange').lower,
     maxPrice: this.navParams.get('priceRange').upper,
-    _id:''
+    _id: ''
   }
+  appReqUserData: any = {
+    phone_number: window.localStorage.getItem('phone_number'),
+    status: 2
+  }
+
   confirmReq() {
     // this.listDisable = false;
     //   this.stepType = "Lists";
@@ -50,17 +58,26 @@ export class SearchResultsPage {
   //   this.appointmentDisable = false;
   //   this.stepType = "Appointment";
   // }
-  openAddAppointment(ad){
-    let appModal = this.modalCtrl.create(DateTimeModalPage,{"_id":ad._id});
+  openAddAppointment(ad) {
+    let appModal = this.modalCtrl.create(DateTimeModalPage, { "_id": ad._id });
     appModal.present();
-    appModal.onDidDismiss(data=>{
-      if(data.message!='dismiss'){
-      this.appointmentDisable = false;
-      this.stepType = "Appointment";
+    appModal.onDidDismiss(data => {
+      if (data.message != 'dismiss') {
+        this.appService.getAppointment(this.appReqUserData).then((response) => {
+          this.appointmentList = response;
+          this.appointmentDisable = false;
+          this.stepType = "Appointment";
+          console.log(this.appointmentList)
+        },
+          (err) => {
+            console.log('Error getting appointments')
+          }
+        )
+
       }
       console.log(data)
     })
-    
+
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchResultsPage');
