@@ -25,7 +25,8 @@ export class DateTimeModalPage {
       comments:''
     }
   }
-  confirmApp(ad_id) {
+  confirmApp() {
+    console.log(this.appDet)
     this.addApp.addAppointment(this.appDet).then((response)=>{
       this.viewCtrl.dismiss(response)
     },(err)=>{
@@ -33,7 +34,7 @@ export class DateTimeModalPage {
     })
   }
   dismiss() {
-    this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss({message:'dismiss'});
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad DateTimeModalPage');

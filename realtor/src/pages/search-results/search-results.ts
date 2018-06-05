@@ -46,18 +46,21 @@ export class SearchResultsPage {
     })
 
   }
-  addAppointment() {
-    this.appointmentDisable = false;
-    this.stepType = "Appointment";
-  }
+  // addAppointment() {
+  //   this.appointmentDisable = false;
+  //   this.stepType = "Appointment";
+  // }
   openAddAppointment(ad){
     let appModal = this.modalCtrl.create(DateTimeModalPage,{"_id":ad._id});
     appModal.present();
     appModal.onDidDismiss(data=>{
+      if(data.message!='dismiss'){
+      this.appointmentDisable = false;
+      this.stepType = "Appointment";
+      }
       console.log(data)
     })
-    this.appointmentDisable = false;
-    this.stepType = "Appointment";
+    
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchResultsPage');

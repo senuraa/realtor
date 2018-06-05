@@ -444,18 +444,21 @@ var SearchResultsPage = /** @class */ (function () {
             console.log(err);
         });
     };
-    SearchResultsPage.prototype.addAppointment = function () {
-        this.appointmentDisable = false;
-        this.stepType = "Appointment";
-    };
+    // addAppointment() {
+    //   this.appointmentDisable = false;
+    //   this.stepType = "Appointment";
+    // }
     SearchResultsPage.prototype.openAddAppointment = function (ad) {
+        var _this = this;
         var appModal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_3__date_time_modal_date_time_modal__["a" /* DateTimeModalPage */], { "_id": ad._id });
         appModal.present();
         appModal.onDidDismiss(function (data) {
+            if (data.message != 'dismiss') {
+                _this.appointmentDisable = false;
+                _this.stepType = "Appointment";
+            }
             console.log(data);
         });
-        this.appointmentDisable = false;
-        this.stepType = "Appointment";
     };
     SearchResultsPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad SearchResultsPage');
@@ -464,9 +467,10 @@ var SearchResultsPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-search-results',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/search-results/search-results.html"*/'<!--\n  Generated template for the SearchResultsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Search Results</ion-title>\n  </ion-navbar>\n  <ion-toolbar no-border-top>\n    <ion-segment [(ngModel)]="stepType">\n      <ion-segment-button value="Requirement">\n        Requirement\n      </ion-segment-button>\n      <ion-segment-button [disabled]="listDisable" value="Lists">\n        Lists\n      </ion-segment-button>\n      <ion-segment-button [disabled]="appointmentDisable" value="Appointment">\n        Appointment\n      </ion-segment-button>\n    </ion-segment>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content class="outer-content cards-bg">\n  <div [ngSwitch]="stepType">\n    <ion-list *ngSwitchCase="\'Requirement\'">\n      <button ion-item>\n        <ion-label>\n          Location\n        </ion-label>\n        <ion-note item-end>\n          {{req.location}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Type\n        </ion-label>\n        <ion-note item-end>\n          {{req.type}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Category\n        </ion-label>\n        <ion-note item-end>\n          {{req.category}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Minimum Area\n        </ion-label>\n        <ion-note item-end>\n          {{req.minArea}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Maximum Area\n        </ion-label>\n        <ion-note item-end>\n          {{req.maxArea}}\n        </ion-note>\n      </button>\n      <button ion-item *ngIf="req.category==\'House\'">\n        <ion-label>\n          Number of Bed Rooms\n        </ion-label>\n        <ion-note item-end>\n          {{req.noOfRooms}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Minimum Price\n        </ion-label>\n        <ion-note item-end>\n          {{req.minPrice}}\n        </ion-note>\n      </button>\n      <button ion-item>\n        <ion-label>\n          Maximum Price\n        </ion-label>\n        <ion-note item-end>\n          {{req.maxPrice}}\n        </ion-note>\n      </button>\n\n      <div class="button--wrapper">\n        <button ion-button color="primary" (click)="confirmReq()">Continue</button>\n      </div>\n    </ion-list>\n    <ion-list *ngSwitchCase="\'Lists\'">\n      <ion-card *ngFor="let ad of adList">\n        <img src="../../assets/imgs/house1.jpg">\n        <ion-card-header text-center>\n\n          <ion-title>{{ad.category}} for sale in {{ad.location}}</ion-title>\n          <ion-note>{{ad.uploaded_at | date:\'fullDate\'}}</ion-note>\n        </ion-card-header>\n\n        <ion-item-group>\n          <ion-item>\n            Price\n            <div item-end>LKR {{ad.price}}</div>\n          </ion-item>\n          <div *ngIf="ad.category==\'House\'">\n            <ion-item>\n              Beds\n              <div item-end>{{ad.bedrooms}}</div>\n            </ion-item>\n            <ion-item>\n              Baths\n              <div item-end>\n                {{ad.bathrooms}}\n              </div>\n            </ion-item>\n            <ion-item>\n              House size\n              <div item-end>\n                -\n              </div>\n            </ion-item>\n          </div>\n\n          <ion-item>\n            Land Size\n            <div item-end>\n              {{ad.land_size}}\n            </div>\n          </ion-item>\n        </ion-item-group>\n\n\n\n        <ion-row>\n          <ion-col text-center>\n            <button ion-button clear icon-only text-center>\n              <ion-icon name="call"></ion-icon>\n              <!-- <div>12 Likes</div> -->\n            </button>\n          </ion-col>\n          <ion-col text-center>\n            <button ion-button clear icon-only text-center>\n              <ion-icon name="mail"></ion-icon>\n              <!-- <div>4 Comments</div> -->\n            </button>\n          </ion-col>\n          <ion-col text-center>\n            <button ion-button clear icon-only text-center (click)="openAddAppointment(ad)">\n              <ion-icon name="calendar"></ion-icon>\n              <!-- <div>4 Comments</div> -->\n            </button>\n          </ion-col>\n        </ion-row>\n        <ion-item *ngIf="">\n\n        </ion-item>\n\n      </ion-card>\n\n    </ion-list>\n    <ion-list *ngSwitchCase="\'Appointment\'">\n      <ion-item>\n        <ion-thumbnail item-start>\n          <img src="../../assets/imgs/house1.jpg">\n        </ion-thumbnail>\n        <h2>House for sale in Attidiya</h2>\n        <h3>25th Jun 2018</h3>\n        <p>11.30 AM @ the premises</p>\n        <div item-end class="appListButtonWrap">\n          <button ion-button clear icon-only text-center large>\n            <ion-icon name="call"></ion-icon>\n          </button>\n          <button ion-button clear icon-only text-center color="red" large>\n            <ion-icon name="close-circle"></ion-icon>\n          </button>\n        </div>\n      </ion-item>\n      <ion-item>\n        <ion-thumbnail item-start>\n          <img src="../../assets/imgs/house2.jpg">\n        </ion-thumbnail>\n        <h2>House for sale in Homagama</h2>\n        <h3>26th Jun 2018</h3>\n        <p>10.30 AM @ the premises</p>\n        <div item-end class="appListButtonWrap">\n          <button ion-button clear icon-only text-center large>\n            <ion-icon name="call"></ion-icon>\n          </button>\n          <button ion-button clear icon-only text-center color="red" large>\n            <ion-icon name="close-circle"></ion-icon>\n          </button>\n        </div>\n\n      </ion-item>\n    </ion-list>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/search-results/search-results.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_retrieve_ads_retrieve_ads__["a" /* RetrieveAdsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* ModalController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_retrieve_ads_retrieve_ads__["a" /* RetrieveAdsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_retrieve_ads_retrieve_ads__["a" /* RetrieveAdsProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* ModalController */]) === "function" && _d || Object])
     ], SearchResultsPage);
     return SearchResultsPage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=search-results.js.map
@@ -625,8 +629,9 @@ var DateTimeModalPage = /** @class */ (function () {
             comments: ''
         };
     }
-    DateTimeModalPage.prototype.confirmApp = function (ad_id) {
+    DateTimeModalPage.prototype.confirmApp = function () {
         var _this = this;
+        console.log(this.appDet);
         this.addApp.addAppointment(this.appDet).then(function (response) {
             _this.viewCtrl.dismiss(response);
         }, function (err) {
@@ -634,18 +639,19 @@ var DateTimeModalPage = /** @class */ (function () {
         });
     };
     DateTimeModalPage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss();
+        this.viewCtrl.dismiss({ message: 'dismiss' });
     };
     DateTimeModalPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad DateTimeModalPage');
     };
     DateTimeModalPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-date-time-modal',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/date-time-modal/date-time-modal.html"*/'<!--\n  Generated template for the DateTimeModalPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Set Appointment</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="outer-content">\n  <ion-list>\n    <ion-list-header>\n      Appointment Details\n    </ion-list-header>\n    <ion-item>\n      <ion-label>Date & Time</ion-label>\n      <ion-datetime displayFormat="MM/DD/YYYY hh:mm A" [(ngModel)]="appDet.datetime" color="primary"></ion-datetime>\n    </ion-item>\n\n    <ion-item>\n      <ion-label>Comments</ion-label>\n      <ion-textarea [(ngModel)]="appDet.comments"></ion-textarea>\n    </ion-item>\n  </ion-list>\n\n  <div class="button--wrapper">\n    <button ion-button color="primary" (click)="confirmApp()">\n      Confirm\n    </button>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/date-time-modal/date-time-modal.html"*/,
+            selector: 'page-date-time-modal',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/date-time-modal/date-time-modal.html"*/'<!--\n  Generated template for the DateTimeModalPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Set Appointment</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="outer-content">\n  <ion-list>\n    <ion-list-header>\n      Appointment Details\n    </ion-list-header>\n    <ion-item>\n      <ion-label>Date & Time</ion-label>\n      <ion-datetime displayFormat="MM/DD/YYYY hh:mm A" [(ngModel)]="appDet.datetime" color="primary"></ion-datetime>\n    </ion-item>\n\n    <ion-item>\n      <ion-label>Comments</ion-label>\n      <ion-textarea [(ngModel)]="appDet.comments"></ion-textarea>\n    </ion-item>\n  </ion-list>\n\n  <div class="button--wrapper">\n    <button ion-button color="danger" (click)="dismiss()">Cancel</button>\n    <button ion-button color="primary" (click)="confirmApp()">\n      Confirm\n    </button>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/date-time-modal/date-time-modal.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__providers_appointment_appointment__["a" /* AppointmentProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ViewController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_appointment_appointment__["a" /* AppointmentProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_appointment_appointment__["a" /* AppointmentProvider */]) === "function" && _d || Object])
     ], DateTimeModalPage);
     return DateTimeModalPage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=date-time-modal.js.map

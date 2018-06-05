@@ -77,6 +77,7 @@ router.route('/auth/verify').post(auth.verifyPhoneToken);
 router.route('/auth/login').post(auth.login);
 router.route('/ads/getads').post(ads.retrieveAds);
 router.route('/app/addAppointment').post(apps.addAppointments);
+router.route('/app/getAppointment').post(apps.getAppointments);
 
 app.use('/api',router);
 
