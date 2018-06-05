@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AppointmentProvider } from '../../providers/appointment/appointment';
 
 /**
  * Generated class for the AllAppointmentsPage page.
@@ -14,12 +15,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'all-appointments.html',
 })
 export class AllAppointmentsPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  appReqUserData: any = {
+    phone_number: window.localStorage.getItem('phone_number'),
+    status: 4
+  }
+  appData:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public appService:AppointmentProvider) {
+    this.ionViewDidEnter();
+    this.appData = null;
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AllAppointmentsPage');
+  ionViewDidEnter() {
+    this.appService.getAppointment(this.appReqUserData).then((response)=>{
+      this.appData=response;
+      console.log(this.appData)
+    },
+    (err)=>{
+      console.log(err)
+    }
+  )
   }
 
 }

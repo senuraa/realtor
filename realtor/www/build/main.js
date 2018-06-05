@@ -83,6 +83,7 @@ var SignupPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AllAppointmentsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_appointment_appointment__ = __webpack_require__(82);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -94,6 +95,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 /**
  * Generated class for the AllAppointmentsPage page.
  *
@@ -101,20 +103,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var AllAppointmentsPage = /** @class */ (function () {
-    function AllAppointmentsPage(navCtrl, navParams) {
+    function AllAppointmentsPage(navCtrl, navParams, appService) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.appService = appService;
+        this.appReqUserData = {
+            phone_number: window.localStorage.getItem('phone_number'),
+            status: 4
+        };
+        this.ionViewDidEnter();
+        this.appData = null;
     }
-    AllAppointmentsPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad AllAppointmentsPage');
+    AllAppointmentsPage.prototype.ionViewDidEnter = function () {
+        var _this = this;
+        this.appService.getAppointment(this.appReqUserData).then(function (response) {
+            _this.appData = response;
+            console.log(_this.appData);
+        }, function (err) {
+            console.log(err);
+        });
     };
     AllAppointmentsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-all-appointments',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/all-appointments/all-appointments.html"*/'<!--\n  Generated template for the AllAppointmentsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Appointments</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/all-appointments/all-appointments.html"*/,
+            selector: 'page-all-appointments',template:/*ion-inline-start:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/all-appointments/all-appointments.html"*/'<!--\n  Generated template for the AllAppointmentsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Appointments</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n    <ion-item *ngFor="let app of appData">\n        <ion-thumbnail item-start>\n          <img src="../../assets/imgs/house1.jpg">\n        </ion-thumbnail>\n        <h2>{{app.ad_id.category}} for sale in {{app.ad_id.location}}</h2>\n        <h3>{{app.app_date | date:\'fullDate\'}}</h3>\n        <p>{{app.app_date | date:\'shortTime\'}} @ the premises</p>\n        <div item-end class="appListButtonWrap">\n          <button ion-button clear icon-only text-center>\n            <ion-icon name="call"></ion-icon>\n          </button>\n          <button ion-button clear icon-only text-center color="red">\n            <ion-icon name="close-circle"></ion-icon>\n          </button>\n        </div>\n      </ion-item>\n</ion-content>\n'/*ion-inline-end:"/Users/virtusa/Documents/senura/housingapp/realtor/src/pages/all-appointments/all-appointments.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_appointment_appointment__["a" /* AppointmentProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_appointment_appointment__["a" /* AppointmentProvider */]) === "function" && _c || Object])
     ], AllAppointmentsPage);
     return AllAppointmentsPage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=all-appointments.js.map
