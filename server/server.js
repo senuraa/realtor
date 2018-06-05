@@ -78,6 +78,7 @@ router.route('/auth/login').post(auth.login);
 router.route('/ads/getads').post(ads.retrieveAds);
 router.route('/app/addAppointment').post(apps.addAppointments);
 router.route('/app/getAppointment').post(apps.getAppointments);
+router.route('/app/changeAppointmentStatus').post(apps.changeAppointmentStatus);
 
 app.use('/api',router);
 

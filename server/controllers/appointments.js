@@ -42,12 +42,23 @@ exports.getAppointments = function (req, res) {
     var app;
     var ad;
 
-    Apps.find({phone_number:phone_number}).populate('ad_id').exec(function(err,docs){
+    Apps.find({phone_number:phone_number,status:{$lt:status}}).populate('ad_id').exec(function(err,docs){
         if(err){
             console.log(err);
             res.status(500).json({"error":"error getting appointments"})
         }else{
             res.status(200).json(docs);
+        }
+    })
+}
+exports.changeAppointmentStatus = function(req,res){
+    var id=req.body._id;
+    var status = req.body.status;
+    Apps.findByIdAndUpdate(id,{$set :{status:status}}).exec(function(err,docs){
+        if(err){
+            res.status(500).json({"message":"error changing status"})
+        }else{
+            res.status(200).json({"message":"status updated successfully"})
         }
     })
 }
