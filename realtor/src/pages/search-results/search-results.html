@@ -177,7 +177,7 @@
               <h3>{{app.app_date | date:'fullDate'}}</h3>
               <p>{{app.app_date | date:'shortTime'}} @ the premises</p>
               <div item-end class="appListButtonWrap">
-                <button ion-button clear icon-only text-center>
+                <button ion-button clear icon-only text-center (click)="call(app.ad_id.contact)">
                   <ion-icon name="call"></ion-icon>
                 </button>
                 <button ion-button clear icon-only text-center color="red">
