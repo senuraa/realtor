@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
-const API_URL = 'http://localhost:1500/api/'
+const API_URL = 'http://54.169.167.51:1500/api/'
 
 @Injectable()
 export class LoginServiceProvider {

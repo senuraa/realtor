@@ -22,7 +22,7 @@ exports.addAppointments = function (req, res) {
     var app_date = req.body.datetime;
     var comments = req.body.comments;
     console.log(req.body);
-    var newApp = new Apps({ phone_number: phone_number, ad_id: mongoose.Types.ObjectId(ad_id), app_date: app_date, comments: comments, status: 0 })
+    var newApp = new Apps({ phone_number: phone_number, ad_id: mongoose.Types.ObjectId(ad_id), app_date: app_date, comments: comments, status: 0,adIdStr:ad_id })
     newApp.save(function (err, apps) {
         if (err) {
             throw err;
@@ -62,4 +62,6 @@ exports.changeAppointmentStatus = function(req,res){
         }
     })
 }
-
+exports.getTopPicks=function(req,res){
+    
+}

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SignupServiceProvider } from '../../providers/signup-service/signup-service';
-import { VerifyPage } from '../verify/verify';
+//import { VerifyPage } from '../verify/verify';
 /**
  * Generated class for the SignupPage page.
  *
@@ -37,7 +37,7 @@ export class SignupPage {
     this.signupService.userSignup(this.user).then((response) => {
       console.log('success');
       window.localStorage.setItem('phone_number', this.user.phone_number);
-      this.navCtrl.push(VerifyPage,this.user);
+      this.navCtrl.push('VerifyPage',this.user);
 
       //console.log(response);
     }, (err) => {

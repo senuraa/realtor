@@ -3,8 +3,8 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { LoginPage } from '../pages/login/login';
-import { TabsPage } from '../pages/tabs/tabs'
+//import { LoginPage } from '../pages/login/login';
+//import { TabsPage } from '../pages/tabs/tabs'
 @Component({
   templateUrl: 'app.html'
 })
@@ -23,9 +23,9 @@ export class MyApp {
   checkPreviousAuth(): void {
     if ((window.localStorage.getItem('phone_number') === "undefined" || window.localStorage.getItem('phone_number') === null) &&
       (window.localStorage.getItem('password') === "undefined" || window.localStorage.getItem('password') === null)) {
-      this.rootPage = LoginPage;
+      this.rootPage = 'LoginPage';
     } else {
-      this.rootPage = TabsPage;
+      this.rootPage = "TabsPage";
     }
   }
 }

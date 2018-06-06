@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {SearchResultsPage} from '../search-results/search-results';
+// import {SearchResultsPage} from '../search-results/search-results';
 import {CONFIG} from '../../providers/app-config/app-config';
 
 
@@ -39,7 +39,7 @@ export class ReqCapturePage {
     this.setCities();
   }
   gotoSearchResults(){
-    this.navCtrl.push(SearchResultsPage,this.request);
+    this.navCtrl.push('SearchResultsPage',this.request);
   }
   setCities(){
     this.cities = CONFIG.cities;

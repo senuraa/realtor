@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController} from 'ionic-angular';
-import { ReqCapturePage } from '../req-capture/req-capture';
+import { NavController, IonicPage} from 'ionic-angular';
+// import { ReqCapturePage } from '../req-capture/req-capture';
+
+@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -11,6 +13,6 @@ export class HomePage {
 
   }
   startReqCapture() {
-    this.navCtrl.push(ReqCapturePage);
+    this.navCtrl.push('ReqCapturePage');
   }
 }

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { SignupPage } from '../signup/signup';
+//import { SignupPage } from '../signup/signup';
 import { LoginServiceProvider } from '../../providers/login-service/login-service';
-import { TabsPage } from '../tabs/tabs'
+//import { TabsPage } from '../tabs/tabs'
 
 /**
  * Generated class for the LoginPage page.
@@ -27,7 +27,7 @@ export class LoginPage {
     this.loginService.userLogin(this.user).then((response) => {
       console.log('success');
       window.localStorage.setItem('phone_number', this.user.phone_number);
-      this.navCtrl.push(TabsPage, this.user);
+      this.navCtrl.push('TabsPage', this.user);
     },
       (err) => {
         console.log(err)
@@ -35,7 +35,7 @@ export class LoginPage {
     )
   }
   openSignup() {
-    this.navCtrl.push(SignupPage);
+    this.navCtrl.push('SignupPage');
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
