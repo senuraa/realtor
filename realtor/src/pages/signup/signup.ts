@@ -36,7 +36,9 @@ export class SignupPage {
     //this.navCtrl.push(VerifyPage,this.user);
     this.signupService.userSignup(this.user).then((response) => {
       console.log('success');
+      window.localStorage.setItem('phone_number', this.user.phone_number);
       this.navCtrl.push(VerifyPage,this.user);
+
       //console.log(response);
     }, (err) => {
       console.log('err')
