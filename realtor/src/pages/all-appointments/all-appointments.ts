@@ -21,7 +21,7 @@ export class AllAppointmentsPage {
   }
   appData:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public appService:AppointmentProvider) {
-    this.ionViewDidEnter();
+    //this.ionViewDidEnter();
     this.appData = null;
   }
 
