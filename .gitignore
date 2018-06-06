@@ -33,6 +33,7 @@ plugins
 coverage/
 dist/
 node_modules/
+package-lock.json
 tmp/
 temp/
 hooks/
