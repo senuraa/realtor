@@ -40,7 +40,9 @@ export class SearchResultsPage {
     phone_number: window.localStorage.getItem('phone_number'),
     status: 2
   }
-
+  editReq(){
+    this.navCtrl.pop()
+  }
   confirmReq() {
     // this.listDisable = false;
     //   this.stepType = "Lists";

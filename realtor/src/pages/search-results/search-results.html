@@ -28,7 +28,7 @@
 <ion-content class="outer-content cards-bg">
   <div [ngSwitch]="stepType">
     <ion-list *ngSwitchCase="'Requirement'">
-      <button ion-item>
+      <button ion-item (click)="editReq()">
         <ion-label>
           Location
         </ion-label>
@@ -36,7 +36,7 @@
           {{req.location}}
         </ion-note>
       </button>
-      <button ion-item>
+      <button ion-item (click)="editReq()">
         <ion-label>
           Type
         </ion-label>
@@ -44,7 +44,7 @@
           {{req.type}}
         </ion-note>
       </button>
-      <button ion-item>
+      <button ion-item (click)="editReq()">
         <ion-label>
           Category
         </ion-label>
@@ -52,7 +52,7 @@
           {{req.category}}
         </ion-note>
       </button>
-      <button ion-item>
+      <button ion-item (click)="editReq()">
         <ion-label>
           Minimum Area
         </ion-label>
@@ -60,7 +60,7 @@
           {{req.minArea}}
         </ion-note>
       </button>
-      <button ion-item>
+      <button ion-item  (click)="editReq()">
         <ion-label>
           Maximum Area
         </ion-label>
@@ -68,7 +68,7 @@
           {{req.maxArea}}
         </ion-note>
       </button>
-      <button ion-item *ngIf="req.category=='House'">
+      <button ion-item *ngIf="req.category=='House'" (click)="editReq()">
         <ion-label>
           Number of Bed Rooms
         </ion-label>
@@ -76,7 +76,7 @@
           {{req.noOfRooms}}
         </ion-note>
       </button>
-      <button ion-item>
+      <button ion-item (click)="editReq()">
         <ion-label>
           Minimum Price
         </ion-label>
@@ -84,7 +84,7 @@
           {{req.minPrice}}
         </ion-note>
       </button>
-      <button ion-item>
+      <button ion-item  (click)="editReq()">
         <ion-label>
           Maximum Price
         </ion-label>
