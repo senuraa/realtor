@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { App,IonicPage, NavController, NavParams } from 'ionic-angular';
-import { LoginPage } from '../login/login'
+
 /**
  * Generated class for the MyProfilePage page.
  *
@@ -24,7 +24,7 @@ export class MyProfilePage {
   logout():void {
     window.localStorage.removeItem('phone_number');
     window.localStorage.removeItem('password');
-    this.app.getRootNav().setRoot(LoginPage);
+    this.app.getRootNav().setRoot('LoginPage');
     this.navCtrl.popToRoot();
   }
 
