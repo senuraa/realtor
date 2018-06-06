@@ -99,7 +99,7 @@
     </ion-list>
     <ion-list *ngSwitchCase="'Lists'">
       <ion-card *ngFor="let ad of adList">
-        <img src="../../assets/imgs/house1.jpg">
+        <img src="assets/imgs/house1.jpg">
         <ion-card-header text-center>
 
           <ion-title>{{ad.category}} for sale in {{ad.location}}</ion-title>
@@ -168,7 +168,7 @@
       <div *ngIf="appointmentList">
           <ion-item *ngFor="let app of appointmentList">
               <ion-thumbnail item-start>
-                <img src="../../assets/imgs/house1.jpg">
+                <img src="assets/imgs/house1.jpg">
               </ion-thumbnail>
               <h2>{{app.ad_id.category}} for sale in {{app.ad_id.location}}</h2>
               <h3>{{app.app_date | date:'fullDate'}}</h3>

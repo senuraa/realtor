@@ -19,7 +19,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 // import { FavoritesPage } from '../pages/favorites/favorites';
 // import { SearchPage } from '../pages/search/search';
 
-import { ReqCapturePage } from '../pages/req-capture/req-capture';
+// import { ReqCapturePage } from '../pages/req-capture/req-capture';
 
 // import { SearchResultsPage } from '../pages/search-results/search-results';
 

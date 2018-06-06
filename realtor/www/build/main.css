@@ -30578,7 +30578,7 @@ page-home {
 }
 
 page-home #top-banner {
-  background: url(../../assets/imgs/imgentry.jpg) no-repeat center center;
+  background: url(../assets/imgs/imgentry.jpg) no-repeat center center;
   color: #fff;
   text-align: center;
   height: 40%;
