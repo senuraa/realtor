@@ -28,7 +28,7 @@ exports.retrieveAds= function(req,res){
             res.status(500).json({message:err})
         }else{
             if(docs.length<=0){
-                ads.find({category:category}).exec(function (err,docs){
+                ads.find({category:category,location:{$ne:'NOTFOUND'}}).exec(function (err,docs){
                     if(err){
                         console.log(err);
                         res.status(500).json({message:err});
