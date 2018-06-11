@@ -13,14 +13,17 @@ export class HomePage {
 
   topAds : any;
   constructor(public navCtrl: NavController, private retrieveAds : RetrieveAdsProvider) {
+    
+  }
+  startReqCapture() {
+    this.navCtrl.push('ReqCapturePage');
+  }
+  ionViewWillEnter(){
     this.retrieveAds.retrieveTopAds().then(((response) => {
       this.topAds = response;
     }), err => {
       console.log("error : ", err )
     })
-  }
-  startReqCapture() {
-    this.navCtrl.push('ReqCapturePage');
   }
 }
 
