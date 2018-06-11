@@ -25,11 +25,11 @@ coverage
 
 #ionic
 plugins
-.idea/
-.sourcemaps/
-.sass-cache/
-.tmp/
-.versions/
+realtor/.idea/
+realtor/.sourcemaps/
+realtor/.sass-cache/
+realtor/.tmp/
+realtor/.versions/
 coverage/
 dist/
 node_modules/
