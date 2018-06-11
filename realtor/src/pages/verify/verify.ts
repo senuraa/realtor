@@ -17,6 +17,7 @@ import { SignupServiceProvider } from '../../providers/signup-service/signup-ser
 export class VerifyPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public signupService: SignupServiceProvider) {
   }
+  invalidCode:boolean=false;
   user: any = {
     first_name: this.navParams.get('first_name'),
     last_name: this.navParams.get('last_name'),
@@ -31,6 +32,7 @@ export class VerifyPage {
       console.log('success')
       this.navCtrl.push('TabsPage', this.user)
     }, (err) => {
+      this.invalidCode=true;
       console.log(err);
     })
   }
