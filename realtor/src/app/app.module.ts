@@ -21,7 +21,6 @@ import { Constants } from '../providers/constants/constants';
 @NgModule({
   declarations: [
     MyApp,
-
   ],
   imports: [
     BrowserModule,

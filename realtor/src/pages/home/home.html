@@ -22,7 +22,7 @@
             </ion-card-title>
           <ion-card-content text-wrap>
             <p>
-                {{add.description}}
+                {{(add.description.length>6)? (add.description | slice:0:160)+'....':(add.description)}}
             </p>
           </ion-card-content>
 
