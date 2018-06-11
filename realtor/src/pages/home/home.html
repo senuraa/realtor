@@ -13,55 +13,16 @@
       Top Picks
     </ion-title>
     <ion-slides loop='true' pager='true' paginationType='bullets'>
-      <ion-slide>
+      <ion-slide *ngFor="let add of topAds">
         <ion-card>
 
           <img src="assets/imgs/house1.jpg" />
-
-          <ion-card-content>
             <ion-card-title>
-              Nine Inch Nails Live
+              {{add.category}} in {{add.location}}
             </ion-card-title>
+          <ion-card-content text-wrap>
             <p>
-              The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.
-            </p>
-          </ion-card-content>
-
-          <ion-row no-padding>
-            <ion-col>
-              <button ion-button clear small color="danger" icon-start>
-                <ion-icon name='star'></ion-icon>
-                Favorite
-              </button>
-            </ion-col>
-            <!-- <ion-col text-center>
-              <button ion-button clear small color="danger" icon-start>
-                <ion-icon name='musical-notes'></ion-icon>
-                Listen
-              </button>
-            </ion-col> -->
-            <ion-col text-right>
-              <button ion-button clear small color="danger" icon-start>
-                <ion-icon name='share-alt'></ion-icon>
-                Share
-              </button>
-            </ion-col>
-          </ion-row>
-
-        </ion-card>
-      </ion-slide>
-
-      <ion-slide>
-        <ion-card>
-
-          <img src="assets/imgs/house2.jpg" />
-
-          <ion-card-content>
-            <ion-card-title>
-              Nine Inch Nails Live
-            </ion-card-title>
-            <p>
-              The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.
+                {{add.description}}
             </p>
           </ion-card-content>
 

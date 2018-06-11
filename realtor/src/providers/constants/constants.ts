@@ -15,6 +15,7 @@ export class Constants {
   public static URL_VERIFY: string = Constants.URL_SERVICE_ENDPOINT + 'auth/verify';
 
   public static URL_GETADS: string = Constants.URL_SERVICE_ENDPOINT + 'ads/getads';
+  public static URL_GETTOPADS : string = Constants.URL_SERVICE_ENDPOINT + 'ads/topads';
 
   public static URL_ADD_APPOINTMENT: string = Constants.URL_SERVICE_ENDPOINT + 'app/addAppointment';
   public static URL_GET_APPOINTMENTS: string = Constants.URL_SERVICE_ENDPOINT + 'app/getAppointment';

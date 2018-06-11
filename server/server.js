@@ -76,6 +76,7 @@ router.route('/auth/register').post(auth.requestPhoneVerification);
 router.route('/auth/verify').post(auth.verifyPhoneToken);
 router.route('/auth/login').post(auth.login);
 router.route('/ads/getads').post(ads.retrieveAds);
+router.route('/ads/topads').get(ads.topAds);
 router.route('/app/addAppointment').post(apps.addAppointments);
 router.route('/app/getAppointment').post(apps.getAppointments);
 router.route('/app/changeAppointmentStatus').post(apps.changeAppointmentStatus);
