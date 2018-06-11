@@ -25,11 +25,11 @@ coverage
 
 #ionic
 plugins
-.idea/
-.sourcemaps/
-.sass-cache/
-.tmp/
-.versions/
+realtor/.idea/
+**/.sourcemaps/
+**/.sass-cache/
+**/.tmp/
+**/.versions/
 coverage/
 dist/
 node_modules/
@@ -42,6 +42,7 @@ plugins/
 plugins/android.json
 plugins/ios.json
 www/
+**/*.map
 $RECYCLE.BIN/
 
 # Bower dependency directory (https://bower.io/)

@@ -17,6 +17,7 @@
   <ion-item>
     <ion-label floating>Verification code</ion-label>
     <ion-input type="number" [(ngModel)]="user.token"></ion-input>
+    <ion-label stacked *ngIf="invalidCode" color="danger">Invalid Verification Code</ion-label>
   </ion-item>
   <div padding>
     <button ion-button color="primary" block (click)="verify()">Sign up</button>
