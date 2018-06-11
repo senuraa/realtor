@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Platform } from 'ionic-angular';
 // import {SearchResultsPage} from '../search-results/search-results';
-import { CITIES } from '../../providers/constants/constants'
+import { CITIES } from '../../providers/constants/constants';
+import { StatusBar } from '@ionic-native/status-bar';
+
 /**
  * Generated class for the ReqCapturePage page.
  *
@@ -33,8 +35,13 @@ export class ReqCapturePage {
     type: 'Buy'
 
   }
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public statusBar:StatusBar,public platform: Platform) {
     this.setCities();
+    this.platform= platform;
+    this.platform.ready().then( () => {
+      this.statusBar.styleDefault()
+    });
+    this.statusBar.styleDefault();
   }
   gotoSearchResults() {
     this.navCtrl.push('SearchResultsPage', this.request);
