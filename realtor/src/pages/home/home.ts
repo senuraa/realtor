@@ -15,7 +15,7 @@ export class HomePage {
     this.retrieveAds.retrieveTopAds().then(((response) => {
       this.topAds = response;
     }), err => {
-      console.log(err)
+      console.log("error : ", err )
     })
   }
   startReqCapture() {
