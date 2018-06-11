@@ -33,4 +33,16 @@ export class RetrieveAdsProvider {
 
     });
   }
+
+retrieveTopAds() {
+  return new Promise((resolve, reject) => {
+    this.http.get(Constants.URL_GETTOPADS)
+    .subscribe(res => {
+      resolve(res);
+    }, err => {
+      reject(err);
+    })
+  });
+}
+
 }
