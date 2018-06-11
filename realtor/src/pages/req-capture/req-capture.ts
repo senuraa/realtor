@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 // import {SearchResultsPage} from '../search-results/search-results';
-import {CONFIG} from '../../providers/app-config/app-config';
-
-
+import { CITIES } from '../../providers/constants/constants'
 /**
  * Generated class for the ReqCapturePage page.
  *
@@ -17,32 +15,32 @@ import {CONFIG} from '../../providers/app-config/app-config';
   templateUrl: 'req-capture.html',
 })
 export class ReqCapturePage {
-  showList:boolean = false;
+  showList: boolean = false;
   cities: Array<string>
   request = {
-    location : '',
+    location: '',
     noOfRooms: 1,
-    priceRange:{
-      lower:'500',
-      upper:'900'
+    priceRange: {
+      lower: '500',
+      upper: '900'
     },
-    category:'House',
-    areaRange:{
-      lower:'500',
-      upper:'900'
+    category: 'House',
+    areaRange: {
+      lower: '500',
+      upper: '900'
     },
-    showLastSeven:false,
-    type:'Buy'
+    showLastSeven: false,
+    type: 'Buy'
 
   }
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.setCities();
   }
-  gotoSearchResults(){
-    this.navCtrl.push('SearchResultsPage',this.request);
+  gotoSearchResults() {
+    this.navCtrl.push('SearchResultsPage', this.request);
   }
-  setCities(){
-    this.cities = CONFIG.cities;
+  setCities() {
+    this.cities = CITIES.cities;
     //console.log(this.cities[1]);
   }
   filterItems(ev: any) {
@@ -50,16 +48,16 @@ export class ReqCapturePage {
     let val = ev.target.value;
 
     if (val && val.trim() !== '') {
-      this.cities = this.cities.filter(function(item) {
+      this.cities = this.cities.filter(function (item) {
         return item.toLowerCase().includes(val.toLowerCase());
       });
       this.showList = true;
     }
-    else{
+    else {
       this.showList = false;
     }
   }
-  hideList(city){
+  hideList(city) {
     this.showList = false;
     this.request.location = city;
   }
