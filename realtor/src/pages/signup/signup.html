@@ -7,32 +7,41 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>signup</ion-title>
+    <ion-title>Sign Up</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  
-    <ion-item>
-      <ion-label floating>First Name</ion-label>
-      <ion-input type="text" [(ngModel)]="user.first_name"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Last Name</ion-label>
-      <ion-input type="text" [(ngModel)]="user.last_name"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Mobile Number</ion-label>
-      <ion-input type="tel" [(ngModel)]="user.phone_number"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
-    </ion-item>
-    <div padding>
-      <button ion-button color="red" block (click)="signup()">Sign up</button>
-    </div>
+    <form [formGroup]="signUpForm">
+      <ion-item>
+        <ion-label stacked>First Name</ion-label>
+        <ion-input type="text" formControlName="first_name"></ion-input>
+        <ion-label stacked *ngIf="!signUpForm.controls.first_name.valid && signUpForm.controls.first_name.touched" color="danger">Enter your first name</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Last Name</ion-label>
+        <ion-input type="text" formControlName="last_name"></ion-input>
+        <ion-label stacked *ngIf="!signUpForm.controls.last_name.valid && signUpForm.controls.last_name.touched" color="danger">Enter your last name</ion-label>
+
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Mobile Number</ion-label>
+        <ion-input type="tel" formControlName="phone_number"></ion-input>
+        <ion-label stacked *ngIf="!signUpForm.controls.phone_number.valid && signUpForm.controls.phone_number.touched" color="danger">Phone number should contain 10 numbers</ion-label>
+
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+        <ion-label stacked *ngIf="!signUpForm.controls.password.valid && signUpForm.controls.password.touched" color="danger">Password should contain at least 6 characters</ion-label>
+
+      </ion-item>
+      <div padding>
+        <button ion-button color="red" block [disabled]="!signUpForm.valid" (click)="signup(signUpForm.value)">Sign up</button>
+      </div>
+    </form>
+    
     
 </ion-content>

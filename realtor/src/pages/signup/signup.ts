@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FormBuilder, FormGroup,Validators } from '@angular/forms'
+import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
 import { SignupServiceProvider } from '../../providers/signup-service/signup-service';
 //import { VerifyPage } from '../verify/verify';
 /**
@@ -15,33 +16,42 @@ import { SignupServiceProvider } from '../../providers/signup-service/signup-ser
   templateUrl: 'signup.html',
 })
 export class SignupPage {
-  user = {
-    first_name: '',
-    last_name: '',
-    phone_number: '',
-    country_code: '94',
-    token:'',
-    password:''
-    }
-  constructor(public navCtrl: NavController, public navParams: NavParams, public signupService: SignupServiceProvider) {
-    // this.form = fb.group({
-    //   'first_name':['', Validators.required],
-    //   'last_name':['', Validators.required],
-    //   'phone_number':['', Validators.required],
-    //   'password': ['', Validators.required],
-    //   // 'password_conf': ['', Validators.required]
-    // }, {validator: SignupPage.passwordsMatch});
+  signUpForm: FormGroup;
+  // user = {
+  //   first_name: '',
+  //   last_name: '',
+  //   phone_number: '',
+  //   country_code: '94',
+  //   token: '',
+  //   password: ''
+  // }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public signupService: SignupServiceProvider, private formBuilder:FormBuilder,private alertCtrl:AlertController) {
+    this.signUpForm = this.formBuilder.group({
+        first_name: ['',Validators.required],
+        last_name: ['',Validators.required],
+        phone_number: ['',Validators.compose([Validators.required,Validators.minLength(10),Validators.maxLength(10)])],
+        country_code: '94',
+        token: '',
+        password: ['',Validators.compose([Validators.required,Validators.minLength(6)])]
+      
+    })
   }
-  signup() {
+  signup(user) {
     //this.navCtrl.push(VerifyPage,this.user);
-    this.signupService.userSignup(this.user).then((response) => {
+    this.signupService.userSignup(user).then((response) => {
       console.log('success');
-      window.localStorage.setItem('phone_number', this.user.phone_number);
-      this.navCtrl.push('VerifyPage',this.user);
+      window.localStorage.setItem('phone_number', user.phone_number);
+      this.navCtrl.push('VerifyPage', user);
 
       //console.log(response);
     }, (err) => {
-      console.log('err')
+      let alert = this.alertCtrl.create({
+        title:'Phone Number',
+        subTitle:err.error.message,
+        buttons:['Dismiss']
+      })
+      alert.present();
+      console.log(err)
     })
   }
   ionViewDidLoad() {
