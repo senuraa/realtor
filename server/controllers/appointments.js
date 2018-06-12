@@ -22,7 +22,7 @@ exports.addAppointments = function (req, res) {
     var app_date = req.body.datetime;
     var comments = req.body.comments;
     console.log(req.body);
-    Apps.find({ phone_number: phone_number, ad_id: mongoose.Types.ObjectId(ad_id) }).exec(function (err, docs) {
+    Apps.find({ phone_number: phone_number, ad_id: mongoose.Types.ObjectId(ad_id),status:{$lt:2} }).exec(function (err, docs) {
         if (docs.length > 0) {
             res.status(500).json({ "message": "Appointment exists" })
         } else {

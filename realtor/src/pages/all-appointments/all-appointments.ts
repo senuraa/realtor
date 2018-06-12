@@ -18,14 +18,26 @@ import { CallNumber } from '@ionic-native/call-number';
 export class AllAppointmentsPage {
   appReqUserData: any = {
     phone_number: window.localStorage.getItem('phone_number'),
-    status: 4
+    status: 2
   }
+  appStatData:any =null;
   appData:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public appService:AppointmentProvider, public alertCtrl:AlertController,public callNumber:CallNumber) {
     //this.ionViewDidEnter();
     this.appData = null;
   }
   cancel(app){
+    this.appStatData = {
+      _id:app._id,
+      status:2
+    }
+    this.appService.changeAppointmentStatus(this.appStatData).then((response)=>{
+      for(var i=0;i<this.appData.length;i++){
+        if(this.appData[i]==app){
+          this.appData.splice(i,1);
+        }
+      }
+    })
     console.log(app)
   }
   call(numArray) {
