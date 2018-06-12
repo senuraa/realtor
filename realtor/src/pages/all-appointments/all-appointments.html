@@ -13,21 +13,38 @@
 </ion-header>
 
 
-<ion-content>
-    <ion-item *ngFor="let app of appData">
+<ion-content class="outer-content">
+  <ion-list>
+
+    <ion-list-header>
+      Upcoming
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let app of appData" #item>
+      <ion-item>
         <ion-thumbnail item-start>
           <img src="assets/imgs/house1.jpg">
         </ion-thumbnail>
         <h2>{{app.ad_id.category}} for sale in {{app.ad_id.location}}</h2>
         <h3>{{app.app_date | date:'fullDate'}}</h3>
         <p>{{app.app_date | date:'shortTime'}} @ the premises</p>
-        <div item-end class="appListButtonWrap">
-          <button ion-button clear icon-only text-center>
-            <ion-icon name="call"></ion-icon>
-          </button>
-          <button ion-button clear icon-only text-center color="red">
-            <ion-icon name="close-circle"></ion-icon>
-          </button>
-        </div>
       </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="primary" (click)="viewApp(app)">
+          <ion-icon name="calendar"></ion-icon>
+          More
+        </button>
+      </ion-item-options>
+      <ion-item-options side="right">
+        <button ion-button color="secondary" (click)="call(app.ad_id.contact)">
+            <ion-icon name="call"></ion-icon>
+            Call
+        </button>
+        <button ion-button color="danger" (click)="cancel(app)">
+            <ion-icon name="close"></ion-icon>
+            Cancel
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
 </ion-content>
