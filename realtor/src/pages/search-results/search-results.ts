@@ -105,7 +105,6 @@ export class SearchResultsPage {
       alert.addButton('Ok')
       alert.present();
     }
-
   }
   openAddAppointment(ad) {
     let appModal = this.modalCtrl.create(DateTimeModalPage, { "_id": ad._id });

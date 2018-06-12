@@ -12,9 +12,11 @@ import { Constants } from '../constants/constants'
 export class AppointmentProvider {
   data: any;
   appData: any;
+  appDataStatus:any;
   constructor(public http: HttpClient) {
     this.data = null;
     this.appData = null;
+    this.appDataStatus = null;
   }
   addAppointment(appData) {
     return new Promise((resolve, reject) => {
@@ -41,6 +43,19 @@ export class AppointmentProvider {
             reject(err);
           }
         )
+    })
+  }
+  changeAppointmentStatus(appData){
+    return new Promise((resolve,reject)=>{
+      this.http.post(Constants.URL_CHANGE_APPOINTMENT_STATUS,appData)
+        .subscribe(data=>{
+          this.appDataStatus=data;
+          resolve(this.appDataStatus)
+        },
+        err =>{
+          reject(err);
+        }
+      )
     })
   }
 }
