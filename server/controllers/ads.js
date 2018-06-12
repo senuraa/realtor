@@ -64,8 +64,8 @@ exports.retrieveAds = function (req, res) {
     //var areaRange = req.body.areaRange;
     var minArea = req.body.minArea;
     var maxArea = req.body.maxArea;
-    var minPrice = req.body.minPrice;
-    var maxPrice = req.body.maxPrice;
+    var minPrice = req.body.minPrice * 10000;
+    var maxPrice = req.body.maxPrice * 10000;
 
     var onlyLastSevenDays = req.body.showLastSeven;
     ads.find({ category: category }).exec(function (err, docs) {
@@ -90,13 +90,13 @@ exports.retrieveAds = function (req, res) {
                     });
                     if (bedroomFiltered.length != 0) {
                         underscore.filter(bedroomFiltered, function (item) {
-                            if (item.price >= minPrice && item.price <= maxPrice) {
+                            if (item.price[0] >= minPrice && item.price[0] <= maxPrice) {
                                 priceJson.push(item);
                             }
                         })
                         if (priceJson.length != 0) {
                             underscore.filter(priceJson, function (item) {
-                                if (item.land_size >= minArea && item.land_size <= maxArea) {
+                                if (item.land_size[0] >= minArea && item.land_size[0] <= maxArea) {
                                     areaJson.push(item);
                                 }
                             })
@@ -107,7 +107,7 @@ exports.retrieveAds = function (req, res) {
                             }
                         } else {
                             underscore.filter(bedroomFiltered, function (item) {
-                                if (item.land_size >= minArea && item.land_size <= maxArea) {
+                                if (item.land_size[0] >= minArea && item.land_size[0] <= maxArea) {
                                     areaJson.push(item);
                                 }
                             })
@@ -120,13 +120,13 @@ exports.retrieveAds = function (req, res) {
 
                     } else {
                         underscore.filter(typeFiltered, function (item) {
-                            if (item.price >= minPrice && item.price <= maxPrice) {
+                            if (item.price[0] >= minPrice && item.price[0] <= maxPrice) {
                                 priceJson.push(item);
                             }
                         })
                         if (priceJson.length != 0) {
                             underscore.filter(priceJson, function (item) {
-                                if (item.land_size >= minArea && item.land_size <= maxArea) {
+                                if (item.land_size[0] >= minArea && item.land_size[0] <= maxArea) {
                                     areaJson.push(item);
                                 }
                             })
@@ -137,7 +137,7 @@ exports.retrieveAds = function (req, res) {
                             }
                         } else {
                             underscore.filter(typeFiltered, function (item) {
-                                if (item.land_size >= minArea && item.land_size <= maxArea) {
+                                if (item.land_size[0] >= minArea && item.land_size[0] <= maxArea) {
                                     areaJson.push(item);
                                 }
                             })
@@ -154,13 +154,13 @@ exports.retrieveAds = function (req, res) {
                     });
                     if (bedroomFiltered.length != 0) {
                         underscore.filter(bedroomFiltered, function (item) {
-                            if (item.price >= minPrice && item.price <= maxPrice) {
+                            if (item.price[0] >= minPrice && item.price[0] <= maxPrice) {
                                 priceJson.push(item);
                             }
                         })
                         if (priceJson.length != 0) {
                             underscore.filter(priceJson, function (item) {
-                                if (item.land_size >= minArea && item.land_size <= maxArea) {
+                                if (item.land_size[0] >= minArea && item.land_size[0] <= maxArea) {
                                     areaJson.push(item);
                                 }
                             })
@@ -171,7 +171,7 @@ exports.retrieveAds = function (req, res) {
                             }
                         } else {
                             underscore.filter(bedroomFiltered, function (item) {
-                                if (item.land_size >= minArea && item.land_size <= maxArea) {
+                                if (item.land_size[0] >= minArea && item.land_size[0] <= maxArea) {
                                     areaJson.push(item);
                                 }
                             })
@@ -183,13 +183,13 @@ exports.retrieveAds = function (req, res) {
                         }
                     } else {
                         underscore.filter(locationFiltered, function (item) {
-                            if (item.price >= minPrice && item.price <= maxPrice) {
+                            if (item.price[0] >= minPrice && item.price[0] <= maxPrice) {
                                 priceJson.push(item);
                             }
                         })
                         if (priceJson.length != 0) {
                             underscore.filter(priceJson, function (item) {
-                                if (item.land_size >= minArea && item.land_size <= maxArea) {
+                                if (item.land_size[0] >= minArea && item.land_size[0] <= maxArea) {
                                     areaJson.push(item);
                                 }
                             })
@@ -200,7 +200,7 @@ exports.retrieveAds = function (req, res) {
                             }
                         } else {
                             underscore.filter(locationFiltered, function (item) {
-                                if (item.land_size >= minArea && item.land_size <= maxArea) {
+                                if (item.land_size[0] >= minArea && item.land_size[0] <= maxArea) {
                                     areaJson.push(item);
                                 }
                             })
@@ -222,13 +222,13 @@ exports.retrieveAds = function (req, res) {
                     });
                     if (bedroomFiltered.length != 0) {
                         underscore.filter(bedroomFiltered, function (item) {
-                            if (item.price >= minPrice && item.price <= maxPrice) {
+                            if (item.price[0] >= minPrice && item.price[0] <= maxPrice) {
                                 priceJson.push(item);
                             }
                         })
                         if (priceJson.length != 0) {
                             underscore.filter(priceJson, function (item) {
-                                if (item.land_size >= minArea && item.land_size <= maxArea) {
+                                if (item.land_size[0] >= minArea && item.land_size[0] <= maxArea) {
                                     areaJson.push(item);
                                 }
                             })
@@ -239,7 +239,7 @@ exports.retrieveAds = function (req, res) {
                             }
                         } else {
                             underscore.filter(bedroomFiltered, function (item) {
-                                if (item.land_size >= minArea && item.land_size <= maxArea) {
+                                if (item.land_size[0] >= minArea && item.land_size[0] <= maxArea) {
                                     areaJson.push(item);
                                 }
                             })
@@ -251,13 +251,13 @@ exports.retrieveAds = function (req, res) {
                         }
                     } else {
                         underscore.filter(typeFiltered, function (item) {
-                            if (item.price >= minPrice && item.price <= maxPrice) {
+                            if (item.price[0] >= minPrice && item.price[0] <= maxPrice) {
                                 priceJson.push(item);
                             }
                         })
                         if (priceJson.length != 0) {
                             underscore.filter(priceJson, function (item) {
-                                if (item.land_size >= minArea && item.land_size <= maxArea) {
+                                if (item.land_size[0] >= minArea && item.land_size[0] <= maxArea) {
                                     areaJson.push(item);
                                 }
                             })
@@ -268,7 +268,7 @@ exports.retrieveAds = function (req, res) {
                             }
                         } else {
                             underscore.filter(typeFiltered, function (item) {
-                                if (item.land_size >= minArea && item.land_size <= maxArea) {
+                                if (item.land_size[0] >= minArea && item.land_size[0] <= maxArea) {
                                     areaJson.push(item);
                                 }
                             })
@@ -285,13 +285,13 @@ exports.retrieveAds = function (req, res) {
                     });
                     if (bedroomFiltered.length != 0) {
                         underscore.filter(bedroomFiltered, function (item) {
-                            if (item.price >= minPrice && item.price <= maxPrice) {
+                            if (item.price[0] >= minPrice && item.price[0] <= maxPrice) {
                                 priceJson.push(item);
                             }
                         })
                         if (priceJson.length != 0) {
                             underscore.filter(priceJson, function (item) {
-                                if (item.land_size >= minArea && item.land_size <= maxArea) {
+                                if (item.land_size[0] >= minArea && item.land_size[0] <= maxArea) {
                                     areaJson.push(item);
                                 }
                             })
@@ -302,7 +302,7 @@ exports.retrieveAds = function (req, res) {
                             }
                         } else {
                             underscore.filter(bedroomFiltered, function (item) {
-                                if (item.land_size >= minArea && item.land_size <= maxArea) {
+                                if (item.land_size[0] >= minArea && item.land_size[0] <= maxArea) {
                                     areaJson.push(item);
                                 }
                             })
@@ -314,13 +314,13 @@ exports.retrieveAds = function (req, res) {
                         }
                     } else {
                         underscore.filter(docJson, function (item) {
-                            if (item.price >= minPrice && item.price <= maxPrice) {
+                            if (item.price[0] >= minPrice && item.price[0] <= maxPrice) {
                                 priceJson.push(item);
                             }
                         })
                         if (priceJson.length != 0) {
                             underscore.filter(priceJson, function (item) {
-                                if (item.land_size >= minArea && item.land_size <= maxArea) {
+                                if (item.land_size[0] >= minArea && item.land_size[0] <= maxArea) {
                                     areaJson.push(item);
                                 }
                             })
@@ -331,7 +331,7 @@ exports.retrieveAds = function (req, res) {
                             }
                         } else {
                             underscore.filter(docJson, function (item) {
-                                if (item.land_size >= minArea && item.land_size <= maxArea) {
+                                if (item.land_size[0] >= minArea && item.land_size[0] <= maxArea) {
                                     areaJson.push(item);
                                 }
                             })
