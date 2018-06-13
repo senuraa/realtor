@@ -78,6 +78,7 @@ router.route('/auth/login').post(auth.login);
 router.route('/ads/getads').post(ads.retrieveAds);
 router.route('/ads/favorites').post(ads.favoriteAds);
 router.route('/ads/addToFavorites').post(ads.addToFavorite);
+router.route('/ads/removeFavorites').post(ads.removeFromFavorite);
 router.route('/ads/topads').get(ads.topAds);
 router.route('/app/addAppointment').post(apps.addAppointments);
 router.route('/app/getAppointment').post(apps.getAppointments);

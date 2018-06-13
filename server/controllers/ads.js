@@ -211,11 +211,18 @@ exports.addToFavorite = function (req, res) {
 exports.removeFromFavorite = function (req, res) {
     var phone_number = req.body.phone_number;
     var ad_id = req.body.ad_id;
-    User.findOneAndUpdate({ phone_number: phone_number }, { $push: { favorite: mongoose.Types.ObjectId(ad_id) } }, { new: true }).exec(function (err, docs) {
+    User.findOneAndUpdate({ phone_number: phone_number }, { $pull: { favorite: mongoose.Types.ObjectId(ad_id) } }, {new: true}).exec(function (err, docs) {
         if (err) {
-            res.status(500).json({ "message": "error updating favorite" })
+            res.status(500).json({ "message": "error deleting favorite" })
         } else {
-            res.status(200).json({ "message": "favorite add updated successfully" })
+            User.find({ phone_number: phone_number }).populate('favorite').exec(function (err, docs) {
+                if (err) {
+                    console.log(err);
+                    res.status(500).json({ "error": "error getting appointments" })
+                } else {
+                    res.status(200).json(docs);
+                }
+            })
         }
     })
 }

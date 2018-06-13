@@ -67,4 +67,15 @@ addToFavoriteAds(favoritedata) {
   });
 }
 
+removeFromFavoriteAds(favoritedata) {
+  return new Promise((resolve, reject) => {
+    this.http.post(Constants.URL_REMOVEFAVORITE, favoritedata)
+    .subscribe(res => {
+      resolve(res);
+    }, err => {
+      reject(err);
+    })
+  });
+}
+
 }
