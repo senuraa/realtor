@@ -66,17 +66,15 @@ export class SearchResultsPage {
 
   }
   call(numArray) {
-    var nums = numArray.split(',');
-    console.log(nums)
 
-    if (nums.length > 1) {
+    if (numArray.length > 1) {
       let alert = this.alertCtrl.create();
       alert.setTitle('Select number');
-      for (var i = 0; i < nums.length; i++) {
+      for (var i = 0; i < numArray.length; i++) {
         alert.addInput({
           type: 'radio',
-          label: nums[i],
-          value: nums[i],
+          label: numArray[i],
+          value: numArray[i],
           checked: false
         })
       }
@@ -92,21 +90,21 @@ export class SearchResultsPage {
         }
       });
       alert.present();
-    } else if (nums.length == 1 && nums[0] != "") {
+    } else if (numArray.length == 1 && numArray[0] != "") {
       let alert = this.alertCtrl.create()
       alert.setTitle('Confirm Call')
-      alert.setMessage('Are you sure you want to call ' + nums[0] + ' ?')
+      alert.setMessage('Are you sure you want to call ' + numArray[0] + ' ?')
       alert.addButton({
         text: 'Ok',
         handler: (data: any) => {
-          this.callNumber.callNumber(nums, true).then(res => console.log('Launched dialer!', res))
+          this.callNumber.callNumber(numArray, true).then(res => console.log('Launched dialer!', res))
             .catch(err => console.log('Error launching dialer', err));
         }
       })
       alert.addButton('Cancel')
       alert.present();
 
-    } else if (nums.length == 1 && nums[0] == "") {
+    } else if (numArray.length == 1 && numArray[0] == "") {
       let alert = this.alertCtrl.create()
       alert.setTitle('Contact Number');
       alert.setMessage('Sorry! No number available');

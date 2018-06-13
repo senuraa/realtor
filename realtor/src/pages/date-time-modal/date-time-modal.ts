@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 import { AppointmentProvider } from '../../providers/appointment/appointment'
 /**
  * Generated class for the DateTimeModalPage page.
@@ -16,7 +16,7 @@ import { AppointmentProvider } from '../../providers/appointment/appointment'
 export class DateTimeModalPage {
   appDet:any;
   // ad_id: String;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController,public addApp: AppointmentProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController,public addApp: AppointmentProvider, public alertCtrl: AlertController) {
     //this.ad_id = navParams.get("_id");
     this.appDet = {
       ad_id:navParams.get("_id"),
@@ -29,7 +29,16 @@ export class DateTimeModalPage {
     this.addApp.addAppointment(this.appDet).then((response)=>{
       this.viewCtrl.dismiss(response)
     },(err)=>{
-      console.log(err)
+      let alert = this.alertCtrl.create();
+            alert.setTitle('Appointment')
+            alert.setMessage('Appointment already exists for the ad')
+            alert.addButton({text:'Ok',
+            handler: (data:any)=>{
+              this.dismiss()
+            }
+          })
+            alert.present()
+
     })
   }
   dismiss() {
