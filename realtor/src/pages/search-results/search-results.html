@@ -8,7 +8,15 @@
 
   <ion-navbar>
     <ion-title>Search Results</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="exitSearch()">
+        
+        Exit
+        <ion-icon name="exit"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
+
   <ion-toolbar no-border-top>
     <ion-segment [(ngModel)]="stepType">
       <ion-segment-button value="Requirement">
@@ -148,8 +156,8 @@
             </button>
           </ion-col>
           <ion-col text-center>
-            <button ion-button clear icon-only text-center (click)="addToFavorite(ad)">
-              <ion-icon name="mail"></ion-icon>
+            <button ion-button clear icon-only text-center (click)="addToFavorite(ad)" [style.color]="favColor">
+              <ion-icon name="heart"></ion-icon>
               <!-- <div>4 Comments</div> -->
             </button>
           </ion-col>

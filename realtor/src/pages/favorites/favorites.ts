@@ -23,8 +23,10 @@ export class FavoritesPage {
     phone_number: "",
     ad_id: ""
   }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public retrieveAds: RetrieveAdsProvider) {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public retrieveAds : RetrieveAdsProvider) {
+  }
+  ionViewDidEnter() {
     this.retrieveAds.retrieveFavoriteAds(this.appReqUserData).then((response) => {
       this.favoriteAdds = response[0].favorite;
     }, err => {
