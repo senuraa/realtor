@@ -6,7 +6,8 @@ var UserSchema = new Schema({
     country_code: {type: String, required: true},
     firstname: String,
     lastname: String,
-    password: String
+    password: String,
+    favorite : [{type: mongoose.Schema.Types.ObjectId, ref: 'advertisements'}]
 });
 
 mongoose.model('User', UserSchema);

@@ -22,6 +22,10 @@ export class SearchResultsPage {
   appointmentDisable: boolean = true;
   adList: any;
   appointmentList: any;
+  addFavoriteData: any = {
+    phone_number: "",
+    ad_id: ""
+  }
   constructor(public navCtrl: NavController, public navParams: NavParams, public retrieveAds: RetrieveAdsProvider, public modalCtrl: ModalController, public appService: AppointmentProvider, public alertCtrl: AlertController, public callNumber: CallNumber) {
     this.appointmentList = [];
   }
@@ -40,7 +44,7 @@ export class SearchResultsPage {
     phone_number: window.localStorage.getItem('phone_number'),
     status: 2
   }
-  editReq(){
+  editReq() {
     this.navCtrl.pop()
   }
   confirmReq() {
@@ -127,6 +131,19 @@ export class SearchResultsPage {
     })
 
   }
+
+  addToFavorite(adddata) {
+    console.log(adddata);
+    this.addFavoriteData.phone_number = window.localStorage.getItem('phone_number');
+    this.addFavoriteData.ad_id = adddata._id;
+    this.retrieveAds.addToFavoriteAds(this.addFavoriteData).then((response) => {
+
+    }, err => {
+
+    })
+  }
+
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchResultsPage');
   }

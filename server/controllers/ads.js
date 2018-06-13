@@ -4,6 +4,7 @@ var qs = require('qs');
 var apps = mongoose.model('appointments');
 mongoose.Promise = require('bluebird');
 var underscore = require("underscore");
+var User = mongoose.model('User');
 
 /**
  * Retrieve ads according to requirement
@@ -125,7 +126,7 @@ exports.retrieveAds = function (req, res) {
 }
 
 /**
- * Retrieve ads according to requirement
+ * Retrieve topads
  *
  * @param req
  * @param res
@@ -155,8 +156,73 @@ exports.topAds = function (req, res) {
         })
 }
 
+/**
+ * Retrieve favorite ads for each user
+ *
+ * @param req
+ * @param res
+ */
+exports.favoriteAds = function (req, res) {
+    var phone_number = req.body.phone_number;
+    User.find({ phone_number: phone_number }).populate('favorite').exec(function (err, docs) {
+        if (err) {
+            console.log(err);
+            res.status(500).json({ "error": "error getting appointments" })
+        } else {
+            res.status(200).json(docs);
+        }
+    })
+}
 
 /**
+ * Retrieve favorite ads for each user
+ *
+ * @param req
+ * @param res
+ */
+exports.addToFavorite = function (req, res) {
+    var phone_number = req.body.phone_number;
+    var ad_id = req.body.ad_id;
+    User.findOne({ phone_number: phone_number, favorite: mongoose.Types.ObjectId(ad_id) }).exec(function (err, docs) {
+        if (err) {
+            res.status(500).json({ "message": "error updating favorite" })
+        } else {
+            if (docs) {
+                res.status(200).json({ "message": "Already added" })
+            } else {
+                User.findOneAndUpdate({ phone_number: phone_number }, { $push: { favorite: mongoose.Types.ObjectId(ad_id) } }, { new: true }).exec(function (err, docs) {
+                    if (err) {
+                        res.status(500).json({ "message": "error updating favorite" })
+                    } else {
+                        res.status(200).json({ "message": "favorite add updated successfully" })
+                    }
+                })
+            }
+        }
+    })
+}
+
+/**
+ * Retrieve favorite ads for each user
+ *
+ * @param req
+ * @param res
+ */
+exports.removeFromFavorite = function (req, res) {
+    var phone_number = req.body.phone_number;
+    var ad_id = req.body.ad_id;
+    User.findOneAndUpdate({ phone_number: phone_number }, { $push: { favorite: mongoose.Types.ObjectId(ad_id) } }, { new: true }).exec(function (err, docs) {
+        if (err) {
+            res.status(500).json({ "message": "error updating favorite" })
+        } else {
+            res.status(200).json({ "message": "favorite add updated successfully" })
+        }
+    })
+}
+
+
+/**
+ * ************************************************************************************************************
  * Retrieve ads according to requirement
  *
  * @param req

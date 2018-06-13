@@ -45,4 +45,26 @@ retrieveTopAds() {
   });
 }
 
+retrieveFavoriteAds(userData) {
+  return new Promise((resolve, reject) => {
+    this.http.post(Constants.URL_GETFAVORITEADS, userData)
+    .subscribe(res => {
+      resolve(res);
+    }, err => {
+      reject(err);
+    })
+  });
+}
+
+addToFavoriteAds(favoritedata) {
+  return new Promise((resolve, reject) => {
+    this.http.post(Constants.URL_ADDFAVORITE, favoritedata)
+    .subscribe(res => {
+      resolve(res);
+    }, err => {
+      reject(err);
+    })
+  });
+}
+
 }
