@@ -26,6 +26,7 @@ export class SearchResultsPage {
     phone_number: "",
     ad_id: ""
   }
+  favColor: string = "#bdbdbd"
   constructor(public navCtrl: NavController, public navParams: NavParams, public retrieveAds: RetrieveAdsProvider, public modalCtrl: ModalController, public appService: AppointmentProvider, public alertCtrl: AlertController, public callNumber: CallNumber) {
     this.appointmentList = [];
   }
@@ -43,6 +44,9 @@ export class SearchResultsPage {
   appReqUserData: any = {
     phone_number: window.localStorage.getItem('phone_number'),
     status: 2
+  }
+  exitSearch(){
+    this.navCtrl.popToRoot();
   }
   editReq() {
     this.navCtrl.pop()
@@ -137,7 +141,7 @@ export class SearchResultsPage {
     this.addFavoriteData.phone_number = window.localStorage.getItem('phone_number');
     this.addFavoriteData.ad_id = adddata._id;
     this.retrieveAds.addToFavoriteAds(this.addFavoriteData).then((response) => {
-
+      this.favColor = '#d9352f'
     }, err => {
 
     })
