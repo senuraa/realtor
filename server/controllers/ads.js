@@ -11,39 +11,115 @@ var underscore = require("underscore");
  * @param req
  * @param res
  */
-exports.retrieveAdsSample = function (req, res) {
+exports.retrieveAds = function (req, res) {
     console.log(req.body);
     var location = req.body.location.toUpperCase();
-    var rooms = req.body.noOfRooms;
+    var rooms = req.body.noOfRooms + "";
     //var priceRange = req.body.priceRange;
     var category = req.body.category;
     var type = req.body.type;
     //var areaRange = req.body.areaRange;
     var minArea = req.body.minArea;
     var maxArea = req.body.maxArea;
-    var minPrice = req.body.minPrice;
-    var maxPrice = req.body.maxPrice;
+    var minPrice = req.body.minPrice * 10000;
+    var maxPrice = req.body.maxPrice * 10000;
+
+    type = "Sale";
+    minArea = "20";
+    maxPrice = "375000010";
 
     var onlyLastSevenDays = req.body.showLastSeven;
-    ads.find({ category: category, location: location }).exec(function (err, docs) {
-
+    ads.find({ category: category }).exec(function (err, docs) {
         if (err) {
             console.log(err);
             res.status(500).json({ message: err })
         } else {
-            if (docs.length <= 0) {
-                ads.find({ category: category, location: { $ne: 'NOTFOUND' } }).exec(function (err, docs) {
-                    if (err) {
-                        console.log(err);
-                        res.status(500).json({ message: err });
-                    } else {
-                        res.status(200).json(docs);
+            maxminFilter = [];
+            priceorareaFilter = [];
+            filterEbedrooms = [];
+            filterEtype = [];
+            docJson = [];
+
+            for (var i = 0; i < docs.length; i++) {
+                docJson.push(docs[i]._doc);
+            }
+
+            var filterAll = underscore.where(docJson, { location: location, bedrooms: rooms, rent_sale: type });
+            if (filterAll != 0) {
+                underscore.filter(filterAll, function (item) {
+                    if ((item.price[0] >= minPrice && item.price[0] <= maxPrice) && (item.land_size[0] >= minArea && item.land_size[0] <= maxArea)) {
+                        maxminFilter.push(item);
                     }
                 })
+                if (maxminFilter != 0) {
+                    res.status(200).json(maxminFilter);
+                } else {
+                    underscore.filter(filterAll, function (item) {
+                        if ((item.price[0] >= minPrice && item.price[0] <= maxPrice) || (item.land_size[0] >= minArea && item.land_size[0] <= maxArea)) {
+                            priceorareaFilter.push(item);
+                        }
+                    })
+                    if (priceorareaFilter != 0) {
+                        res.status(200).json(priceorareaFilter);
+                    } else {
+                        res.status(200).json(filterAll);
+                    }
+                }
             } else {
-                res.status(200).json(docs);
+                var filterEbedrooms = underscore.where(docJson, { location: location, rent_sale: type });
+                if (filterEbedrooms != 0) {
+                    underscore.filter(filterEbedrooms, function (item) {
+                        if ((item.price[0] >= minPrice && item.price[0] <= maxPrice) && (item.land_size[0] >= minArea && item.land_size[0] <= maxArea)) {
+                            maxminFilter.push(item);
+                        }
+                    })
+
+                    if (maxminFilter != 0) {
+                        res.status(200).json(maxminFilter);
+                    } else {
+                        underscore.filter(filterEbedrooms, function (item) {
+                            if ((item.price[0] >= minPrice && item.price[0] <= maxPrice) || (item.land_size[0] >= minArea && item.land_size[0] <= maxArea)) {
+                                priceorareaFilter.push(item);
+                            }
+                        })
+                        if (priceorareaFilter != 0) {
+                            res.status(200).json(priceorareaFilter);
+                        } else {
+                            res.status(200).json(filterEbedrooms);
+                        }
+                    }
+
+                } else {
+
+                    var filterEtype = underscore.where(docJson, { location: location });
+                    if (filterEtype != 0) {
+                        underscore.filter(filterEtype, function (item) {
+                            if ((item.price[0] >= minPrice && item.price[0] <= maxPrice) && (item.land_size[0] >= minArea && item.land_size[0] <= maxArea)) {
+                                maxminFilter.push(item);
+                            }
+                        })
+
+                        if (maxminFilter != 0) {
+                            res.status(200).json(maxminFilter);
+                        } else {
+                            underscore.filter(filterEtype, function (item) {
+                                if ((item.price[0] >= minPrice && item.price[0] <= maxPrice) || (item.land_size[0] >= minArea && item.land_size[0] <= maxArea)) {
+                                    priceorareaFilter.push(item);
+                                }
+                            })
+                            if (priceorareaFilter != 0) {
+                                res.status(200).json(priceorareaFilter);
+                            } else {
+                                res.status(200).json(filterEtype);
+                            }
+                        }
+
+                    } else {
+                        res.status(200).json(docJson);
+                    }
+                }
             }
-            // res.status(200).json(docs);
+
         }
     })
 }
@@ -54,7 +130,39 @@ exports.retrieveAdsSample = function (req, res) {
  * @param req
  * @param res
  */
-exports.retrieveAds = function (req, res) {
+exports.topAds = function (req, res) {
+    const aggregatorOpts = [
+        {
+            $group: {
+                _id: "$adIdStr",
+                count: { $sum: 1 }
+            }
+        },
+        { "$sort": { count: -1 } },
+        { "$limit": 5 }
+    ]
+    apps.aggregate(aggregatorOpts)
+        .then(function (docs) {
+            topAdds = [];
+            docs.forEach(function (u) {
+                topAdds.push(ads.findOne({ _id: mongoose.Types.ObjectId(u._id) }));
+            });
+            return Promise.all(topAdds);
+        }).then(function (listOfAdds) {
+            res.send(listOfAdds);
+        }).catch(function (error) {
+            res.status(500).send('one of the queries failed', error);
+        })
+}
+
+
+/**
+ * Retrieve ads according to requirement
+ *
+ * @param req
+ * @param res
+ */
+exports.retrieveAdsSample = function (req, res) {
     console.log(req.body);
     var location = req.body.location.toUpperCase();
     var rooms = req.body.noOfRooms;
@@ -100,9 +208,9 @@ exports.retrieveAds = function (req, res) {
                                     areaJson.push(item);
                                 }
                             })
-                            if(areaJson.length != 0){
+                            if (areaJson.length != 0) {
                                 res.status(200).json(areaJson);
-                            }else{
+                            } else {
                                 res.status(200).json(priceJson);
                             }
                         } else {
@@ -111,9 +219,9 @@ exports.retrieveAds = function (req, res) {
                                     areaJson.push(item);
                                 }
                             })
-                            if(areaJson.length != 0){
+                            if (areaJson.length != 0) {
                                 res.status(200).json(areaJson);
-                            }else{
+                            } else {
                                 res.status(200).json(bedroomFiltered);
                             }
                         }
@@ -130,9 +238,9 @@ exports.retrieveAds = function (req, res) {
                                     areaJson.push(item);
                                 }
                             })
-                            if(areaJson.length != 0){
+                            if (areaJson.length != 0) {
                                 res.status(200).json(areaJson);
-                            }else{
+                            } else {
                                 res.status(200).json(priceJson);
                             }
                         } else {
@@ -141,9 +249,9 @@ exports.retrieveAds = function (req, res) {
                                     areaJson.push(item);
                                 }
                             })
-                            if(areaJson.length != 0){
+                            if (areaJson.length != 0) {
                                 res.status(200).json(areaJson);
-                            }else{
+                            } else {
                                 res.status(200).json(typeFiltered);
                             }
                         }
@@ -164,9 +272,9 @@ exports.retrieveAds = function (req, res) {
                                     areaJson.push(item);
                                 }
                             })
-                            if(areaJson.length != 0){
+                            if (areaJson.length != 0) {
                                 res.status(200).json(areaJson);
-                            }else{
+                            } else {
                                 res.status(200).json(priceJson);
                             }
                         } else {
@@ -175,9 +283,9 @@ exports.retrieveAds = function (req, res) {
                                     areaJson.push(item);
                                 }
                             })
-                            if(areaJson.length != 0){
+                            if (areaJson.length != 0) {
                                 res.status(200).json(areaJson);
-                            }else{
+                            } else {
                                 res.status(200).json(bedroomFiltered);
                             }
                         }
@@ -193,9 +301,9 @@ exports.retrieveAds = function (req, res) {
                                     areaJson.push(item);
                                 }
                             })
-                            if(areaJson.length != 0){
+                            if (areaJson.length != 0) {
                                 res.status(200).json(areaJson);
-                            }else{
+                            } else {
                                 res.status(200).json(priceJson);
                             }
                         } else {
@@ -204,9 +312,9 @@ exports.retrieveAds = function (req, res) {
                                     areaJson.push(item);
                                 }
                             })
-                            if(areaJson.length != 0){
+                            if (areaJson.length != 0) {
                                 res.status(200).json(areaJson);
-                            }else{
+                            } else {
                                 res.status(200).json(locationFiltered);
                             }
                         }
@@ -232,9 +340,9 @@ exports.retrieveAds = function (req, res) {
                                     areaJson.push(item);
                                 }
                             })
-                            if(areaJson.length != 0){
+                            if (areaJson.length != 0) {
                                 res.status(200).json(areaJson);
-                            }else{
+                            } else {
                                 res.status(200).json(priceJson);
                             }
                         } else {
@@ -243,9 +351,9 @@ exports.retrieveAds = function (req, res) {
                                     areaJson.push(item);
                                 }
                             })
-                            if(areaJson.length != 0){
+                            if (areaJson.length != 0) {
                                 res.status(200).json(areaJson);
-                            }else{
+                            } else {
                                 res.status(200).json(bedroomFiltered);
                             }
                         }
@@ -261,9 +369,9 @@ exports.retrieveAds = function (req, res) {
                                     areaJson.push(item);
                                 }
                             })
-                            if(areaJson.length != 0){
+                            if (areaJson.length != 0) {
                                 res.status(200).json(areaJson);
-                            }else{
+                            } else {
                                 res.status(200).json(priceJson);
                             }
                         } else {
@@ -272,9 +380,9 @@ exports.retrieveAds = function (req, res) {
                                     areaJson.push(item);
                                 }
                             })
-                            if(areaJson.length != 0){
+                            if (areaJson.length != 0) {
                                 res.status(200).json(areaJson);
-                            }else{
+                            } else {
                                 res.status(200).json(typeFiltered);
                             }
                         }
@@ -295,9 +403,9 @@ exports.retrieveAds = function (req, res) {
                                     areaJson.push(item);
                                 }
                             })
-                            if(areaJson.length != 0){
+                            if (areaJson.length != 0) {
                                 res.status(200).json(areaJson);
-                            }else{
+                            } else {
                                 res.status(200).json(priceJson);
                             }
                         } else {
@@ -306,9 +414,9 @@ exports.retrieveAds = function (req, res) {
                                     areaJson.push(item);
                                 }
                             })
-                            if(areaJson.length != 0){
+                            if (areaJson.length != 0) {
                                 res.status(200).json(areaJson);
-                            }else{
+                            } else {
                                 res.status(200).json(bedroomFiltered);
                             }
                         }
@@ -324,9 +432,9 @@ exports.retrieveAds = function (req, res) {
                                     areaJson.push(item);
                                 }
                             })
-                            if(areaJson.length != 0){
+                            if (areaJson.length != 0) {
                                 res.status(200).json(areaJson);
-                            }else{
+                            } else {
                                 res.status(200).json(priceJson);
                             }
                         } else {
@@ -335,9 +443,9 @@ exports.retrieveAds = function (req, res) {
                                     areaJson.push(item);
                                 }
                             })
-                            if(areaJson.length != 0){
+                            if (areaJson.length != 0) {
                                 res.status(200).json(areaJson);
-                            }else{
+                            } else {
                                 res.status(200).json(docJson);
                             }
                         }
@@ -347,35 +455,4 @@ exports.retrieveAds = function (req, res) {
 
         }
     })
-}
-
-/**
- * Retrieve ads according to requirement
- *
- * @param req
- * @param res
- */
-exports.topAds = function (req, res) {
-    const aggregatorOpts = [
-        {
-            $group: {
-                _id: "$adIdStr",
-                count: { $sum: 1 }
-            }
-        },
-        { "$sort": { count: -1 } },
-        { "$limit": 5 }
-    ]
-    apps.aggregate(aggregatorOpts)
-        .then(function (docs) {
-            topAdds = [];
-            docs.forEach(function (u) {
-                topAdds.push(ads.findOne({ _id: mongoose.Types.ObjectId(u._id) }));
-            });
-            return Promise.all(topAdds);
-        }).then(function (listOfAdds) {
-            res.send(listOfAdds);
-        }).catch(function (error) {
-            res.status(500).send('one of the queries failed', error);
-        })
 }
