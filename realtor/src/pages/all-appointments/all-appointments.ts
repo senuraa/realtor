@@ -90,7 +90,7 @@ export class AllAppointmentsPage {
     }
   }
   viewApp(app){
-    this.navCtrl.push('ViewAppointmentPage',this.navParams)
+    this.navCtrl.push('ViewAppointmentPage',app)
   }
   ionViewDidEnter() {
     this.appService.getAppointment(this.appReqUserData).then((response)=>{
