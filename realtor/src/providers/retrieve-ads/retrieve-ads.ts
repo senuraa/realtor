@@ -23,10 +23,12 @@ export class RetrieveAdsProvider {
     return new Promise((resolve, reject) => {
       this.http.post(Constants.URL_GETADS,adData)
         .subscribe(res => {
-
+          console.log(res)
           resolve(res);
+
         },
           err => {
+            console.log(err)
             reject(err);
           }
         )
