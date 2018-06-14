@@ -14,12 +14,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'view-appointment.html',
 })
 export class ViewAppointmentPage {
-
+  //appDetails:any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    // this.appDetails = {
+    //   app_date:this.navParams.get('app_date'),
+    //   comments:this.navParams.get('comments'),
+    //   ad_details:this.navParams.get('ad_id')
+    // }
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ViewAppointmentPage');
+  
+  appDetails:any = {
+    app_date:this.navParams.get('app_date'),
+    comments:this.navParams.get('comments'),
+    ad_details:this.navParams.get('ad_id')
   }
+  ionViewDidEnter() {
+    console.log(this.appDetails);
+  }
+  
+  // toLocalDate(date){
+  //   console.log(date)
+  //   let newDate = new Date(date)
+  //   console.log(newDate)
+  //   //return newDate.toLocaleDateString();
+  // }
 
 }
