@@ -16,30 +16,30 @@ exports.retrieveAds = function (req, res) {
     console.log(req.body);
     var location = req.body.location.toUpperCase();
     var rooms = req.body.noOfRooms + "";
-    //var priceRange = req.body.priceRange;
     var category = req.body.category;
     var type = req.body.type;
-    //var areaRange = req.body.areaRange;
     var minArea = req.body.minArea;
     var maxArea = req.body.maxArea;
     var minPrice = req.body.minPrice * 10000;
     var maxPrice = req.body.maxPrice * 10000;
-
-    type = "Sale";
-    minArea = "20";
-    maxPrice = "375000010";
-
+    var phone_number = req.body.phone_number;
     var onlyLastSevenDays = req.body.showLastSeven;
+
     ads.find({ category: category }).exec(function (err, docs) {
         if (err) {
             console.log(err);
             res.status(500).json({ message: err })
         } else {
-            maxminFilter = [];
-            priceorareaFilter = [];
-            filterEbedrooms = [];
-            filterEtype = [];
-            docJson = [];
+            var maxminFilter = [];
+            var priceorareaFilter = [];
+            var filterEbedrooms = [];
+            var filterEtype = [];
+            var docJson = [];
+            var finalResult = [];
+            var inData = [];
+            var id;
+            var item_id;
+            var docs_id;
 
             for (var i = 0; i < docs.length; i++) {
                 docJson.push(docs[i]._doc);
@@ -53,7 +53,8 @@ exports.retrieveAds = function (req, res) {
                     }
                 })
                 if (maxminFilter != 0) {
-                    res.status(200).json(maxminFilter);
+                    // res.status(200).json(maxminFilter);
+                    finalResult = maxminFilter;
                 } else {
                     underscore.filter(filterAll, function (item) {
                         if ((item.price[0] >= minPrice && item.price[0] <= maxPrice) || (item.land_size[0] >= minArea && item.land_size[0] <= maxArea)) {
@@ -61,9 +62,11 @@ exports.retrieveAds = function (req, res) {
                         }
                     })
                     if (priceorareaFilter != 0) {
-                        res.status(200).json(priceorareaFilter);
+                        // res.status(200).json(priceorareaFilter);
+                        finalResult = priceorareaFilter;
                     } else {
-                        res.status(200).json(filterAll);
+                        // res.status(200).json(filterAll);
+                        finalResult = filterAll;
                     }
                 }
             } else {
@@ -76,7 +79,8 @@ exports.retrieveAds = function (req, res) {
                     })
 
                     if (maxminFilter != 0) {
-                        res.status(200).json(maxminFilter);
+                        // res.status(200).json(maxminFilter);
+                        finalResult = maxminFilter;
                     } else {
                         underscore.filter(filterEbedrooms, function (item) {
                             if ((item.price[0] >= minPrice && item.price[0] <= maxPrice) || (item.land_size[0] >= minArea && item.land_size[0] <= maxArea)) {
@@ -84,9 +88,11 @@ exports.retrieveAds = function (req, res) {
                             }
                         })
                         if (priceorareaFilter != 0) {
-                            res.status(200).json(priceorareaFilter);
+                            // res.status(200).json(priceorareaFilter);
+                            finalResult = priceorareaFilter;
                         } else {
-                            res.status(200).json(filterEbedrooms);
+                            // res.status(200).json(filterEbedrooms);
+                            finalResult = filterEbedrooms;
                         }
                     }
 
@@ -101,7 +107,8 @@ exports.retrieveAds = function (req, res) {
                         })
 
                         if (maxminFilter != 0) {
-                            res.status(200).json(maxminFilter);
+                            // res.status(200).json(maxminFilter);
+                            finalResult = maxminFilter;
                         } else {
                             underscore.filter(filterEtype, function (item) {
                                 if ((item.price[0] >= minPrice && item.price[0] <= maxPrice) || (item.land_size[0] >= minArea && item.land_size[0] <= maxArea)) {
@@ -109,18 +116,41 @@ exports.retrieveAds = function (req, res) {
                                 }
                             })
                             if (priceorareaFilter != 0) {
-                                res.status(200).json(priceorareaFilter);
+                                // res.status(200).json(priceorareaFilter);
+                                finalResult = priceorareaFilter;
                             } else {
-                                res.status(200).json(filterEtype);
+                                // res.status(200).json(filterEtype);
+                                finalResult = filterEtype;
                             }
                         }
 
                     } else {
-                        res.status(200).json(docJson);
+                        // res.status(200).json(docJson);
+                        finalResult = docJson;
                     }
                 }
             }
-
+            for(var i=0; i<finalResult.length; i++){
+                id = finalResult[i]._id;
+                inData.push(mongoose.Types.ObjectId(id));
+            }
+            // User.findOne({ phone_number: phone_number, favorite: { $in : inData }}).populate('favorite').exec(function (err, docs) {
+            //     if (err) {
+            //         res.status(500).json({ "message": "error updating favorite" })
+            //     } else {
+            //         underscore.filter(finalResult, function (item) {
+            //             for(var x=0; x<docs.favorite.length; x++){
+            //                 item_id = mongoose.Types.ObjectId(item._id);
+            //                 docs_id = mongoose.Types.ObjectId(docs.favorite[x]._id)
+            //                 if(item_id.equals(docs_id)){
+            //                     console.log("here");
+            //                     item.fav = true;
+            //                 }
+            //             }
+            //         })
+            //         res.status(200).json(finalResult);
+            //     }
+            // })
         }
     })
 }
@@ -183,21 +213,11 @@ exports.favoriteAds = function (req, res) {
 exports.addToFavorite = function (req, res) {
     var phone_number = req.body.phone_number;
     var ad_id = req.body.ad_id;
-    User.findOne({ phone_number: phone_number, favorite: mongoose.Types.ObjectId(ad_id) }).exec(function (err, docs) {
+    User.findOneAndUpdate({ phone_number: phone_number, favorite: {$ne : mongoose.Types.ObjectId(ad_id)} }, { $addToSet: { favorite: mongoose.Types.ObjectId(ad_id) } }, { new: true }).exec(function (err, docs) {
         if (err) {
             res.status(500).json({ "message": "error updating favorite" })
         } else {
-            if (docs) {
-                res.status(200).json({ "message": "Already added" })
-            } else {
-                User.findOneAndUpdate({ phone_number: phone_number }, { $push: { favorite: mongoose.Types.ObjectId(ad_id) } }, { new: true }).exec(function (err, docs) {
-                    if (err) {
-                        res.status(500).json({ "message": "error updating favorite" })
-                    } else {
-                        res.status(200).json({ "message": "favorite add updated successfully" })
-                    }
-                })
-            }
+            res.status(200).json({ "message": "favorite add updated successfully" })
         }
     })
 }
@@ -211,18 +231,11 @@ exports.addToFavorite = function (req, res) {
 exports.removeFromFavorite = function (req, res) {
     var phone_number = req.body.phone_number;
     var ad_id = req.body.ad_id;
-    User.findOneAndUpdate({ phone_number: phone_number }, { $pull: { favorite: mongoose.Types.ObjectId(ad_id) } }, {new: true}).exec(function (err, docs) {
+    User.findOneAndUpdate({ phone_number: phone_number }, { $pull: { favorite: mongoose.Types.ObjectId(ad_id) } }, { new: true }).populate('favorite').exec(function (err, docs) {
         if (err) {
             res.status(500).json({ "message": "error deleting favorite" })
         } else {
-            User.find({ phone_number: phone_number }).populate('favorite').exec(function (err, docs) {
-                if (err) {
-                    console.log(err);
-                    res.status(500).json({ "error": "error getting appointments" })
-                } else {
-                    res.status(200).json(docs);
-                }
-            })
+            res.status(200).json(docs);
         }
     })
 }

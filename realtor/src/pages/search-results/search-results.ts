@@ -26,6 +26,8 @@ export class SearchResultsPage {
     phone_number: "",
     ad_id: ""
   }
+  allAdds: any;
+  favAdds: any;
   favColor: string = "#bdbdbd"
   constructor(public navCtrl: NavController, public navParams: NavParams, public retrieveAds: RetrieveAdsProvider, public modalCtrl: ModalController, public appService: AppointmentProvider, public alertCtrl: AlertController, public callNumber: CallNumber) {
     this.appointmentList = [];
@@ -39,13 +41,14 @@ export class SearchResultsPage {
     noOfRooms: this.navParams.get('noOfRooms'),
     minPrice: this.navParams.get('priceRange').lower,
     maxPrice: this.navParams.get('priceRange').upper,
-    _id: ''
+    _id: '',
+    phone_number: window.localStorage.getItem('phone_number')
   }
   appReqUserData: any = {
     phone_number: window.localStorage.getItem('phone_number'),
     status: 2
   }
-  exitSearch(){
+  exitSearch() {
     this.navCtrl.popToRoot();
   }
   editReq() {
@@ -56,10 +59,22 @@ export class SearchResultsPage {
     //   this.stepType = "Lists";
 
     this.retrieveAds.getAds(this.req).then((response) => {
-      console.log(response);
-      this.listDisable = false;
-      this.stepType = "Lists";
-      this.adList = response;
+      this.retrieveAds.retrieveFavoriteAds(this.appReqUserData).then((fav) => {
+        this.allAdds = response;
+        this.favAdds = fav[0].favorite;
+        this.allAdds.forEach(item => {
+          for (var x = 0; x < this.favAdds.length; x++) {
+            if (item._id == this.favAdds[x]._id) {
+              console.log("here");
+              item.fav = true;
+            }
+          }
+        });
+        this.listDisable = false;
+        this.stepType = "Lists";
+        this.adList = this.allAdds;
+      }, (err) => {
+      })
     }, (err) => {
       console.log(err)
     })
@@ -135,11 +150,11 @@ export class SearchResultsPage {
   }
 
   addToFavorite(adddata) {
-    console.log(adddata);
     this.addFavoriteData.phone_number = window.localStorage.getItem('phone_number');
     this.addFavoriteData.ad_id = adddata._id;
     this.retrieveAds.addToFavoriteAds(this.addFavoriteData).then((response) => {
-      this.favColor = '#d9352f'
+      // this.favColor = '#d9352f'
+      adddata.fav = true;
     }, err => {
 
     })
