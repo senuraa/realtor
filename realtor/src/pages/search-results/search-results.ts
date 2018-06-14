@@ -74,6 +74,7 @@ export class SearchResultsPage {
         this.stepType = "Lists";
         this.adList = this.allAdds;
       }, (err) => {
+        console.log(err)
       })
     }, (err) => {
       console.log(err)
