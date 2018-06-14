@@ -116,7 +116,7 @@ export class FavoritesPage {
     this.addFavoriteData.phone_number = window.localStorage.getItem('phone_number');
     this.addFavoriteData.ad_id = add._id;
     this.retrieveAds.removeFromFavoriteAds(this.addFavoriteData).then((response) => {
-      this.favoriteAdds = response[0].favorite;
+      this.favoriteAdds = response['favorite'];
     }, err => {
 
     })

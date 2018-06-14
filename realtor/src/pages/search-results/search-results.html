@@ -156,7 +156,7 @@
             </button>
           </ion-col>
           <ion-col text-center>
-            <button ion-button clear icon-only text-center (click)="addToFavorite(ad)" [style.color]="favColor">
+            <button ion-button clear icon-only text-center (click)="addToFavorite(ad)" [style.color]="ad.fav ? 'red': 'silver'">
               <ion-icon name="heart"></ion-icon>
               <!-- <div>4 Comments</div> -->
             </button>
