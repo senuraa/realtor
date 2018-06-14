@@ -134,23 +134,7 @@ exports.retrieveAds = function (req, res) {
                 id = finalResult[i]._id;
                 inData.push(mongoose.Types.ObjectId(id));
             }
-            // User.findOne({ phone_number: phone_number, favorite: { $in : inData }}).populate('favorite').exec(function (err, docs) {
-            //     if (err) {
-            //         res.status(500).json({ "message": "error updating favorite" })
-            //     } else {
-            //         underscore.filter(finalResult, function (item) {
-            //             for(var x=0; x<docs.favorite.length; x++){
-            //                 item_id = mongoose.Types.ObjectId(item._id);
-            //                 docs_id = mongoose.Types.ObjectId(docs.favorite[x]._id)
-            //                 if(item_id.equals(docs_id)){
-            //                     console.log("here");
-            //                     item.fav = true;
-            //                 }
-            //             }
-            //         })
-            //         res.status(200).json(finalResult);
-            //     }
-            // })
+            res.status(200).json(finalResult);
         }
     })
 }

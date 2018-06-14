@@ -57,7 +57,7 @@ export class SearchResultsPage {
   confirmReq() {
     // this.listDisable = false;
     //   this.stepType = "Lists";
-    console.log('testconfirm')
+console.log("")
     this.retrieveAds.getAds(this.req).then((response) => {
       this.retrieveAds.retrieveFavoriteAds(this.appReqUserData).then((fav) => {
         this.allAdds = response;
