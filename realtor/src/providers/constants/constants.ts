@@ -8,8 +8,8 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class Constants {
-  //public static URL_SERVICE_ENDPOINT: string = 'http://54.169.167.51:1500/api/';
-  public static URL_SERVICE_ENDPOINT: string = 'http://localhost:1500/api/';
+  public static URL_SERVICE_ENDPOINT: string = 'http://54.169.167.51:1500/api/';
+  //public static URL_SERVICE_ENDPOINT: string = 'http://localhost:1500/api/';
   public static URL_LOGIN: string = Constants.URL_SERVICE_ENDPOINT + 'auth/login';
   public static URL_REGISTER: string = Constants.URL_SERVICE_ENDPOINT + 'auth/register';
   public static URL_VERIFY: string = Constants.URL_SERVICE_ENDPOINT + 'auth/verify';
