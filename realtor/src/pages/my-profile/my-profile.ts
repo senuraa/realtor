@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { App,IonicPage, NavController, NavParams } from 'ionic-angular';
+import { StatusBar } from '@ionic-native/status-bar';
 
 /**
  * Generated class for the MyProfilePage page.
@@ -15,11 +16,11 @@ import { App,IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MyProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public app:App) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public app:App, public statusBar:StatusBar) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MyProfilePage');
+  ionViewWillEnter() {
+    this.statusBar.styleDefault();
   }
   logout():void {
     window.localStorage.removeItem('phone_number');

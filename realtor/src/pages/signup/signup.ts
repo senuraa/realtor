@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms'
 import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
 import { SignupServiceProvider } from '../../providers/signup-service/signup-service';
+import { StatusBar } from '@ionic-native/status-bar';
 //import { VerifyPage } from '../verify/verify';
 /**
  * Generated class for the SignupPage page.
@@ -25,7 +26,7 @@ export class SignupPage {
   //   token: '',
   //   password: ''
   // }
-  constructor(public navCtrl: NavController, public navParams: NavParams, public signupService: SignupServiceProvider, private formBuilder:FormBuilder,private alertCtrl:AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public signupService: SignupServiceProvider, private formBuilder:FormBuilder,private alertCtrl:AlertController, public statusBar:StatusBar) {
     this.signUpForm = this.formBuilder.group({
         first_name: ['',Validators.required],
         last_name: ['',Validators.required],
@@ -54,8 +55,8 @@ export class SignupPage {
       console.log(err)
     })
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPage');
+  ionViewWillEnter() {
+    this.statusBar.styleDefault();
   }
   // static passwordsMatch(cg: FormGroup): {[err: string]: any} {
   //   let pwd1 = cg.get('password');

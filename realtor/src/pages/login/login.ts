@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 //import { SignupPage } from '../signup/signup';
 import { LoginServiceProvider } from '../../providers/login-service/login-service';
+import { StatusBar } from '@ionic-native/status-bar';
 //import { TabsPage } from '../tabs/tabs'
 
 /**
@@ -21,7 +22,7 @@ export class LoginPage {
     phone_number: '',
     password: ''
   }
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loginService: LoginServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loginService: LoginServiceProvider, public statusBar: StatusBar) {
   }
   login() {
     this.loginService.userLogin(this.user).then((response) => {
@@ -37,8 +38,8 @@ export class LoginPage {
   openSignup() {
     this.navCtrl.push('SignupPage');
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+  ionViewWillEnter() {
+    this.statusBar.styleLightContent();
   }
 
 }

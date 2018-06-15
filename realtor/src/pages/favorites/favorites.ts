@@ -4,6 +4,7 @@ import { RetrieveAdsProvider } from '../../providers/retrieve-ads/retrieve-ads';
 import { CallNumber } from '@ionic-native/call-number';
 import { DateTimeModalPage } from '../date-time-modal/date-time-modal';
 import { AppointmentProvider } from '../../providers/appointment/appointment';
+import { StatusBar } from '@ionic-native/status-bar';
 
 /**
  * Generated class for the FavoritesPage page.
@@ -26,7 +27,7 @@ export class FavoritesPage {
     phone_number: "",
     ad_id: ""
   }
-  constructor(public navCtrl: NavController, public navParams: NavParams, public retrieveAds: RetrieveAdsProvider, public alertCtrl: AlertController,public callNumber: CallNumber, public modalCtrl:ModalController, public appService:AppointmentProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public retrieveAds: RetrieveAdsProvider, public alertCtrl: AlertController,public callNumber: CallNumber, public modalCtrl:ModalController, public appService:AppointmentProvider, public statusBar:StatusBar) {
 
   }
   openAddAppointment(ad) {
@@ -122,8 +123,8 @@ export class FavoritesPage {
     })
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FavoritesPage');
+  ionViewWillEnter() {
+    this.statusBar.styleDefault();
   }
 
 }

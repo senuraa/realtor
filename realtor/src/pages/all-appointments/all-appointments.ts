@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AppointmentProvider } from '../../providers/appointment/appointment';
 import { CallNumber } from '@ionic-native/call-number';
+import { StatusBar } from '@ionic-native/status-bar';
 
 /**
  * Generated class for the AllAppointmentsPage page.
@@ -22,7 +23,7 @@ export class AllAppointmentsPage {
   }
   appStatData:any =null;
   appData:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public appService:AppointmentProvider, public alertCtrl:AlertController,public callNumber:CallNumber) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public appService:AppointmentProvider, public alertCtrl:AlertController,public callNumber:CallNumber, public statusBar:StatusBar) {
     //this.ionViewDidEnter();
     this.appData = null;
   }
@@ -89,7 +90,8 @@ export class AllAppointmentsPage {
   viewApp(app){
     this.navCtrl.push('ViewAppointmentPage',app)
   }
-  ionViewDidEnter() {
+  ionViewWillEnter() {
+    this.statusBar.styleDefault();
     this.appService.getAppointment(this.appReqUserData).then((response)=>{
       this.appData=response;
       console.log(this.appData)
@@ -98,6 +100,16 @@ export class AllAppointmentsPage {
       console.log(err)
     }
   )
+  }
+  ionViewDidEnter() {
+  //   this.appService.getAppointment(this.appReqUserData).then((response)=>{
+  //     this.appData=response;
+  //     console.log(this.appData)
+  //   },
+  //   (err)=>{
+  //     console.log(err)
+  //   }
+  // )
   }
 
 }
