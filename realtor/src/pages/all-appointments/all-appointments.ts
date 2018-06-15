@@ -40,10 +40,7 @@ export class AllAppointmentsPage {
     })
     console.log(app)
   }
-  call(numArray) {
-    var nums = numArray.split(',');
-    console.log(nums)
-
+  call(nums) {
     if (nums.length > 1) {
       let alert = this.alertCtrl.create();
       alert.setTitle('Select number');
