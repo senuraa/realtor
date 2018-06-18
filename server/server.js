@@ -71,6 +71,7 @@ var router = express.Router();
 var auth = require('./controllers/auth');
 var ads = require('./controllers/ads');
 var apps = require('./controllers/appointments');
+var cities = require('./controllers/cities');
 
 router.route('/auth/register').post(auth.requestPhoneVerification);
 router.route('/auth/verify').post(auth.verifyPhoneToken);
@@ -83,6 +84,8 @@ router.route('/ads/topads').get(ads.topAds);
 router.route('/app/addAppointment').post(apps.addAppointments);
 router.route('/app/getAppointment').post(apps.getAppointments);
 router.route('/app/changeAppointmentStatus').post(apps.changeAppointmentStatus);
+
+router.route('/ads/cities').get(cities.getNearbyCities);
 
 app.use('/api',router);
 
